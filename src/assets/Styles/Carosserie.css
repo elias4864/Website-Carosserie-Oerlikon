@@ -1,0 +1,80 @@
+.carosserie-section{
+    display: flex;
+
+}
+
+.bold{
+    font-weight: bold;
+    text-align: center;
+    font-size: 3rem;
+    color: black;
+}
+
+.carosserie-section {
+    width: 100%;
+    overflow: hidden;
+}
+
+.image-wrapper {
+    width: 100%;
+}
+
+/* Bild über die volle Bildschirmbreite (100vw) ausrichten */
+.carosserie-auto {
+    width: 100vw;
+    min-height: 400px;
+    max-height: 600px;
+    object-fit: cover; /* Verhindert das Verzerrren des Bildes */
+    object-position: center;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    display: block;
+}
+
+/* Mobilanpassung für Handys */
+@media (max-width: 768px) {
+    .carosserie-auto {
+        min-height: 250px;
+    }
+}
+/* Container für die Textbox mit Innenabständen */
+/* Schwarzer Hintergrund für die Textbox */
+.text-box {
+    color: black;           /* Weiße Schrift für perfekten Kontrast */
+    padding: 35px;             /* Innenabstand zum Rand */
+    border-radius: 8px;        /* Leicht abgerundete Ecken */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Subtiler Schatten */
+    margin: 30px auto;
+    max-width: 1200px;         /* Bündig mit dem Rest deines Layouts */
+    box-sizing: border-box;
+}
+
+/* Haupttitel */
+.text-box .title-bold {
+    color: black;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #9e1b1b; /* Roter Branding-Strich unter dem Haupttitel */
+    padding-bottom: 12px;
+}
+
+/* Abschnitte / Untertitel */
+.text-box .section-title {
+    color:black;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 12px;
+}
+
+/* Fließtext-Absätze */
+.text-box p {
+    color:black;       /* Angenehmes, gut lesbares Hellgrau/Weiß */
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
