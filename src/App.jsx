@@ -12,6 +12,7 @@ import './assets/Styles/App.css';
 import Instagram from "./assets/Instagram.jpg";
 import Linkedin from "./assets/Linkedin-logo.png";
 import Facebook from "./assets/Facebook.png";
+import Impressum from "./assets/pages/Impressum.jsx";
 
 
 
@@ -134,6 +135,7 @@ function App() {
                     <Link to="/carosserie" className="nav-link">{t.navCarrosserie}</Link>
                     <Link to="/aufbereitung" className="nav-link">{t.navAufbereitung}</Link>
 
+
                     {/* Sprachauswahl Dropdown */}
                     <div className="language-selector">
                         <select
@@ -208,6 +210,7 @@ function App() {
                     <Route path="/" element={<Home  lang={language}/>} />
                     <Route path="/home" element={<Home  lang={language}/>} />
                     <Route path="/carosserie" element={<Carosserie lang={language} />} />
+                    <Route path="/impressum" element={<Impressum/>} />
                     <Route path="/aufbereitung" element={<Aufbereitung lang={language} />} />
                 </Routes>
             </div>
