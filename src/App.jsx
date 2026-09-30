@@ -205,10 +205,10 @@ function App() {
             {/* Hauptinhalt & Routing */}
             <div className="content">
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/carosserie" element={<Carosserie />} />
-                    <Route path="/aufbereitung" element={<Aufbereitung />} />
+                    <Route path="/" element={<Home  lang={language}/>} />
+                    <Route path="/home" element={<Home  lang={language}/>} />
+                    <Route path="/carosserie" element={<Carosserie lang={language} />} />
+                    <Route path="/aufbereitung" element={<Aufbereitung lang={language} />} />
                 </Routes>
             </div>
 
@@ -224,16 +224,16 @@ function App() {
                         </section>
 
                         <section className="footer-col">
-                            <h3>Kontakt</h3>
+                            <h3>{t.contactTitle}</h3>
                             <p>Tel: 044 311 94 12</p>
                             <p>Fax: 044 311 94 22</p>
                             <p>E-Mail: info@oerlike.ch</p>
                         </section>
 
                         <section className="footer-col opening-hours">
-                            <h3>Öffnungszeiten</h3>
-                            <p>Mo – Do: 07.30 – 12.00 Uhr | 13.00 – 17.30 Uhr</p>
-                            <p>Fr: 07.30 – 12.00 Uhr | 13.00 – 16.30 Uhr</p>
+                            <h3>{t.hoursTitle}</h3>
+                            <p>{t.hoursWeek}</p>
+                            <p>{t.hoursFri}</p>
                         </section>
                     </div>
 
@@ -249,7 +249,7 @@ function App() {
                         <section className="social-media">
                             <span>&#128073;</span>
                             <p className="social-heading">
-                                <span>Folgen Sie uns jetzt auf unseren Social Media Kanälen:</span>
+                                <span>{t.socialText}</span>
                             </p>
                             <span>&#128072;</span>
 
