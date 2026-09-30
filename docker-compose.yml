@@ -1,0 +1,15 @@
+services:
+  frontend:
+    build:
+      context: .
+    container_name: carosserie-oerlikon
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+volumes:
+  carosserie_mysql_data:
+    driver: local
