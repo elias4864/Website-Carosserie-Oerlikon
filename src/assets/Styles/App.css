@@ -303,6 +303,64 @@
   text-decoration: none;
   display: inline-block;
 }
+
+
+.social-media {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px 0;
+  width: 100%;
+}
+
+.social-heading {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Links & Icons */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.social-link:hover {
+  opacity: 0.8;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Responsive Anpassung für Mobilgeräte */
+@media (max-width: 768px) {
+  .social-media {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .social-heading {
+    font-size: 1rem;
+  }
+}
 .social-media {
   display: flex;
   align-items: center;
@@ -312,6 +370,7 @@
 
 .social-media:hover {
   transform: scale(1.25);
+  background-color:gold;
 }
 
 /* Instagram-Icon kompakt skalieren */
@@ -333,7 +392,26 @@
   transition: transform 0.2s ease;
 }
 
+
+.facebook-icon{
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  vertical-align: middle;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
 .instagram-icon:hover {
+  transform: scale(1.15);
+}
+
+
+.linkedin-icon:hover {
+  transform: scale(1.15);
+}
+
+.facebook-icon-icon:hover {
   transform: scale(1.15);
 }
 
@@ -492,8 +570,22 @@
   margin: 20px auto 0 auto;
   padding: 15px 20px 0 20px;
   border-top: 1px solid #444444;
+
 }
 
+
+.seo-text {
+  max-width: 1000px; /* Bündig zum Welcome-Bereich */
+  padding: 0 20px;
+  box-sizing: border-box;
+  color: #aaaaaa;
+  align-items: center;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto 0 auto;
+  padding: 15px 20px 0 20px;
+}
 .footer-bottom > p,
 .footer-bottom > section {
   margin: 0;
@@ -536,6 +628,27 @@
   background-color: #f8f9fa;
   color: #333;
   ;
+}
+
+.lang-dropdown{
+  color: #333333; /* Dunkelgrau statt knalligem Rot */
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.lang-dropdown:hover {
+  border-color: #aa3b09;
+}
+
+.lang-dropdown:focus {
+  border-color: orangered;
+  box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.15);
 }
 
   .kontakt-grid {
