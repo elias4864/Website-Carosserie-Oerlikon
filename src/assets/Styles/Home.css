@@ -1,22 +1,24 @@
 .carosserie{
     position: relative;
-    background-color: white;
-    text-size-adjust: 100%;
+    width: 100%;
+    min-height: 100vh;
+
+    /* Hintergrundbild-Einstellungen */
     background-image: url('../Eingang.webp');
     background-size: cover;
-    background-position: center; /* Zentriert das Hintergrundbild */
+    background-position: center;
     background-repeat: no-repeat;
-    width: 100%;
+
+    /* Perfekte Zentrierung (Horizontal & Vertikal) */
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    box-sizing: border-box;
-    min-height: 100vh;
-    width: 100vw;               /* Volle Bildschirmbreite */
-    height: 100vh;
-    text-align: center;
 
+    /* Innenabstand, damit der Text am Rand nicht klebt */
+    padding: 0 20px;
+    box-sizing: border-box;
 
 }
 
@@ -36,9 +38,6 @@
 
 
 
-.geschichte{
-
-}
 
 .border-welcome {
     text-align: center;
@@ -129,10 +128,14 @@ p{
     line-height: 1.6;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    color: white;
+    color: black;
 
 
 
+}
+
+.text-grey{
+    text-shadow: 2px 2px 4px gray;
 }
 
 h1,h2{
@@ -143,3 +146,130 @@ h1,h2{
 }
 
 
+.services-section {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px 0;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    gap:180px;
+}
+
+/* Oberer und unterer Trennbalken mit Schatten */
+.section-divider {
+    height: 2px;
+    background-color: #d1d1d1;
+    width: 100%;
+    margin: 20px 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    gap:180px;
+}
+
+/* Container mit noch mehr vertikalem Abstand zwischen den Karten */
+.services-container {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 0;
+    gap: 180px;
+}
+
+/* Überlappendes Card-Layout */
+.feature-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 320px; /* Stellt sicher, dass das Layout stabil bleibt */
+}
+
+/* Bild-Container */
+.image-wrapper {
+    width: 55%;
+    height: 320px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    width: 60%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    justify-items: flex-end;
+}
+
+/* Weiße Text-Box mit Schatten über dem Bild */
+.text-box {
+    position: absolute;
+    z-index: 2;
+    background: #ffffff;
+    padding: 35px 30px;
+    width: 45%;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.text-box h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111;
+}
+
+.text-box p {
+    margin: 0;
+    color: #555;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* 1. Karte (Spenglerei): Bild rechts, Text links überlappend */
+.feature-card.text-left {
+    justify-content: flex-end;
+    margin-bottom: 40px;
+
+}
+
+.feature-card.text-left .text-box {
+    left: 8%;
+    right: auto;
+    margin-bottom: 40px;
+
+}
+
+/*/* Karte: Bild links, Text rechts daneben */
+.feature-card.text-right {
+    display: flex;
+    flex-direction: row; /* Bild links, Text rechts */
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 80px; /* Abstand nach unten */
+}
+
+/* Bild-Container links */
+.feature-card.text-right .image-wrapper {
+    width: 50%;
+    height: 320px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.feature-card.text-right .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Textbox RECHTS neben dem Bild */
+.feature-card.text-right .text-box {
+    position: relative; /* Steht frei rechts neben dem Bild */
+    width: 45%;
+    padding: 30px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}

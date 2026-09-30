@@ -53,7 +53,7 @@ function HomePage() {
                     </div>
                     <div className="text-box">
                         <h3>Lackiererei</h3>
-                        <p>
+                        <p className="text-grey">
                             Kommen Sie zu unserem Zürcher Carrosserie Spritzwerk, wir nehmen
                             professionelle Reparaturlackierungen für Sie vor.
                         </p>

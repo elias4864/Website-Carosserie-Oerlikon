@@ -41,7 +41,7 @@
 .section-title {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #ffffff; /* Weiß */
+    color: black; /* Weiß */
     margin-top: 10px;
     margin-bottom: 8px;
 }
@@ -98,6 +98,7 @@ h2{
     margin-left: -50vw;
     margin-right: -50vw;
     min-height: 400px;
+    box-sizing: border-box;
 }
 /* Zwischenüberschriften der Sektionen */
 

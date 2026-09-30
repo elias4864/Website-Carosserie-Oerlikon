@@ -2,7 +2,6 @@ import React from 'react';
 import  autoaufbereitung from '../Autoaufberiten.jpg';
 import '../Styles/Aufbereitung.css';
 import '../Styles/Home.css';
-import '../Styles/Carosserie.css';
 
 
 

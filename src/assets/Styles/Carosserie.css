@@ -1,7 +1,4 @@
-.carosserie-section{
-    display: flex;
 
-}
 
 .bold{
     font-weight: bold;
@@ -10,71 +7,123 @@
     color: black;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Verhindert seitliches Verschieben komplett */
+    background-color: #f8f9fa;
+}
+
+
+
+
+
+/* Mobilanpassung für Handys */
+@media (max-width: 768px) {
+    .carosserie-auto {
+        height: 250px;
+    }
+
+    .text-box {
+        padding: 20px;
+    }
+
+    .content-section {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+}
+/* Container für die Textbox mit Innenabständen */
+/* Schwarzer Hintergrund für die Textbox */
 .carosserie-section {
     width: 100%;
     overflow: hidden;
 }
 
+
+.section-title{
+    color: #ffffff;
+    font-family: Orbitron, sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 36px;
+    margin-bottom: 14px;
+    text-align: left;
+}
 .image-wrapper {
     width: 100%;
 }
 
-/* Bild über die volle Bildschirmbreite (100vw) ausrichten */
+/* Bild über die volle Breite */
+/* Haupt-Container oder Body gegen horizontales Ausbrechen absichern */
+
+.carosserie-section {
+    width: 100%;
+    overflow: hidden;
+}
+
 .carosserie-auto {
     width: 100vw;
-    min-height: 400px;
-    max-height: 600px;
-    object-fit: cover; /* Verhindert das Verzerrren des Bildes */
+    height: 420vh;
+    object-fit: cover;
     object-position: center;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
     display: block;
+
+    /* Perfekte Zentrierung ohne Scrollbalken */
+    position: relative;
+
 }
 
-/* Mobilanpassung für Handys */
+/* Mobilanpassung */
 @media (max-width: 768px) {
     .carosserie-auto {
-        min-height: 250px;
+        height: 250px;
     }
 }
-/* Container für die Textbox mit Innenabständen */
-/* Schwarzer Hintergrund für die Textbox */
-.text-box {
-    color: black;           /* Weiße Schrift für perfekten Kontrast */
-    padding: 35px;             /* Innenabstand zum Rand */
-    border-radius: 8px;        /* Leicht abgerundete Ecken */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Subtiler Schatten */
-    margin: 30px auto;
-    max-width: 1200px;         /* Bündig mit dem Rest deines Layouts */
-    box-sizing: border-box;
+
+/* Textbox sauber zentriert unter dem Bild */
+.content-section,
+.title-bold {
+    color: #000000;
+    font-size: 1.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 24px;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
 }
 
-/* Haupttitel */
-.text-box .title-bold {
-    color: black;
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #9e1b1b; /* Roter Branding-Strich unter dem Haupttitel */
-    padding-bottom: 12px;
-}
-
-/* Abschnitte / Untertitel */
-.text-box .section-title {
-    color:black;
+.section-title {
     font-size: 1.3rem;
     font-weight: 700;
-    margin-top: 30px;
-    margin-bottom: 12px;
+    color: black; /* Weiß */
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+/* Untertitel: Schwarz, deutlich hervorgehoben */
+
+/* Fließtext für gute Lesbarkeit */
+.text-box p {
+    color: #444444;
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 18px;
 }
 
-/* Fließtext-Absätze */
-.text-box p {
-    color:black;       /* Angenehmes, gut lesbares Hellgrau/Weiß */
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 18px;
+/* Container mit angenehmer Maximalbreite */
+.text-box {
+    width: 100%;
+    max-width: 1100px;
+    background-color: #ffffff;
+    padding: 40px;
+    margin: 40px auto;
+    box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
 }

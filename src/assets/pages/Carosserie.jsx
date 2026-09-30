@@ -1,8 +1,10 @@
 import React from 'react';
 // Passe den Pfad zu deiner Home.css bei Bedarf an (z. B. '../components/Styles/Home.css')
-import '../Styles/Home.css';
 
+import '../Styles/Carosserie.css';
 import Auto from '../Auto.jpg';
+import '../Styles/App.css';
+
 
 function CarosseriePage() {
     return (
