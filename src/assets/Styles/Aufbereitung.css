@@ -37,6 +37,10 @@
     margin-bottom: 15px;
 }
 
+.content-section {
+    font-size: 1.5rem;
+}
+
 /* Zwischenüberschriften */
 .section-title {
     font-size: 1.3rem;
@@ -83,8 +87,10 @@
 }
 
 
-h2{
+h2 {
     color: black;
+    font-weight: 700;
+    font-size: 1.9rem;
 }
 
 .töpfer{

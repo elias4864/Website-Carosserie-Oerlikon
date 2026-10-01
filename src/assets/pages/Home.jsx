@@ -1,21 +1,25 @@
-import {useState} from 'react'
+
 
 import Schrauben from '../Schrauben.jpg';
 import Lackierei from '../Lackierei.jpg';
 import Team from '../Team.jpg';
 import '../Styles/Home.css';
+import {useState} from "react";
 import Eingang from '../Eingang.webp';
 
 
 
 
 function HomePage() {
-    const [count, setCount] = useState(0)
+    const [isOpen, setIsOpen] = useState(true);
+
 
     return (
 
         <div className="Background-Intro">
+
             <div className="carosserie"><h1>Carrosserie Örlike TL AG</h1>
+                <img src={Eingang} alt="Eingang Carrosserie Örlike" />
                 <p>Ihr Spezialist für sämtliche Carrosserie und Lackierarbeiten rund ums Fahrzeug</p>
             </div>
             <section className="border-welcome">

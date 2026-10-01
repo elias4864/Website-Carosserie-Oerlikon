@@ -1,13 +1,14 @@
 .carosserie{
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 200vh;
 
     /* Hintergrundbild-Einstellungen */
     background-image: url('../Eingang.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
 
     /* Perfekte Zentrierung (Horizontal & Vertikal) */
     display: flex;
@@ -17,9 +18,19 @@
     text-align: center;
 
     /* Innenabstand, damit der Text am Rand nicht klebt */
-    padding: 0 20px;
+    padding: 0 30px;
     box-sizing: border-box;
 
+}
+
+
+.Background-Intro {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    color: #212529;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 3rem;
 }
 
 
@@ -43,23 +54,16 @@
 
 
 
-
 .border-welcome {
-    text-align: center;
-    padding: 4rem 1.5rem;
-    color: #555555; /* Dunkelgrauer Fließtext */
-    font-family: Arial, Helvetica, sans-serif;
     max-width: 900px;
-    margin: 0 auto;
-
-    /* Dicker schwarzer Balken oben und unten */
-    border-top: 2px solid gray;
-    border-bottom: 2px solid gray;
-
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-
+    margin: 2.5rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    border-left: 5px solid #dc2626;
+    border-right: 5px solid #dc2626;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-
 .carosserie p {
     /* 50px ist ebenfalls zu gross – 1.4rem passt exakt zum Screenshot */
     font-size: 1.4rem;
@@ -128,6 +132,13 @@
     margin-bottom: 0;
 }
 
+
+.closing {
+    font-weight: 600;
+    color: #dc2626;
+    margin-top: 1.5rem !important;
+}
+
 p{
     font-size: 20px;
     line-height: 1.6;
@@ -148,6 +159,8 @@ h1,h2{
     text-align: center;
     font-family: 'Orbitron', sans-serif;
     color: white;
+    margin: 0;
+
 }
 
 
@@ -209,6 +222,8 @@ h1,h2{
 .text-box {
     position: absolute;
     z-index: 2;
+    display: flex;
+    align-items: center;
     background: #ffffff;
     padding: 35px 30px;
     width: 45%;
@@ -232,7 +247,7 @@ h1,h2{
 
 /* 1. Karte (Spenglerei): Bild rechts, Text links überlappend */
 .feature-card.text-left {
-    justify-content: flex-end;
+    justify-content:flex-end;
     margin-bottom: 40px;
 
 }

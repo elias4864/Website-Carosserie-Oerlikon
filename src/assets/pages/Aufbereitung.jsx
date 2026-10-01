@@ -12,7 +12,7 @@ function AufbereitungPage() {
             <img src={autoaufbereitung} alt="Autoaufbereitung" className="töpfer" />
 
             <section className="border-welcome">
-                <h2 >
+                <h2 className="content-section">
                     PROFESSIONELLE AUTOAUFBEREITUNG ZU PREISWERTEN KONDITIONEN
                 </h2>
                 <p>
