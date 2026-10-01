@@ -1,0 +1,13 @@
+.lackiererei {
+    background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
+    background-position: center;  /* Zentriert das Bild */
+    background-repeat: no-repeat;
+    width: 100vw;                 /* Nutzt die volle Bildschirmbreite */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-height: 400px;
+    box-sizing: border-box;
+}

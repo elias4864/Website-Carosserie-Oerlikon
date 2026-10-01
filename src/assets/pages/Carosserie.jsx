@@ -16,7 +16,7 @@ function CarosseriePage() {
             </section>
 
             <div className="text-box text-box-spaced">
-                <h2 className="content-section">
+                <h2 className="section-title">
                     CARROSSERIE ÖRLIKE: IHR FACHBETRIEB FÜR DIE REPARATUR VON KRAFTFAHRZEUGEN
                 </h2>
 

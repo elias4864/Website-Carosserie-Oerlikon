@@ -15,6 +15,7 @@ import Facebook from "./assets/Facebook.png";
 import Impressum from "./assets/pages/Impressum.jsx";
 import Wiki from "./assets/pages/Wiki.jsx";
 import  Kontakt from "./assets/pages/Kontakt.jsx";
+import Lackierei from "./assets/pages/Lackierei.jsx";
 
 
 
@@ -29,6 +30,7 @@ const translations = {
         navCarrosserie: "Carrosserie",
         navAufbereitung: "Aufbereitung",
         navKontakt: "Kontakt",
+        navLackierei:"Lackiererei",
         modalTitle: "Nehmen Sie jetzt Kontakt mit uns auf",
         phoneLabel: "Telefon:",
         callBtn: "Jetzt anrufen",
@@ -41,10 +43,11 @@ const translations = {
     },
     en: {
         navHome: "Home",
-        navCarrosserie: "Body Shop",
+        navCarrosserie: "body Shop",
         navAufbereitung: "Car Detailing",
         navKontakt: "Contact",
         modalTitle: "Get in touch with us now",
+        navLackiererei:"paint shop",
         phoneLabel: "Phone:",
         callBtn: "Call now",
         closeBtn: "Close",
@@ -59,6 +62,8 @@ const translations = {
         navCarrosserie: "Carrozzeria",
         navAufbereitung: "Preparazione",
         navKontakt: "Contatti",
+        navLackiererei:"Reparto verniciatura",
+
         modalTitle: "Mettetevi in contatto con noi ora",
         phoneLabel: "Telefono:",
         callBtn: "Chiama ora",
@@ -74,6 +79,7 @@ const translations = {
         navCarrosserie: "Carrosserie",
         navAufbereitung: "Préparation",
         navKontakt: "Contact",
+        navLackiererei:"Atelier de peinture",
         modalTitle: "Contactez-nous dès maintenant",
         phoneLabel: "Téléphone:",
         callBtn: "Appeler maintenant",
@@ -141,6 +147,7 @@ function App() {
                     <Link to="/carosserie" className="nav-link">{t.navCarrosserie}</Link>
                     <Link to="/aufbereitung" className="nav-link">{t.navAufbereitung}</Link>
                     <Link to="/kontakt" className={"nav-link"}>{t.navKontakt}</Link>
+                    <Link to="/lackiererei" className={"nav-link"}>{t.navLackierei}</Link>
 
 
                     {/* Sprachauswahl Dropdown */}
@@ -217,9 +224,10 @@ function App() {
                     <Route path="/" element={<Home  lang={language}/>} />
                     <Route path="/home" element={<Home  lang={language}/>} />
                     <Route path="/carosserie" element={<Carosserie lang={language} />} />
-                    <Route path="/impressum" element={<Impressum/>} />
-                    <Route path="/wiki" element={<Wiki/>} />
-                    <Route path="/kontakt" element={<Kontakt />}/>
+                    <Route path="/impressum" element={<Impressum lang={language}/>} />
+                    <Route path="/wiki" element={<Wiki />} />
+                    <Route path="/kontakt" element={<Kontakt lang={language} />}/>
+                    <Route path="/lackiererei" element={<Lackierei lang={language}/>}/>
                     <Route path="/aufbereitung" element={<Aufbereitung lang={language} />} />
                 </Routes>
             </div>

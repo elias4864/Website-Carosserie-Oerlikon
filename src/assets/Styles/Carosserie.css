@@ -4,14 +4,15 @@
     font-weight: bold;
     text-align: center;
     font-size: 3rem;
-    color: black;
+    color: #000000;
 }
 
+/* Grundlegendes Layout & Body */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; /* Verhindert seitliches Verschieben komplett */
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
     background-color: #f8f9fa;
 }
 
@@ -19,14 +20,10 @@ html, body {
 
 
 
-/* Mobilanpassung für Handys */
-@media (max-width: 768px) {
-    .carosserie-auto {
-        height: 250px;
-    }
 
     .text-box {
         padding: 20px;
+        text-align: center;
     }
 
     .content-section {
@@ -36,33 +33,41 @@ html, body {
     .section-title {
         font-size: 20px;
     }
-}
+
 /* Container für die Textbox mit Innenabständen */
 /* Schwarzer Hintergrund für die Textbox */
 .carosserie-section {
     width: 100%;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 
 .section-title{
     color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: 700;
     font-family: Orbitron, sans-serif;
     align-items: flex-start;
     flex-direction: column;
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
-    line-height: 1.6;
     box-sizing: border-box;
     text-align: left;
-    font-weight: 700;
     margin-top: 36px;
     margin-bottom: 14px;
-    text-align: left;
 }
 .image-wrapper {
-    width: 100%;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    margin: 30px 0;
 }
 
 /* Bild über die volle Breite */
@@ -74,37 +79,71 @@ html, body {
 }
 
 .carosserie-auto {
-    width: 100vw;
-    height: 420vh;
+
+    width: 100%;
     object-fit: cover;
     object-position: center;
+    height: 450px; /* Beliebige Höhe für das Banner */
     display: block;
-
     /* Perfekte Zentrierung ohne Scrollbalken */
     position: relative;
+    background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
+    background-position: center;  /* Zentriert das Bild */
+    background-repeat: no-repeat;
+
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-height: 400px;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 35px; /* Abstand zwischen den einzelnen <section>-Blöcken */
+    max-width: 900px;
+    padding: 20px;
+    line-height: 1.6;
+    color: black;
 
 }
 
 /* Mobilanpassung */
+
+
 @media (max-width: 768px) {
     .carosserie-auto {
         height: 250px;
     }
-}
 
+    .text-box {
+        padding: 24px 18px;
+        margin: 15px auto;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .title-bold,
+    .content-section {
+        font-size: 1.15rem;
+    }
+
+    .text-box p {
+        font-size: 1rem;
+    }
+}
 /* Textbox sauber zentriert unter dem Bild */
-.content-section,
-.title-bold {
+.title-bold,
+.content-section {
     color: #000000;
-    font-size: 1.65rem;
+    font-size: 1.4rem;
     font-weight: 800;
     text-transform: uppercase;
     margin-top: 10px;
-    margin-bottom: 24px;
-    line-height: 1.3;
+    margin-bottom: 20px;
+    line-height: 1.4;
     letter-spacing: 0.5px;
 }
-
 .section-title {
     display: flex;
     flex-direction: column; /* Erzwingt das Stapeln untereinander */
@@ -119,8 +158,9 @@ html, body {
 
 /* Fließtext für gute Lesbarkeit */
 .text-box p {
-    color: #444444;
-    font-size: 1rem;
+    color: black;
+    font-family: Orbitron, sans-serif ;
+    font-size: 3rem;
     line-height: 1.65;
     margin-bottom: 18px;
 }

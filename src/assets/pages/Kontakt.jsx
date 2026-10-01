@@ -3,6 +3,8 @@ import Team from "../Teams.jpg";
 import '../Styles/Kontakt.css';
 import Michael from "../Michael.jpg";
 import Peter from "../Peter.jpg";
+import '../Styles/App.css';
+
 function Kontakt(){
 
     const teamMembers = [
