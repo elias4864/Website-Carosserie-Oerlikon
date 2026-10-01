@@ -1,0 +1,94 @@
+.kontakt-container{
+    width: 70%;
+    height: 50%;
+}
+
+.kontakt-text{
+    font-family: 'Orbitron', cursive;
+    font-size: 2px;
+}
+
+.team-bild{
+    background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
+    background-position: center;  /* Zentriert das Bild */
+    background-repeat: no-repeat;
+    width: 100vw;                 /* Nutzt die volle Bildschirmbreite */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    font-family: 'Orbitron', sans-serif;
+    background-image: url('../Teams.jpg'); /* Passe den Pfad zu deinem Bild an */
+
+    min-height: 400px;
+
+    /* Perfekte Ausrichtung über die volle Breite ohne Scrollbar-Fehler */
+    transform: translateX(-50%);
+
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.team-grid {
+    display: flex;
+    flex-direction: row; /* Richtet Karten nebeneinander aus */
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: nowrap; /* Verhindert ungewolltes Umbrechen auf Desktop */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+}
+
+.kontakt-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1; /* Verteilt den Platz gleichmässig */
+    max-width: 350px;
+    width: 100%;
+}
+
+
+.kontakt-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.team-member-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.kontakt-text.role {
+    font-size: 0.95rem;
+    font-family: sans-serif;
+    color: #666666;
+    margin: 2px 0;
+}
+
+.kontakt-text.subtitle {
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    color: #888888;
+    margin: 2px 0;
+}
+
+/* Mobilanpassung */
+@media (max-width: 768px) {
+    .team-grid {
+        flex-direction: row;
+        align-items: center;
+    }
+}

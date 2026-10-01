@@ -13,6 +13,8 @@ import Instagram from "./assets/Instagram.jpg";
 import Linkedin from "./assets/Linkedin-logo.png";
 import Facebook from "./assets/Facebook.png";
 import Impressum from "./assets/pages/Impressum.jsx";
+import Wiki from "./assets/pages/Wiki.jsx";
+import  Kontakt from "./assets/pages/Kontakt.jsx";
 
 
 
@@ -26,6 +28,7 @@ const translations = {
         navHome: "Home",
         navCarrosserie: "Carrosserie",
         navAufbereitung: "Aufbereitung",
+        navKontakt: "Kontakt",
         modalTitle: "Nehmen Sie jetzt Kontakt mit uns auf",
         phoneLabel: "Telefon:",
         callBtn: "Jetzt anrufen",
@@ -40,6 +43,7 @@ const translations = {
         navHome: "Home",
         navCarrosserie: "Body Shop",
         navAufbereitung: "Car Detailing",
+        navKontakt: "Contact",
         modalTitle: "Get in touch with us now",
         phoneLabel: "Phone:",
         callBtn: "Call now",
@@ -54,6 +58,7 @@ const translations = {
         navHome: "Home",
         navCarrosserie: "Carrozzeria",
         navAufbereitung: "Preparazione",
+        navKontakt: "Contatti",
         modalTitle: "Mettetevi in contatto con noi ora",
         phoneLabel: "Telefono:",
         callBtn: "Chiama ora",
@@ -68,6 +73,7 @@ const translations = {
         navHome: "Accueil",
         navCarrosserie: "Carrosserie",
         navAufbereitung: "Préparation",
+        navKontakt: "Contact",
         modalTitle: "Contactez-nous dès maintenant",
         phoneLabel: "Téléphone:",
         callBtn: "Appeler maintenant",
@@ -134,6 +140,7 @@ function App() {
                     <Link to="/home" className="nav-link active">{t.navHome}</Link>
                     <Link to="/carosserie" className="nav-link">{t.navCarrosserie}</Link>
                     <Link to="/aufbereitung" className="nav-link">{t.navAufbereitung}</Link>
+                    <Link to="/kontakt" className={"nav-link"}>{t.navKontakt}</Link>
 
 
                     {/* Sprachauswahl Dropdown */}
@@ -211,6 +218,8 @@ function App() {
                     <Route path="/home" element={<Home  lang={language}/>} />
                     <Route path="/carosserie" element={<Carosserie lang={language} />} />
                     <Route path="/impressum" element={<Impressum/>} />
+                    <Route path="/wiki" element={<Wiki/>} />
+                    <Route path="/kontakt" element={<Kontakt />}/>
                     <Route path="/aufbereitung" element={<Aufbereitung lang={language} />} />
                 </Routes>
             </div>
