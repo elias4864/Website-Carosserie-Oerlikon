@@ -19,7 +19,9 @@ function HomePage() {
         <div className="Background-Intro">
 
             <div className="carosserie"><h1>Carrosserie Örlike TL AG</h1>
-                <img src={Eingang} alt="Eingang Carrosserie Örlike" />
+
+
+
                 <p>Ihr Spezialist für sämtliche Carrosserie und Lackierarbeiten rund ums Fahrzeug</p>
             </div>
             <section className="border-welcome">

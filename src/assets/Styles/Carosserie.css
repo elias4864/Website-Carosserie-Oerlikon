@@ -80,23 +80,24 @@ html, body {
 
 .carosserie-auto {
 
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    height: 450px; /* Beliebige Höhe für das Banner */
-    display: block;
-    /* Perfekte Zentrierung ohne Scrollbalken */
-    position: relative;
-    background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
     background-position: center;  /* Zentriert das Bild */
     background-repeat: no-repeat;
-
+    width: 100vw;                 /* Nutzt die volle Bildschirmbreite */
+    position: relative;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
     min-height: 400px;
     box-sizing: border-box;
+
+    object-fit: cover;
+    object-position: center;
+    height: 450px; /* Beliebige Höhe für das Banner */
+    display: block;
+    /* Perfekte Zentrierung ohne Scrollbalken */
+    background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
+
     flex-direction: column;
     gap: 35px; /* Abstand zwischen den einzelnen <section>-Blöcken */
     max-width: 900px;
