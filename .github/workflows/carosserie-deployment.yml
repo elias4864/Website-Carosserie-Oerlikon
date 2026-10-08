@@ -16,6 +16,9 @@ jobs:
   test-and-validate:
     name: Validate & Test Build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mein-react-template
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v4
@@ -24,10 +27,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
 
       - name: Abhängigkeiten installieren
-        run: npm ci --no-audit --no-fund
+        run: npm install --no-audit --no-fund
 
       - name: Tests ausführen (falls vorhanden)
         run: |
@@ -69,7 +71,7 @@ jobs:
       - name: Docker Image erstellen und hochladen
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./mein-react-template
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
