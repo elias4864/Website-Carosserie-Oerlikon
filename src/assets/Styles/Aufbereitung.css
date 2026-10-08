@@ -93,6 +93,32 @@ h2 {
     font-size: 1.9rem;
 }
 
+
+
+
+
+
+p.highlight:hover {
+    text-decoration: underline;
+    font-family: 'Orbitron', sans-serif;
+
+
+    color: #9e1b1b; /* Rotton für Links und Firmenname */
+
+}
+
+
+
+.highlight {
+    font-family: 'Orbitron', sans-serif;
+    color: #9e1b1b; /* Rotton für Links und Firmenname */
+    text-decoration: none;
+    cursor: pointer;
+
+
+}
+
+
 .töpfer{
     background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
     background-position: center;  /* Zentriert das Bild */

@@ -1,11 +1,11 @@
 services:
   frontend:
     build:
-      context: .
+      context: ./mein-react-template
     container_name: carosserie-oerlikon
     restart: unless-stopped
     ports:
-      - "5173:80"
+      - "5174:80"
     volumes:
       - .:/app
       - /app/node_modules

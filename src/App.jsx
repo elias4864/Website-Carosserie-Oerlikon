@@ -39,7 +39,10 @@ const translations = {
         hoursTitle: "Öffnungszeiten",
         hoursWeek: "Mo – Do: 07.30 – 12.00 Uhr | 13.00 – 17.30 Uhr",
         hoursFri: "Fr: 07.30 – 12.00 Uhr | 13.00 – 16.30 Uhr",
-        socialText: "Folgen Sie uns jetzt auf unseren Social Media Kanälen:"
+        socialText: "Folgen Sie uns jetzt auf unseren Social Media Kanälen:",
+        companyTitle: "Carrosserie Örlike TL AG",
+        companyOwners: "Duje Antonina / Michael Nufer",
+        companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen"
     },
     en: {
         navHome: "Home",
@@ -55,7 +58,10 @@ const translations = {
         hoursTitle: "Opening Hours",
         hoursWeek: "Mon – Thu: 07.30 – 12.00 | 13.00 – 17.30",
         hoursFri: "Fri: 07.30 – 12.00 | 13.00 – 16.30",
-        socialText: "Follow us now on our social media channels:"
+        socialText: "Follow us now on our social media channels:",
+        companyTitle: "Carrosserie Örlike TL AG",
+        companyOwners: "Duje Antonina / Michael Nufer",
+        companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen"
     },
     it: {
         navHome: "Home",
@@ -72,7 +78,10 @@ const translations = {
         hoursTitle: "Orari di apertura",
         hoursWeek: "Lun – Gio: 07.30 – 12.00 | 13.00 – 17.30",
         hoursFri: "Ven: 07.30 – 12.00 | 13.00 – 16.30",
-        socialText: "Seguiteci ora sui nostri canali social:"
+        socialText: "Seguiteci ora sui nostri canali social:",
+        companyTitle: "Carrozzeria Örlike TL AG",
+        companyOwners: "Duje Antonina / Michael Nufer",
+        companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen"
     },
     fr: {
         navHome: "Accueil",
@@ -88,7 +97,10 @@ const translations = {
         hoursTitle: "Heures d'ouverture",
         hoursWeek: "Lun – Jeu: 07h30 – 12h00 | 13h00 – 17h30",
         hoursFri: "Ven: 07h30 – 12h00 | 13h00 – 16h30",
-        socialText: "Suivez-nous dès maintenant sur nos réseaux sociaux:"
+        socialText: "Suivez-nous dès maintenant sur nos réseaux sociaux:",
+        companyTitle: "Carrosserie Örlike TL AG",
+        companyOwners: "Duje Antonina / Michael Nufer",
+        companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen"
     }
 };
 function App() {
@@ -237,10 +249,9 @@ function App() {
                 <div className="footer-container">
                     <div className="footer-grid">
                         <section className="footer-col">
-                            <h3>Carrosserie Örlike TL AG</h3>
-                            <p>Duje Antonina / Michael Nufer</p>
-                            <p>Fabrikstrasse 17</p>
-                            <p>8102 Oberengstringen</p>
+                            <h3>{t.companyTitle}</h3>
+                            <p>{t.companyOwners}</p>
+                            <p>{t.companyAddress}</p>
                         </section>
 
                         <section className="footer-col">
@@ -262,8 +273,8 @@ function App() {
                     <div className="footer-bottom">
                         <p className="copyright-text">
                             Copyright &copy; {new Date().getFullYear()} oerlike.ch |{" "}
-                            <Link to="/impressum" className="hover:underline">Impressum</Link> |{" "}
-                            <Link to="/wiki" className="hover:underline">Wiki</Link>
+                            <Link to="/impressum" className="hover">Impressum</Link> |{" "}
+                            <Link to="/wiki" className="hover">Wiki</Link>
                         </p>
 
                         <section className="social-media">
@@ -289,7 +300,7 @@ function App() {
                             </div>
                         </section>
 
-                        <p className="seo-text">SEO & Webdesign by marketingmaster.ch with love</p>
+                        <p className="seo-text">SEO & Webdesign by <a  href="https://marketingmaster.ch" className="marketingmaster">marketingmaster.ch</a> with love</p>
                     </div>
                 </div>
             </footer>

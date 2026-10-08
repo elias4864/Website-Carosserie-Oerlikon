@@ -36,8 +36,8 @@
     flex-direction: row; /* Richtet Karten nebeneinander aus */
     justify-content: center;
     align-items: stretch;
-    flex-wrap: nowrap; /* Verhindert ungewolltes Umbrechen auf Desktop */
     gap: 30px;
+    flex-wrap: wrap; /* Erlaubt sauberes Umbrechen auf kleinen Bildschirmen */
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;

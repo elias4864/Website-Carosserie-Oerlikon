@@ -115,6 +115,11 @@
     height: 18px;
   }
 
+
+  .hover{
+    background-color: brown;
+  }
+
   a {
     color: var(--text-h);
     font-size: 16px;
@@ -559,8 +564,6 @@
 
 
 .footer-bottom {
-  max-width: 1000px; /* Bündig zum Welcome-Bereich */
-  padding: 0 20px;
   box-sizing: border-box;
   color: #aaaaaa;
   align-items: center;
@@ -570,22 +573,34 @@
   margin: 20px auto 0 auto;
   padding: 15px 20px 0 20px;
   border-top: 1px solid #444444;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
 
 }
 
-
+/* Optional: Styling für den Link innerhalb des SEO-Texts */
+.seo-text .marketingmaster {
+  color: inherit;
+  text-decoration: underline;
+}
 .seo-text {
-  max-width: 1000px; /* Bündig zum Welcome-Bereich */
-  padding: 0 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px 0 0 0;
+  padding: 0; /* Entfernt Innenabstände, damit nichts abgeschnitten wird */
   box-sizing: border-box;
   color: #aaaaaa;
-  align-items: center;
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  margin: 20px auto 0 auto;
-  padding: 15px 20px 0 20px;
+  text-align: left;
+  line-height: 1.4; /* Liefert genug Zeilenhöhe oben/unten */
 }
+
+
+.marketingmaster:hover {
+  text-decoration: underline;
+  color:brown;
+}
+
 .footer-bottom > p,
 .footer-bottom > section {
   margin: 0;
@@ -604,6 +619,14 @@ html, body {
   color: #ffffff;
   text-decoration: none;
   transition: color 0.2s ease;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
   /* Responsive Ansicht für mobile Bildschirme */
@@ -639,7 +662,7 @@ html, body {
 
 .lang-dropdown{
   color: #333333; /* Dunkelgrau statt knalligem Rot */
-  background-color: #ffffff;
+  background-color: gold;
   border: 1px solid #cccccc;
   border-radius: 6px;
   padding: 6px 10px;
@@ -668,6 +691,10 @@ html, body {
   }
 
 
+
+  .hover:hover {color: brown;
+
+  }
 
 /* Fixierter "Nach oben"-Button unten rechts */
 .scroll-to-top {
