@@ -18,6 +18,9 @@ jobs:
   test-and-validate:
     name: Validate & Test Build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mein-react-template # Setzt
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v4
