@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: .
+        working-directory:  ./mein-react-template
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v4
