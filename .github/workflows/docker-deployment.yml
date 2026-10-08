@@ -3,11 +3,11 @@ name: CI/CD Pipeline - Carosserie Oerlikon
 on:
   push:
     branches:
-      - main
+     
       - dev
   pull_request:
     branches:
-      - main
+     
       - dev
 
 env:
@@ -32,7 +32,7 @@ jobs:
           node-version: 22
           cache: 'npm'
           # Pfad zur Lockfile im Unterordner angeben:
-          cache-dependency-path:  mein-react-template/package-lock.json
+          cache-dependency-path:  'mein-react-template/package-lock.json'
 
       - name: Abhängigkeiten installieren
         run: npm ci
