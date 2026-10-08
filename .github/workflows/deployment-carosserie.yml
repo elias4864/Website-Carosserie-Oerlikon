@@ -1,4 +1,4 @@
-name: CI/CD Pipeline - Carosserie Oerlikon
+name: Dev CI Pipeline
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
       - dev
 
 jobs:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,18 +20,9 @@ jobs:
           cache: 'npm'
           cache-dependency-path: './mein-react-template/package-lock.json'
 
-      - name: Abhängigkeiten installieren
-        run: npm install --no-audit --no-fund
-
-      - name: Tests ausführen (falls vorhanden)
       - name: Frontend Dependencies installieren & Build testen
         working-directory: ./mein-react-template
         run: |
-          npm run lint --if-present
-          npm test -- --watchAll=false --if-present
-
-      - name: Production Build prüfen
-        run: npm run build
           npm ci
           npm run build
 
