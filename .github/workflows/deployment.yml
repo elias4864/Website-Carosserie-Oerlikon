@@ -1,0 +1,86 @@
+name: CI/CD Pipeline - Carosserie Oerlikon
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository_owner }}/carosserie-oerlikon
+
+jobs:
+  # ==========================================
+  # STAGE 1: Code-Qualität & Build testen
+  # ==========================================
+  test-and-validate:
+    name: Validate & Test Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js v22 einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      - name: Tests ausführen (falls vorhanden)
+        run: |
+          npm run lint --if-present
+          npm test -- --watchAll=false --if-present
+
+      - name: Production Build prüfen
+        run: npm run build
+
+  # ==========================================
+  # STAGE 2: Docker Image bauen & in GHCR pushen
+  # ==========================================
+  build-and-push:
+    name: Build & Push Docker Image
+    needs: test-and-validate
+    # Wird NUR ausgeführt, wenn direkt auf main oder dev gepusht wurde (nicht bei PRs)
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Bei GitHub Container Registry (GHCR) anmelden
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker Metadata & Tags generieren
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=sha-,format=short
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+
+      - name: Docker Image erstellen und hochladen
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
