@@ -15,12 +15,13 @@ env:
   IMAGE_NAME: ${{ github.repository_owner }}/carosserie-oerlikon
 
 jobs:
-  # ==========================================
-  # STAGE 1: Code-Qualität & Build testen
-  # ==========================================
   test-and-validate:
     name: Validate & Test Build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mein-react-template                                                                                                                                               
+
 
     steps:
       - name: Repository auschecken
@@ -34,9 +35,6 @@ jobs:
       - name: Abhängigkeiten installieren
         run: npm install --no-audit --no-fund
 
-      - name: Abhängigkeiten installieren
-        run: npm ci
-
       - name: Tests ausführen (falls vorhanden)
         run: |
           npm run lint --if-present
@@ -45,13 +43,9 @@ jobs:
       - name: Production Build prüfen
         run: npm run build
 
-  # ==========================================
-  # STAGE 2: Docker Image bauen & in GHCR pushen
-  # ==========================================
   build-and-push:
     name: Build & Push Docker Image
     needs: test-and-validate
-    # Wird NUR ausgeführt, wenn direkt auf main oder dev gepusht wurde (nicht bei PRs)
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev')
     runs-on: ubuntu-latest
     permissions:
@@ -82,7 +76,7 @@ jobs:
       - name: Docker Image erstellen und hochladen
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./frontend
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
