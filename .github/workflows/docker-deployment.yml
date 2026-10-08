@@ -1,0 +1,138 @@
+name: CI/CD  Pipeline(Github Actions)- Website Carosserie Oerlikon
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+env:
+  REGISTRY: ghcr.io
+  # Ziel-Image: ghcr.io/<owner>/carosserie-oerlikon
+  IMAGE_NAME: ${{ github.repository_owner }}/carosserie-oerlikon
+  HELM_CHART_PATH: ./helm
+
+jobs:
+  # ==========================================
+  # STAGE 1: Code Linting, Testing & Build
+  # ==========================================
+  test-and-validate:
+    name: Code Validation & Build Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js v22 einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      - name: Linter & Tests ausführen (falls vorhanden)
+        run: |
+          npm run lint --if-present
+          npm test -- --watchAll=false --if-present
+
+      - name: Frontend Build testen
+        run: npm run build
+
+  # ==========================================
+  # STAGE 2: Multi-Stage Docker Build & Push
+  # ==========================================
+  build-and-push:
+    name: Build & Push Docker Image
+    needs: test-and-validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    outputs:
+      image_tag: ${{ steps.meta.outputs.version }}
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Bei GitHub Container Registry (GHCR) anmelden
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker Metadata & Image Tags generieren
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=sha-,format=short
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+
+      - name: Docker Image erstellen und hochladen
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  # ==========================================
+  # STAGE 3: Helm Deployment auf Kubernetes
+  # ==========================================
+  deploy-helm:
+    name: Helm Deployment
+    needs: build-and-push
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Ziel-Environment bestimmen (dev vs. prod)
+        id: env-setup
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "namespace=prod" >> $GITHUB_OUTPUT
+            echo "release_name=carosserie-oerlikon-prod" >> $GITHUB_OUTPUT
+          else
+            echo "namespace=dev" >> $GITHUB_OUTPUT
+            echo "release_name=carosserie-oerlikon-dev" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Helm CLI installieren
+        uses: azure/setup-helm@v4
+        with:
+          version: 'v3.14.0'
+
+      - name: Kubernetes Kontext via Kubeconfig konfigurieren
+        uses: azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG_DEV }}
+
+      - name: Helm Upgrade / Release ausführen
+        run: |
+          IMAGE_TAG="sha-${GITHUB_SHA::7}"
+          NAMESPACE="${{ steps.env-setup.outputs.namespace }}"
+          RELEASE_NAME="${{ steps.env-setup.outputs.release_name }}"
+
+          echo "Starte Deployment für $RELEASE_NAME im Namespace $NAMESPACE..."
+
+          helm upgrade --install $RELEASE_NAME ${{ env.HELM_CHART_PATH }} \
+            --namespace $NAMESPACE \
+            --create-namespace \
+            --set image.repository="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}" \
+            --set image.tag="${IMAGE_TAG}"
