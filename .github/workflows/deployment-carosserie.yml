@@ -18,12 +18,15 @@ jobs:
   test-and-validate:
     name: Validate & Test Build
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: mein-react-template  # <-- Pfad zu deinem React-Projekt
+
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v4
+
+      - name: Ordnerstruktur auf dem Runner anzeigen
+        run: |
+          echo "=== Hauptverzeichnis ==="
+          ls -la
 
       - name: Node.js v22 einrichten
         uses: actions/setup-node@v4
