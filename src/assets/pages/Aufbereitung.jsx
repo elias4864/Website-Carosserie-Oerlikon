@@ -39,7 +39,8 @@ function AufbereitungPage() {
                     Eine Autoaufbereitung kann gehörig ins Geld gehen, wenn man sich nicht gründlich über die Preise und Konditionen des jeweiligen Anbieters informiert. Begehen Sie nicht den Fehler, sich an den erstbesten Dienstleister zu wenden! Wenn Sie Pech haben, erhalten Sie eine Abschlussrechnung, die Ihnen die Sprache verschlägt. In solchen Fällen lassen viele Anbieter nicht mit sich diskutieren, sodass man letztlich keine andere Wahl hat, als die geforderte Summe zu zahlen.
                 </p>
                 <p>
-                    Bei der Carrosserie Örlike wissen Sie von Anfang an, woran Sie sind. Anstatt Sie über die Preisgestaltung im Unklaren zu lassen, informieren wir Sie umfassend über alle geplanten Arbeitsschritte und die daraus resultierenden Kosten. Unsere Dienste sind günstiger, als Sie denken – gerne lassen wir Ihnen eine telefonische oder schriftliche Beratung zukommen. Kontaktieren Sie uns bitte unter der Rufnummer <span className="highlight">044 311 94 12</span>, per Kontaktformular oder via E-Mail (<span className="highlight">info@oerlike.ch</span>).
+                    Bei der Carrosserie Örlike wissen Sie von Anfang an, woran Sie sind. Anstatt Sie über die Preisgestaltung im Unklaren zu lassen, informieren wir Sie umfassend über alle geplanten Arbeitsschritte und die daraus resultierenden Kosten. Unsere Dienste sind günstiger, als Sie denken – gerne lassen wir Ihnen eine telefonische oder schriftliche Beratung zukommen. Kontaktieren Sie uns bitte unter der Rufnummer <span className="highlight">   <a   href="+41443119412"  onClick={() => window.location.href = "tel:+41443119412"} className="call-btn">+41443119412
+                        </a></span>, per Kontaktformular oder via E-Mail (<span className="highlight"><a  className="highlight" href="mailto:info@oerlike.ch">info@oerlike.ch</a></span>).
                 </p>
             </section>
         </div>

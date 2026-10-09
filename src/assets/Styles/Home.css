@@ -1,31 +1,3 @@
-.carosserie{
-    position: relative;
-    min-height: 200vh;
-    align-items: flex-start;
-    flex-direction: column;
-    min-width: 100%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;            /* 100vw nimmt exakt die volle Bildschirmsichtbreite ein *//* Bricht aus allen übergeordneten Containern auf volle Breite aus */
-    /* Hintergrundbild-Einstellungen */
-    background-image: url('../Eingang.webp');
-    box-sizing: border-box;
-    justify-content: center;
-    padding: 0 30px;
-    text-align: right;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    /* Perfekte Zentrierung (Horizontal & Vertikal) */
-    display: flex;
-    justify-content: center;
-
-    /* Innenabstand, damit der Text am Rand nicht klebt */
-    padding: 0 30px;
-    box-sizing: border-box;
-
-}
 
 
 .Background-Intro {
@@ -34,17 +6,12 @@
     background-color: #f8f9fa;
     color: #212529;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-bottom: 3rem;
+    padding-bottom: 4rem;
 }
 
 
 /* Sicherstellen, dass das übergeordnete Element/Body keine Ränder hat */
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden; /* Verhindert ungewollte horizontale Scrollbalken */
-}
+
 
 .impressum-wrapper {
     width: 100%;
@@ -53,16 +20,7 @@ html, body {
 
 
 
-.carosserie h1 {
-    /* 300px ist extrem gross – 2.8rem bis 3.5rem entspricht der Vorlage */
-    font-size: 3.2rem;
-    font-weight: 700;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #ffffff;
-    margin: 0 0 1rem 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-}
+
 
 
 
@@ -76,23 +34,7 @@ html, body {
     border-right: 5px solid #dc2626;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-.carosserie p {
-    /* 50px ist ebenfalls zu gross – 1.4rem passt exakt zum Screenshot */
-    font-size: 1.4rem;
-    font-weight: 600;
-    line-height: 1.4;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #ffffff;
-    margin: 0;
-    max-width: 900px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-    text-align: center;
-    max-width: 900px;
 
-
-
-}
 /* Hauptüberschrift */
 .border-welcome h2 {
     font-size: 18px;
@@ -321,4 +263,81 @@ h1,h2{
     width: 55%;        /* Auf 55% bis 65% erhöhen, damit der Text breit genug ist */
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
+}
+
+
+
+/* Hero-Banner bricht aus jedem übergeordneten Container auf volle Bildschimbreite aus */
+.carosserie {
+    position: relative;
+    width: 100vw;                  /* Exakt 100% der Bildschirmsichtbreite */
+    left: 200%;
+    right: 100%;
+    margin-left: -50vw;            /* Richtet den Rand perfekt am linken Bildschirmrand aus */
+    margin-right: -50vw;
+
+    min-height: 75vh;              /* Entspricht genau dem Proportionalverhältnis aus dem Bild */
+
+    /* Hintergrundbild ohne Abdunkelung */
+    background-image: url('../Eingang.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Vertikale & Horizontale Zentrierung von Text und Inhalt */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+/* Hauptüberschrift exakt wie im Screenshot */
+.carosserie h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    max-width: 1200px;
+    line-height: 1.15;
+}
+
+/* Untertitel exakt wie im Screenshot */
+.carosserie p {
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.35;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    max-width: 950px;
+}
+
+/* Verhindert ungewollten horizontalen Scrollbalken auf der gesamten Seite */
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Mobile Anpassung */
+@media (max-width: 768px) {
+    .carosserie {
+        min-height: 55vh;
+        padding: 40px 15px;
+    }
+
+    .carosserie h1 {
+        font-size: 2.1rem;
+    }
+
+    .carosserie p {
+        font-size: 1.15rem;
+    }
 }

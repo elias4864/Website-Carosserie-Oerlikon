@@ -2,47 +2,64 @@
     width: 70%;
     height: 50%;
 }
-
-.kontakt-text{
-    font-family: 'Orbitron', cursive;
-    font-size: 2px;
+/* Container-Korrektur */
+.Background-Intro {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
 }
 
-.team-bild{
-    background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
-    background-position: center;  /* Zentriert das Bild */
-    background-repeat: no-repeat;
-    width: 100vw;                 /* Nutzt die volle Bildschirmbreite */
+/* 1. Banner-Bild über volle Bildschirmbreite */
+.team-bild {
+    width: 100vw;
     position: relative;
     left: 50%;
-    right: 50%;
-    font-family: 'Orbitron', sans-serif;
-    background-image: url('../Teams.jpg'); /* Passe den Pfad zu deinem Bild an */
+    transform: translateX(-50%); /* Zentriert die 100vw perfekt */
 
-    min-height: 400px;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 
-    /* Perfekte Ausrichtung über die volle Breite ohne Scrollbar-Fehler */
-    transform: translateX(-50%);
-
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    /* Sanfte Überblendung beim Bildwechsel */
+    transition: opacity 0.5s ease-in-out;
 }
 
-.team-grid {
+/* 2. Dots über dem Banner (Genaue Platzierung unten im Banner) */
+.carousel-dots {
     display: flex;
-    flex-direction: row; /* Richtet Karten nebeneinander aus */
     justify-content: center;
-    align-items: stretch;
-    gap: 30px;
-    flex-wrap: wrap; /* Erlaubt sauberes Umbrechen auf kleinen Bildschirmen */
-    max-width: 1200px;
-    margin: 40px auto;
+    gap: 10px;
+    margin-top: -35px; /* Schiebt die Punkte über den unteren Rand des Banners */
+    position: relative;
+    z-index: 10;       /* Garantiert, dass die Dots stets VOR dem Bild liegen */
+    padding-bottom: 25px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: #000000;
+    transform: scale(1.2);
+}
+
+/* 3. Team-Grid (3 Spalten wie im Screenshot) */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1400px;
+    margin: 40px auto 60px auto;
     padding: 0 20px;
     box-sizing: border-box;
-
 }
 
 .kontakt-card {
@@ -50,45 +67,67 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    flex: 1; /* Verteilt den Platz gleichmässig */
-    max-width: 350px;
     width: 100%;
 }
 
-
+/* 4. Team-Bilder in den Karten */
 .kontakt-image {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 0;
+    display: block;
 }
-
+/* Typografie */
 .team-member-name {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
     color: #000000;
-    margin-top: 15px;
-    margin-bottom: 5px;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    white-space: nowrap;
 }
 
 .kontakt-text.role {
     font-size: 0.95rem;
-    font-family: sans-serif;
-    color: #666666;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #555555;
     margin: 2px 0;
 }
 
 .kontakt-text.subtitle {
-    font-family: sans-serif;
-    font-size: 0.9rem;
-    color: #888888;
+    font-size: 0.85rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #777777;
     margin: 2px 0;
 }
 
+/* Verhindert ungewollte horizontale Scrollbalken durch 100vw */
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
 /* Mobilanpassung */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .team-grid {
-        flex-direction: row;
-        align-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .team-bild {
+        height: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-bild {
+        height: 220px;
     }
 }

@@ -489,31 +489,43 @@
     color: brown;
   }
 
-.footer {
+footer {
   background-color: #222222;
   color: #ffffff;
-  padding: 40px 0 20px 0; /* Padding links/rechts auf 0 setzen */
+  padding: 40px 0 20px 0;
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 50px;
-  width: 100%;
   box-sizing: border-box;
-  width: 100vw;                 /* Nutzt die volle Bildschirmbreite */
 
+  /* Perfekte volle Bildschimbreite ohne Ausbrechen nach rechts */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+.footer-container {
+  background-color: #000000;
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
 }
 
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
 
-  .footer-container {
-    background-color: black;
-    background-size: cover;
-    width: 100%;
-    min-height: 100%;
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; /* Innenabstand, damit der Text mobil nicht am Rand klebt */
+  box-sizing: border-box;
+}
 
-  }
+
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
 
   /* Layout für die 3 Abschnitte nebeneinander */
 
