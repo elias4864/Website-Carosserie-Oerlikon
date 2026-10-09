@@ -4,14 +4,35 @@ import Schrauben from '../Schrauben.jpg';
 import Lackierei from '../Lackierei.jpg';
 import Team from '../Team.jpg';
 import '../Styles/Home.css';
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import Eingang from '../Eingang.webp';
 
 
 
 
 function HomePage() {
-    const [isOpen, setIsOpen] = useState(true);
+
+
+    /**
+     * Wischeffekt der Bilder mit UseEffect
+     */
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            },
+            { threshold: 0.2}
+        );
+
+        const cards = document.querySelectorAll('.feature-card');
+        cards.forEach((card) => observer.observe(card));
+
+        return () => observer.disconnect();
+    }, []);
 
 
     return (
