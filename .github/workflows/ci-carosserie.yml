@@ -13,6 +13,9 @@ env:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./mein-react-template # Sagt GitHub, dass es in diesem Ordner arbeiten soll
 
     steps:
       - name: Code auschecken
@@ -22,7 +25,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
+          cache-dependency-path: 'mein-react-template/package-lock.json'
 
       - name: Abhängigkeiten installieren
         run: npm ci
