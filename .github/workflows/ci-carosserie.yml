@@ -2,9 +2,9 @@ name: CI/CD Pipeline - Carosserie Oerlikon
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "**" ]   # Läuft bei jedem Push auf egal welchem Branch
   pull_request:
-    branches: [ "main" ]
+    branches: [ "**" ]
 
 env:
   REGISTRY: ghcr.io
@@ -30,7 +30,8 @@ jobs:
 
   docker-build:
     needs: test-and-build
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    # Läuft beim Push auf jeden Branch:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       contents: read
