@@ -22,13 +22,14 @@ function Lackierei() {
                 </h2>
                 <p>
                     Möchten Sie Ihrem Fahrzeug einen völlig neuen Look verleihen? Kein Problem: In unserer Autolackiererei verfügen wir über alle Ausrüstungsgegenstände, um diese Aufgabe zu Ihrer Zufriedenheit zu bewältigen. Unser Spritzwerk wird laufend modernisiert und ist mit der neuesten Technik ausgestattet. Egal, ob es sich um einen Kleinwagen oder einen Laster handelt: Wir lackieren Ihr Auto fachgerecht und machen es zu einem echten Unikat. Wenn Sie mehrere Fahrzeuge lackieren lassen möchten, stehen wir Ihnen ebenfalls gerne zur Verfügung. Unsere Autolackiererei ist für Sie unter der Rufnummer{" "}
+                    <span className="highlight">   <a   href="+41443119412"  onClick={() => window.location.href = "tel:+41443119412"}  title=" Bitte sofort anrufen!" className="call-btn">+41443119412</a></span>
+                    <br />
+                    E-Mail:{' '}
                     <span className="highlight">
-    <a href="tel:+41443119412" className="call-btn">044 311 94 12</a>
-  </span>{" "}
-                    sowie per Kontaktformular oder per E-Mail (
-                    <span className="highlight">
-    <a className="highlight" href="mailto:info@oerlike.ch">info@oerlike.ch</a>
-  </span>
+    <a href="mailto:info@oerlike.ch" className="highlight">
+      info@oerlike.ch
+    </a>
+  </span>{' '}
                     ) erreichbar.
                 </p>
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, Routes, Route } from "react-router-dom";
+import {Navigate} from "react-router-dom";
 
 import Oerlikon from "./assets/Oerlikon.jpg";
 import Icon from "./assets/Icon.jpg";
@@ -7,6 +8,7 @@ import Icon from "./assets/Icon.jpg";
 import Home from "./assets/pages/Home.jsx";
 import Carosserie from "./assets/pages/Carosserie.jsx";
 import Aufbereitung from "./assets/pages/Aufbereitung.jsx";
+import Spenglerarbeiten from "./assets/pages/Spenglerarbeiten.jsx";
 import './assets/Styles/Home.css';
 import './assets/Styles/App.css';
 import Instagram from "./assets/Instagram.jpg";
@@ -31,6 +33,7 @@ const translations = {
         navAufbereitung: "Aufbereitung",
         navKontakt: "Kontakt",
         navLackierei:"Lackiererei",
+        navSpenglerei:"Spenglerei",
         modalTitle: "Nehmen Sie jetzt Kontakt mit uns auf",
         phoneLabel: "Telefon:",
         callBtn: "Jetzt anrufen",
@@ -49,6 +52,8 @@ const translations = {
         navCarrosserie: "body Shop",
         navAufbereitung: "Car Detailing",
         navKontakt: "Contact",
+        navSpenglerei:"Sheet Metal Work",
+
         modalTitle: "Get in touch with us now",
         navLackiererei:"paint shop",
         phoneLabel: "Phone:",
@@ -69,6 +74,7 @@ const translations = {
         navAufbereitung: "Preparazione",
         navKontakt: "Contatti",
         navLackiererei:"Reparto verniciatura",
+        navSpenglerei:"Lattoneria",
 
         modalTitle: "Mettetevi in contatto con noi ora",
         phoneLabel: "Telefono:",
@@ -89,6 +95,7 @@ const translations = {
         navAufbereitung: "Préparation",
         navKontakt: "Contact",
         navLackiererei:"Atelier de peinture",
+        navSpenglerei:"Zinguerie",
         modalTitle: "Contactez-nous dès maintenant",
         phoneLabel: "Téléphone:",
         callBtn: "Appeler maintenant",
@@ -156,7 +163,8 @@ function App() {
 
                 <div className="nav-links">
                     <Link to="/home" className="nav-link active">{t.navHome}</Link>
-                    <Link to="/carosserie" className="nav-link">{t.navCarrosserie}</Link>
+                    <Link to="/reparatur" className="nav-link">{t.navCarrosserie}</Link>
+                    <Link to="/spenglerarbeiten" className="nav-link active">{t.navSpenglerei}</Link>
                     <Link to="/aufbereitung" className="nav-link">{t.navAufbereitung}</Link>
                     <Link to="/kontakt" className={"nav-link"}>{t.navKontakt}</Link>
                     <Link to="/lackiererei" className={"nav-link"}>{t.navLackierei}</Link>
@@ -235,7 +243,8 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home  lang={language}/>} />
                     <Route path="/home" element={<Home  lang={language}/>} />
-                    <Route path="/carosserie" element={<Carosserie lang={language} />} />
+                    <Route path="/reparatur" element={<Carosserie lang={language} />} />
+                    <Route path="/spenglerarbeiten" element={<Spenglerarbeiten lang={language}/>} />
                     <Route path="/impressum" element={<Impressum lang={language}/>} />
                     <Route path="/wiki" element={<Wiki />} />
                     <Route path="/kontakt" element={<Kontakt lang={language} />}/>

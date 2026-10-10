@@ -100,13 +100,30 @@ function HomePage() {
                 </div>
 
 
+                <div className="streetview">
+
+
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!4v1791664335517!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJRFp5b0hOMWdF!2m2!1d47.40639798492404!2d8.462671190889116!3f190.4257737481725!4f-10.380033892848473!5f0.7820865974627469"
+                        style={{
+                            border: 0,
+                            width: '100%',
+                            height: '100%'
+                        }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="strict-origin-when-cross-origin"></iframe>
+
+                </div>
+
 
             </section>
 
             <section className="border-welcome">
                 <p>Seit 40 Jahren ist die Carrosserie Örlike TL AG als Aktiengesellschaft in Zürich ansässig.
 
-                    In dieser Zeit haben wir uns in der Umgebung einen ausgezeichneten Ruf erarbeitet und begeistern tagtäglich unsere Kunden.
+                    In dieser Zeit haben wir uns in der Umgebung einen ausgezeichneten Ruf erarbeitet und begeistern
+                    tagtäglich unsere Kunden.
 
                     Zu unserem Kerngebiet zählen die Spenglerei, die Lackiererei wie auch das Aufbereiten von Fahrzeugen, beispielsweise nach einem Unfall.
 
