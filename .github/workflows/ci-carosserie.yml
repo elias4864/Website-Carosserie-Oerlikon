@@ -18,32 +18,13 @@ jobs:
       - name: Code auschecken
         uses: actions/checkout@v4
 
-      - name: 🔍 Alle Ordner im Root anzeigen (Debug)
-        run: |
-          echo "Inhalt des Hauptverzeichnisses:"
-          ls -R
-
       - name: Node.js einrichten
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Ordnerstruktur prüfen und bauen
+      - name: Abhängigkeiten installieren & bauen
         run: |
-          set -e
-          echo "=== 1. Aktuelles Verzeichnis ==="
-          pwd
-          
-          echo "=== 2. Gefundene package.json Dateien ==="
-          find . -maxdepth 3 -name "package.json"
-          
-          # Ordner automatisch ermitteln, in dem die package.json liegt
-          PACKAGE_DIR=$(find . -maxdepth 3 -name "package.json" -exec dirname {} \;)
-          
-          echo "=== 3. Wechsel in Projektordner: $PACKAGE_DIR ==="
-          cd "$PACKAGE_DIR"
-          
-          echo "=== 4. npm install & build ==="
           npm install
           npm run build
 
@@ -78,8 +59,8 @@ jobs:
       - name: Docker Image bauen und pushen
         uses: docker/build-push-action@v5
         with:
-          context: ./mein-react-template
-          file: ./mein-react-template/Dockerfile
+          context: .
+          file: ./Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
