@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./mein-react-template # Sagt GitHub, dass es in diesem Ordner arbeiten soll
+        working-directory: ./mein-react-template
 
     steps:
       - name: Code auschecken
@@ -25,7 +25,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache-dependency-path: 'mein-react-template/package-lock.json'
+          cache: 'npm'
+          cache-dependency-path: './package-lock.json'
 
       - name: Abhängigkeiten installieren
         run: npm ci
@@ -64,8 +65,8 @@ jobs:
       - name: Docker Image bauen und pushen
         uses: docker/build-push-action@v5
         with:
-          context: .
-          file: ./Dockerfile
+          context: ./mein-react-template
+          file: ./mein-react-template/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
