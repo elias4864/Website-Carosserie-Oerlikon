@@ -11,7 +11,6 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  # 1. TEST & BUILD JOB
   test-and-build:
     runs-on: ubuntu-latest
 
@@ -23,17 +22,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache-dependency-path: 'mein-react-template/package-lock.json' #
+          cache: 'npm'
 
       - name: Abhängigkeiten installieren
-        run: |
-          npm ci
+        run: npm ci
 
-      - name: React App bauen (Vite Build Check)
-        run: |
-          npm run build
+      - name: React App bauen (Vite Build)
+        run: npm run build
 
-  # 2. DOCKER BUILD & PUSH JOB
   docker-build:
     needs: test-and-build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -46,14 +42,14 @@ jobs:
       - name: Code auschecken
         uses: actions/checkout@v4
 
-      - name: Bei GitHub Container Registry (GHCR) anmelden
+      - name: Bei GHCR anmelden
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Docker Metadata extrahieren (Tags & Labels)
+      - name: Docker Metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
@@ -65,28 +61,8 @@ jobs:
       - name: Docker Image bauen und pushen
         uses: docker/build-push-action@v5
         with:
-          context: ./mein-react-template
-          file: ./mein-react-template/Dockerfile
+          context: .
+          file: ./Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-  # 3. DEPLOYMENT JOB (optional: Für deinen Server / VPS via SSH)
-  deploy:
-    needs: docker-build
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Remote SSH Deployment
-        # Aktiviere dies, sobald du SSH-Secrets im GitHub Repository hinterlegt hast
-        # uses: appleboy/ssh-action@v1.0.3
-        # with:
-        #   host: ${{ secrets.SERVER_HOST }}
-        #   username: ${{ secrets.SERVER_USER }}
-        #   key: ${{ secrets.SERVER_SSH_KEY }}
-        #   script: |
-        #     cd /path/to/your/app
-        #     docker compose pull
-        #     docker compose up -d --remove-orphans
-        run: echo "Deployment Schritt ausgeführt!"
