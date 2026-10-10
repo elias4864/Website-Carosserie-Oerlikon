@@ -18,6 +18,9 @@ jobs:
       - name: Code auschecken
         uses: actions/checkout@v4
 
+      - name: Ordnerstruktur prüfen
+        run: ls -la
+
       - name: Node.js einrichten
         uses: actions/setup-node@v4
         with:
@@ -25,7 +28,6 @@ jobs:
 
       - name: Abhängigkeiten installieren & bauen
         run: |
-          cd mein-react-template
           npm install
           npm run build
 
@@ -60,8 +62,8 @@ jobs:
       - name: Docker Image bauen und pushen
         uses: docker/build-push-action@v5
         with:
-          context: ./mein-react-template
-          file: ./mein-react-template/Dockerfile
+          context: .
+          file: ./Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
