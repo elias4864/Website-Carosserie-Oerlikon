@@ -27,12 +27,10 @@ jobs:
 
       - name: Abhängigkeiten installieren
         run: |
-          cd mein-react-template
           npm ci
 
       - name: React App bauen (Vite Build Check)
         run: |
-          cd mein-react-template
           npm run build
 
   # 2. DOCKER BUILD & PUSH JOB
