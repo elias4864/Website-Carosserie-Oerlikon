@@ -9,18 +9,6 @@
     color: black;
     box-sizing: border-box;
 }
-.aufbereitung-container {
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 30px;
-    line-height: 1.7;
-    color: black;            /* Weiße Standardschrift */
-    border-radius: 8px;
-    box-sizing: border-box;
-}
 
 
 /* ===================================================

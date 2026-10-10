@@ -7,7 +7,7 @@ function Lackierei() {
     return (
         <div className="Background-Intro">
                 {/* Full-Width Bild-Wrapper */}
-                    <div className="image-wrapper">
+                    <div className="lackiererei-container">
                         <img src={Lackiererei} alt="Autoaufbereitung" className="lackiererei " />
                         </div>
             <div className="text-box text-box-spaced">

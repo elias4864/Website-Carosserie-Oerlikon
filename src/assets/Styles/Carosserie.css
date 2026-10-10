@@ -1,85 +1,12 @@
-
-
-.bold{
-    font-weight: bold;
-    text-align: center;
-    font-size: 3rem;
-    color: #000000;
-}
-
-/* Grundlegendes Layout & Body */
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden; /* Verhindert horizontales Scrollen */
-    background-color: #f8f9fa;
-}
-
-
-
-
-
-
-    .text-box {
-        padding: 20px;
-        text-align: center;
-    }
-
-    .content-section {
-        font-size: 1.5rem;
-    }
-
-    .section-title {
-        font-size: 20px;
-    }
-
-/* Container für die Textbox mit Innenabständen */
-/* Schwarzer Hintergrund für die Textbox */
-.carosserie-section {
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-
-
-.section-title{
-    color: #ffffff;
-    font-size: 2.2rem;
-    font-weight: 700;
-    font-family: Orbitron, sans-serif;
-    align-items: flex-start;
-    flex-direction: column;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: left;
-    margin-top: 36px;
-    margin-bottom: 14px;
-}
-.image-wrapper {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    overflow: hidden;
-    margin: 30px 0;
-}
-
-/* Bild über die volle Breite */
-/* Haupt-Container oder Body gegen horizontales Ausbrechen absichern */
-
+/* Container für die Bild-Sektion */
 .carosserie-section {
     width: 100%;
     overflow: hidden;
 }
 
+/* Bild über die volle Bildschirmbreite */
 .carosserie-auto {
-
+    background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
     background-position: center;  /* Zentriert das Bild */
     background-repeat: no-repeat;
     width: 100vw;                 /* Nutzt die volle Bildschirmbreite */
@@ -91,93 +18,77 @@ html, body {
     min-height: 400px;
     box-sizing: border-box;
 
-    object-fit: cover;
-    object-position: center;
-    height: 450px; /* Beliebige Höhe für das Banner */
-    display: block;
-    /* Perfekte Zentrierung ohne Scrollbalken */
-    background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
-
-    flex-direction: column;
-    gap: 35px; /* Abstand zwischen den einzelnen <section>-Blöcken */
-    max-width: 900px;
-    padding: 20px;
-    line-height: 1.6;
-    color: black;
-
 }
 
-/* Mobilanpassung */
+/* Textbox sauber zentriert und mit ausreichend Abstand nach unten verschoben */
+.text-box {
+    width: 100%;
+    max-width: 1100px;
+    background-color: #ffffff;
+    padding: 40px;
 
+    /* 60px Abstand oben zum Bild, 80px Abstand unten */
+    margin: 60px auto 80px auto;
 
+    box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: Orbitron, sans-serif;
+    color: #000000;
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.text-box p {
+    color: #333333;
+    font-family: Orbitron, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.65;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Mobile Anpassung */
 @media (max-width: 768px) {
     .carosserie-auto {
-        height: 250px;
+        height: 40vh;
+        min-height: 250px;
     }
 
     .text-box {
         padding: 24px 18px;
-        margin: 15px auto;
+        margin: 30px 15px 50px 15px;
+        width: auto;
     }
 
     .section-title {
-        font-size: 1.6rem;
-    }
-
-    .title-bold,
-    .content-section {
-        font-size: 1.15rem;
+        font-size: 1.3rem;
     }
 
     .text-box p {
         font-size: 1rem;
     }
 }
-/* Textbox sauber zentriert unter dem Bild */
-.title-bold,
-.content-section {
-    color: #000000;
-    font-size: 1.4rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    line-height: 1.4;
-    letter-spacing: 0.5px;
-}
-.section-title {
-    display: flex;
-    flex-direction: column; /* Erzwingt das Stapeln untereinander */
-    font-size: 1.3rem;
-    align-items: flex-start; /* Oder center, je nach Wunsch */
-    font-weight: 700;
-    color: black;
-    margin-top: 10px;
-    margin-bottom: 8px;
-}
-/* Untertitel: Schwarz, deutlich hervorgehoben */
 
-/* Fließtext für gute Lesbarkeit */
-.text-box p {
-    color: black;
-    font-family: Orbitron, sans-serif ;
-    font-size: 3rem;
-    line-height: 1.65;
-    margin-bottom: 18px;
-}
-
-/* Container mit angenehmer Maximalbreite */
-.text-box {
-    width: 100%;
+.carosserie-container {
     display: flex;
-    flex-direction: column; /* Vertikales Stapeln untereinander */
-    align-items: flex-start;
-    max-width: 1100px;
-    background-color: #ffffff;
-    padding: 40px;
-    margin: 40px auto;
+    flex-direction: column;
+    gap: 35px; /* Abstand zwischen den einzelnen <section>-Blöcken */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+    color: black;
     box-sizing: border-box;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-
 }

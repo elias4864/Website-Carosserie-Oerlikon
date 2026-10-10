@@ -2,18 +2,16 @@ import React from 'react';
 // Passe den Pfad zu deiner Home.css bei Bedarf an (z. B. '../components/Styles/Home.css')
 
 import '../Styles/Carosserie.css';
-import Auto from '../Auto.jpg';
 import '../Styles/App.css';
+import Auto from '../Auto.jpg';
 
 
 function CarosseriePage() {
     return (
         <div className="Background-Intro">
-            <section className="carosserie-section">
-                <div className="image-wrapper">
-                    <img src={Auto} alt="Auto Reparatur" className="carosserie-auto" />
-                </div>
-            </section>
+            <div className="carosserie-container">
+            <img className="carosserie-auto" src={Auto} />
+
 
             <div className="text-box text-box-spaced">
                 <h2 className="section-title">
@@ -37,8 +35,11 @@ function CarosseriePage() {
                 <p>
                     Die Reparatur von Oldtimern ist ein Gebiet, auf dem sich nur wenige Carrosserie-Spengler gut auskennen. Dies hat eine Vielzahl von Gründen. Der wohl Wichtigste ist, dass in früheren Zeiten andere Materialien für den Fahrzeugbau verwendet wurden. Ein Cabrio aus den 60ern hat hinsichtlich der Karrosseriepflege andere Ansprüche als ein Kleinwagen, der aus den späten 2000er-Jahren stammt. Unsere Fachleute sind mit diesen Besonderheiten bestens vertraut und verfügen über eine umfangreiche Expertise bei der Reparatur von Oldtimern aller Art. Die Instandsetzung von seltenen Exemplaren ist unsere Spezialität: Hier sind unsere Spengler voll in ihrem Element. Bringen Sie Ihr Sammlerstück in unsere Werkstatt – Sie werden es nicht bereuen!
                 </p>
+
             </div>
+            </div> {/* Schliesst carosserie-container */}
         </div>
+
     );
 }
 

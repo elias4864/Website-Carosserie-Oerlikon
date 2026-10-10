@@ -4,7 +4,7 @@ import Schrauben from '../Schrauben.jpg';
 import Lackierei from '../Lackierei.jpg';
 import Team from '../Team.jpg';
 import '../Styles/Home.css';
-import {useState,useEffect} from "react";
+import React, {useState,useEffect} from "react";
 import Eingang from '../Eingang.webp';
 
 
@@ -100,20 +100,38 @@ function HomePage() {
                 </div>
 
 
-                <div className="streetview">
-
-
+                <div   style={{ position: 'relative', width: '100%', height: '100%', minHeight: '60vh' }}>
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!4v1791664335517!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJRFp5b0hOMWdF!2m2!1d47.40639798492404!2d8.462671190889116!3f190.4257737481725!4f-10.380033892848473!5f0.7820865974627469"
                         style={{
                             border: 0,
                             width: '100%',
-                            height: '100%'
+                            height: '100%',
+                            display: 'block'
                         }}
                         allowFullScreen
                         loading="lazy"
-                        referrerPolicy="strict-origin-when-cross-origin"></iframe>
+                        referrerPolicy="strict-origin-when-cross-origin"
+                    ></iframe>
 
+                    {/* Overlay unten zentriert über dem iframe */}
+                    <p
+                        style={{
+                            position: 'absolute',
+                            bottom: '12px',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            margin: 0,
+                            padding: '4px 12px',
+                            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                            color: '#ffffff',
+                            fontSize: '14px',
+                            borderRadius: '4px',
+                            zIndex: 10
+                        }}
+                    >
+                        Powered by <strong><a   href="https://marketingmaster.ch" className="marketingmaster">marketingmaster.ch</a></strong>
+                    </p>
                 </div>
 
 

@@ -19,3 +19,16 @@
     padding: 60px 20px;
     box-sizing: border-box;
 }
+
+
+.spengelerei-container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px; /* Abstand zwischen den einzelnen <section>-Blöcken */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+    color: black;
+    box-sizing: border-box;
+}

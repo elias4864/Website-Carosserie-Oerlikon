@@ -7,7 +7,7 @@ function Spenglerarbeiten({lang} ) {
     return (
         <div className="Background-Intro">
             {/* Full-Width Bild-Wrapper */}
-            <div className="image-wrapper">
+            <div className="spenglerei-container">
                 <img src={Spenglerei} alt="Spenglerei" className="spenglerei-img" />
             </div>
 

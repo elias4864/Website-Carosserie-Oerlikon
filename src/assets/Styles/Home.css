@@ -17,6 +17,13 @@ html, body {
     overflow: hidden;
 }
 
+
+.marketingmaster {
+    color: inherit;
+    text-decoration: underline;
+    text-size-adjust: 100%;
+}
+
 .streetview iframe {
     width: 100%;
     height: 100%;

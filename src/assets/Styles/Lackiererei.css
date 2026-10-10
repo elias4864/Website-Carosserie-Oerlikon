@@ -15,27 +15,35 @@
 
 /* Bild Styling */
 .lackiererei {
-    position: relative;
-    width: 100vw;
-    left: 50%;
-    margin-left: -50vw;
 
-    min-height: 60vh;
-    background-size: cover;
-    background-position: center;
+    background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
+    background-position: center;  /* Zentriert das Bild */
     background-repeat: no-repeat;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    padding: 60px 20px;
+    width: 100vw;                 /* Nutzt die volle Bildschirmbreite */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-height: 400px;
     box-sizing: border-box;
-
 }
 
+
+
+
+
+.lackiererei-container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px; /* Abstand zwischen den einzelnen <section>-Blöcken */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+    color: black;
+    box-sizing: border-box;
+}
 /* Text auf dem Bild (Overlay oben) */
 .hero-text-overlay {
     position: absolute;
