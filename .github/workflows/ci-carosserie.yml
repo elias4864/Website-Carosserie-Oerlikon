@@ -28,10 +28,22 @@ jobs:
         with:
           node-version: 22
 
-      - name: Abhängigkeiten installieren & bauen
+      - name: Ordnerstruktur prüfen und bauen
         run: |
-          # Falls der Ordner anders heißt, ändere 'mein-react-template' hier unten:
-          cd mein-react-template
+          set -e
+          echo "=== 1. Aktuelles Verzeichnis ==="
+          pwd
+          
+          echo "=== 2. Gefundene package.json Dateien ==="
+          find . -maxdepth 3 -name "package.json"
+          
+          # Ordner automatisch ermitteln, in dem die package.json liegt
+          PACKAGE_DIR=$(find . -maxdepth 3 -name "package.json" -exec dirname {} \;)
+          
+          echo "=== 3. Wechsel in Projektordner: $PACKAGE_DIR ==="
+          cd "$PACKAGE_DIR"
+          
+          echo "=== 4. npm install & build ==="
           npm install
           npm run build
 
