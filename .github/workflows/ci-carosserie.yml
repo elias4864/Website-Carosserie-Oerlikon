@@ -18,8 +18,10 @@ jobs:
       - name: Code auschecken
         uses: actions/checkout@v4
 
-      - name: Ordnerstruktur anzeigen (Zur Kontrolle)
-        run: ls -la
+      - name: 🔍 Alle Ordner im Root anzeigen (Debug)
+        run: |
+          echo "Inhalt des Hauptverzeichnisses:"
+          ls -R
 
       - name: Node.js einrichten
         uses: actions/setup-node@v4
@@ -28,6 +30,7 @@ jobs:
 
       - name: Abhängigkeiten installieren & bauen
         run: |
+          # Falls der Ordner anders heißt, ändere 'mein-react-template' hier unten:
           cd mein-react-template
           npm install
           npm run build
