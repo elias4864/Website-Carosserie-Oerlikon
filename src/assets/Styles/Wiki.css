@@ -1,0 +1,59 @@
+
+
+
+
+.wiki .auto{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.wiki{
+    position: relative;
+    width: 100%;
+    min-height: 200vh;
+
+    /* Hintergrundbild-Einstellungen */
+    background-image: url('../Rot.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-block;
+
+    /* Perfekte Zentrierung (Horizontal & Vertikal) */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.impressum-wrapper {
+    display: flex;
+    flex-direction: column; /* Oder row, je nach gewünschtem Design */
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 600px; /* Begrenzt die Breite, damit der Text sauber umbricht */
+    width: 100%;
+}
+
+.info-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    word-wrap: break-word; /* Verhindert, dass langer Text aus dem Bereich ragt */
+}
+
+.btn-carosserie {
+    padding: 10px 20px;
+    cursor: pointer;
+}

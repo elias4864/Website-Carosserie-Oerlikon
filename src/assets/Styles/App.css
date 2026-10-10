@@ -1,0 +1,735 @@
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+
+  .hover{
+    background-color: brown;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+}
+
+.navbar-logo h1 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 0.5px;
+
+
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.navbar-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+
+
+.sidebar-icons {
+  position: absolute;
+  right: 0;
+  top: 60%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 10;
+  justify-items: right;
+}
+
+.sidebar-icon-btn {
+  background-color: #a81c1c; /* Passender Rotton */
+  color: #ffffff;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background-color 0.2s ease;
+  width: 100px;
+  lenth:100px;
+  justify-items: flex-end;
+
+
+}
+
+.sidebar-icon-btn:hover {
+  background-color: #8b1717;
+}
+
+
+
+/* Text-Styling für den Schriftzug */
+.logo-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+
+.örlike {
+  color: #a81c1c;
+  font-weight: 400;/* Roter Akzent wie im Bild */
+}
+
+/* Navigationslinks rechts */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+/ align-items: center;
+
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+  /* Navigationslinks rechts */
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+.logo-link:hover .logo-text {
+  opacity: 0.9;
+}
+
+.logo-link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+.social-media {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px 0;
+  width: 100%;
+}
+
+.social-heading {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Links & Icons */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.social-link:hover {
+  opacity: 0.8;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Responsive Anpassung für Mobilgeräte */
+@media (max-width: 768px) {
+  .social-media {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .social-heading {
+    font-size: 1rem;
+  }
+}
+.social-media {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+
+.social-media:hover {
+  transform: scale(1.25);
+  background-color:gold;
+}
+
+/* Instagram-Icon kompakt skalieren */
+.instagram-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  vertical-align: middle;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.linkedin-icon{
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  vertical-align: middle;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+
+.facebook-icon{
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  vertical-align: middle;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.instagram-icon:hover {
+  transform: scale(1.15);
+}
+
+
+.linkedin-icon:hover {
+  transform: scale(1.15);
+}
+
+.facebook-icon-icon:hover {
+  transform: scale(1.15);
+}
+
+  .nav-link {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 600;
+    font-size: 1rem;
+    padding-bottom: 4px;
+    transition: color 0.2s ease;
+    border-bottom: 2px solid transparent; /* Reserveplatz für den Strich */
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: #a81c1c;
+    border-bottom: 2px solid #a81c1c; /* Roter Strich unter dem aktiven Link */
+  }
+
+
+  /* Der rote Strich als Pseudo-Element */
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #a81c1c;
+    transform: scaleX(0);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    transform: scaleX(1); /* Strich wird sichtbar eingeblendet */
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: #a81c1c;
+  }
+
+  .kontakt-wrapper {
+    display: flex;
+    justify-content: flex-end; /* Platzierung rechts */
+    align-items: center; /* Vertikal mittig ausrichten */
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  /* Größe des Icons kontrollieren */
+
+  .kontakt-icon {
+    max-width: 150px; /* Beliebige Breite anpassen */
+    height: auto;
+    display: block;
+  }
+
+
+  .copyright-text {
+    display: flex;
+    font-size: 14px;
+    background-color: black;
+
+  }
+
+  .örlike {
+    color: brown;
+  }
+
+footer {
+  background-color: #222222;
+  color: #ffffff;
+  padding: 40px 0 20px 0;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 50px;
+  box-sizing: border-box;
+
+  /* Perfekte volle Bildschimbreite ohne Ausbrechen nach rechts */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+.footer-container {
+  background-color: #000000;
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; /* Innenabstand, damit der Text mobil nicht am Rand klebt */
+  box-sizing: border-box;
+}
+
+
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+  /* Layout für die 3 Abschnitte nebeneinander */
+
+.footer-grid {
+  display: flex;
+  max-width: 1200px; /* An Breite der Navbar anpassen (vorher 1100px) */
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 0 20px 30px 20px;
+  border-bottom: 1px solid #444444;
+  border-top: 1px solid #444444;
+  box-sizing: border-box;
+  width: 100vw;                 /* Nutzt die volle Bildschirmbreite */
+
+}
+  /* Formatierung der einzelnen Spalten */
+
+  .footer-col {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .footer-col h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #ffffff;
+  }
+
+  .footer-col p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 1rem;
+    margin: 0 0 0.3rem 0;
+  }
+
+  /* Copyright-Zeile am Boden */
+
+  .copyright-text {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 10px;
+    color: #888888;
+  }
+
+
+.footer-bottom {
+  box-sizing: border-box;
+  color: #aaaaaa;
+  align-items: center;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto 0 auto;
+  padding: 15px 20px 0 20px;
+  border-top: 1px solid #444444;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+
+}
+
+/* Optional: Styling für den Link innerhalb des SEO-Texts */
+.seo-text .marketingmaster {
+  color: inherit;
+  text-decoration: underline;
+}
+.seo-text {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px 0 0 0;
+  padding: 0; /* Entfernt Innenabstände, damit nichts abgeschnitten wird */
+  box-sizing: border-box;
+  color: #aaaaaa;
+  text-align: left;
+  line-height: 1.4; /* Liefert genug Zeilenhöhe oben/unten */
+}
+
+
+.marketingmaster:hover {
+  text-decoration: underline;
+  color:brown;
+}
+
+.footer-bottom > p,
+.footer-bottom > section {
+  margin: 0;
+  white-space: nowrap;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Verhindert seitliches Verschieben komplett */
+  background-color: #f8f9fa;
+}
+
+.footer-bottom a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+  /* Responsive Ansicht für mobile Bildschirme */
+  @media (max-width: 768px) {
+    .footer-grid {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+.app-container p {
+  font-size: 20px;
+  line-height: 1.6;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.app-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto; /* Zentriert den Hauptcontainer perfekt auf dem Bildschirm */
+  padding: 0;
+  flex-direction: column;
+  max-width: 1200px;
+
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  ;
+}
+
+.lang-dropdown{
+  color: #333333; /* Dunkelgrau statt knalligem Rot */
+  background-color: gold;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.lang-dropdown:hover {
+  border-color: #aa3b09;
+}
+
+.lang-dropdown:focus {
+  border-color: orangered;
+  box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.15);
+}
+
+  .kontakt-grid {
+    display: flex;
+    color: brown;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    text-align: right;
+  }
+
+
+
+  .hover:hover {color: brown;
+
+  }
+
+/* Fixierter "Nach oben"-Button unten rechts */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  background-color: #000000; /* Schwarzer Hintergrund wie im Screenshot */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000; /* Stellt sicher, dass der Button über allen Elementen liegt */
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.scroll-to-top:hover {
+  background-color: #9e1b1b; /* Ändert sich beim Hovern auf das Branding-Rot */
+  transform: translateY(-2px);
+}

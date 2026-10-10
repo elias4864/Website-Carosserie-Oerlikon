@@ -1,0 +1,107 @@
+.auto{
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;                  /* Exakt 100% der Bildschirmsichtbreite */
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;            /* Richtet den Rand perfekt am linken Bildschirmrand aus */
+    margin-right: -50vw;
+
+
+    /* Hintergrundbild-Einstellungen */
+    background-image: url('../Rot.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+
+    /* Flexbox-Zentrierung (Horizontal & Vertikal) */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-height: 250px;
+
+
+    /* Vertikale & Horizontale Zentrierung von Text und Inhalt */
+    justify-content: center;
+
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+    /* Innenabstand inkl. korrekter Box-Sizing-Berechnung */
+
+
+
+
+
+
+
+
+
+.impressum {
+    font-family: Arial, sans-serif;
+    color: #333333;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.impressum h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 10px 0 15px 0;
+    color: #000000;
+
+}
+
+    .impressum .highlight {
+        color: #9e1b1b; /* Rotton für Links und Firmenname */
+        text-decoration: none;
+    }
+
+    .impressum a.highlight:hover {
+        text-decoration: underline;
+    }
+
+    .tmg {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 16px;
+        text-shadow: 2px 2px gray;
+        margin-bottom: 5px;
+        text-shadow: 3px 3px blue;
+    }
+
+    .highlight {
+        font-family: 'Orbitron', sans-serif;
+        color: #9e1b1b; /* Rotton für Links und Firmenname */
+        text-decoration: none;
+
+    }
+
+
+
+
+
+a.highlight:hover {
+    text-decoration: underline;
+}
+
+.impressum-title:first-child {
+    margin-top: 0;
+}
+.impressum-text p {
+    margin-bottom: 15px;
+}
+
+.Background-Intro {
+    display: grid;
+    grid-template-columns: 320px 1fr; /* Feste Breite links, flexibel rechts */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    align-items: start;
+}

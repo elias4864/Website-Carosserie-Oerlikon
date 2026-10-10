@@ -1,0 +1,34 @@
+.spenglerei-img{
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+
+    min-height: 130vh;
+    min-width: 130vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+
+.spengelerei-container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px; /* Abstand zwischen den einzelnen <section>-Blöcken */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+    color: black;
+    box-sizing: border-box;
+}

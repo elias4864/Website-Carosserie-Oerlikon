@@ -1,0 +1,235 @@
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.streetview {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+
+    height: 60vh; /* Oder z. B. 500px je nach gewünschter Höhe */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+
+.marketingmaster {
+    color: inherit;
+    text-decoration: underline;
+    text-size-adjust: 100%;
+}
+
+.streetview iframe {
+    width: 100%;
+    height: 100%;
+
+}
+.Background-Intro {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    color: #212529;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 4rem;
+}
+.carosserie{
+position: relative;
+width: 100vw;
+left: 50%;
+margin-left: -50vw;
+
+min-height: 60vh;
+background-image: url('../Eingang.webp');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+
+padding: 60px 20px;
+box-sizing: border-box;
+
+    }
+
+
+.carosserie h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    max-width: 1200px;
+}
+
+.carosserie p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    max-width: 950px;
+}
+
+/* 2. Welcome-Box */
+.border-welcome {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border-left: 5px solid #dc2626;
+    border-right: 5px solid #dc2626;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.border-welcome h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 20px;
+}
+
+.highlight-red {
+    color: #b91c1c;
+}
+
+.border-welcome p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 15px;
+}
+
+.border-welcome .closing {
+    font-weight: bold;
+    color: #dc2626;
+    margin-top: 20px;
+}
+
+/* 3. Feature-Cards Layout & Tür-Wisch-Effekt */
+.services-section {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.feature-card {
+    position: relative;
+    display: flex;
+    align-items: center; /* Zentriert Bild und Text-Box exakt auf gleicher Höhe */
+    width: 100%;
+    height: 420px;       /* Feste Höhe verhindert vertikales Verrutschen */
+    opacity: 0;
+    perspective: 1000px;
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease-out;
+}
+/* Wisch-Animationen (Tür-Effekt) */
+.feature-card.text-left {
+    transform: translateX(-120px) rotateY(-8deg);
+    justify-content: flex-end; /* Bild steht ganz RECHTS */
+}
+
+.feature-card.text-right {
+    transform: translateX(120px) rotateY(8deg);
+    justify-content: flex-start; /* Bild steht ganz LINKS */
+}
+
+.feature-card.in-view {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg);
+}
+
+/* Breiter Bild-Container für das dominante Layout */
+.image-wrapper {
+    width: 82%;
+    height: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Schwimmende weiße Text-Box */
+.text-box {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Garantiert perfekte vertikale Zentrierung zum Bild */
+    z-index: 2;
+    background: #ffffff;
+    padding: 40px 30px;
+    width: 44%;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 4px;
+}
+/* Positionierung der Text-Box über dem Bild */
+.feature-card.text-left .text-box {
+    left: 0;       /* Schiebt die Textbox nach ganz links */
+    right: auto;
+}
+
+.feature-card.text-right .text-box {
+    right: 0;      /* Schiebt die Textbox nach ganz rechts */
+    left: auto;
+}
+
+.text-box h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #111111;
+}
+
+.text-box p {
+    margin: 0;
+    color: #555555;
+    line-height: 1.6;
+    font-size: 0.98rem;
+}
+
+/* Mobile Anpassung */
+@media (max-width: 850px) {
+    .feature-card {
+        flex-direction: column !important;
+        height: auto;
+    }
+
+    .image-wrapper {
+        width: 100% !important;
+        height: 250px;
+    }
+
+    .text-box {
+        position: relative !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        left: auto !important;
+        right: auto !important;
+        padding: 25px;
+    }
+}
