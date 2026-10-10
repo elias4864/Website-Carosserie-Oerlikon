@@ -2,7 +2,9 @@ name: CI/CD Pipeline - Carosserie Oerlikon
 
 on:
   push:
+    branches: [ "main" ]
   pull_request:
+    branches: [ "main" ]
 
 env:
   REGISTRY: ghcr.io
@@ -12,6 +14,7 @@ jobs:
   # 1. TEST & BUILD JOB
   test-and-build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Code auschecken
         uses: actions/checkout@v4
@@ -20,23 +23,32 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache-dependency-path: 'mein-react-template/package-lock.json' #
 
-      - name: Abhängigkeiten installieren & bauen
+      - name: Abhängigkeiten installieren
         run: |
+          cd mein-react-template
+          npm ci
+
+      - name: React App bauen (Vite Build Check)
+        run: |
+          cd mein-react-template
           npm run build
 
   # 2. DOCKER BUILD & PUSH JOB
   docker-build:
     needs: test-and-build
-    if: github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+
     steps:
       - name: Code auschecken
         uses: actions/checkout@v4
 
+      - name: Bei GitHub Container Registry (GHCR) anmelden
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
@@ -44,7 +56,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker Metadata extrahieren (Tags & Labels)
-      - name: Docker Metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
@@ -54,7 +65,6 @@ jobs:
             type=sha,format=short
 
       - name: Docker Image bauen und pushen
-      - name: Build Docker Image
         uses: docker/build-push-action@v5
         with:
           context: ./mein-react-template
