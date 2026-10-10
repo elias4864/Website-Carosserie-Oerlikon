@@ -13,9 +13,6 @@ env:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./mein-react-template
 
     steps:
       - name: Code auschecken
@@ -26,12 +23,11 @@ jobs:
         with:
           node-version: 22
 
-
-      - name: Abhängigkeiten installieren
-        run: npm ci
-
-      - name: React App bauen (Vite Build)
-        run: npm run build
+      - name: Abhängigkeiten installieren & bauen
+        run: |
+          cd mein-react-template
+          npm install
+          npm run build
 
   docker-build:
     needs: test-and-build
