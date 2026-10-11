@@ -56,11 +56,10 @@ jobs:
             type=raw,value=latest
             type=sha,format=short
 
-      - name: Docker Image bauen und pushen
+      - name: Build Docker Image
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          push: false
+          load: true
+          tags: my-app:latest
