@@ -24,7 +24,7 @@ jobs:
 
       - name: Abhängigkeiten installieren & bauen
         run: |
-          npm install --legacy-peer-deps
+          npm install --legacy-peer-deps --no-audit --no-fund
           npm run build
 
   docker-build:
