@@ -18,7 +18,7 @@ import Impressum from "./assets/pages/Impressum.jsx";
 import Wiki from "./assets/pages/Wiki.jsx";
 import  Kontakt from "./assets/pages/Kontakt.jsx";
 import Lackierei from "./assets/pages/Lackierei.jsx";
-
+import Spengler from "./assets/pages/Spengler.jsx";
 
 
 /**
@@ -34,6 +34,7 @@ const translations = {
         navKontakt: "Kontakt",
         navLackierei:"Lackiererei",
         navSpenglerei:"Spenglerei",
+        navSpengler:"Spengler",
         modalTitle: "Nehmen Sie jetzt Kontakt mit uns auf",
         phoneLabel: "Telefon:",
         callBtn: "Jetzt anrufen",
@@ -53,6 +54,7 @@ const translations = {
         navAufbereitung: "Car Detailing",
         navKontakt: "Contact",
         navSpenglerei:"Sheet Metal Work",
+        navSpengler:"tin man",
 
         modalTitle: "Get in touch with us now",
         navLackiererei:"paint shop",
@@ -75,6 +77,7 @@ const translations = {
         navKontakt: "Contatti",
         navLackiererei:"Reparto verniciatura",
         navSpenglerei:"Lattoneria",
+        navSpengler:"lattioniere",
 
         modalTitle: "Mettetevi in contatto con noi ora",
         phoneLabel: "Telefono:",
@@ -96,6 +99,7 @@ const translations = {
         navKontakt: "Contact",
         navLackiererei:"Atelier de peinture",
         navSpenglerei:"Zinguerie",
+        navSpengler:"plombier",
         modalTitle: "Contactez-nous dès maintenant",
         phoneLabel: "Téléphone:",
         callBtn: "Appeler maintenant",
@@ -165,6 +169,7 @@ function App() {
                     <Link to="/home" className="nav-link active">{t.navHome}</Link>
                     <Link to="/reparatur" className="nav-link">{t.navCarrosserie}</Link>
                     <Link to="/spenglerarbeiten" className="nav-link active">{t.navSpenglerei}</Link>
+                    <Link to="/spengler" className="nav-link active">{t.navSpengler}</Link>
                     <Link to="/aufbereitung" className="nav-link">{t.navAufbereitung}</Link>
                     <Link to="/kontakt" className={"nav-link"}>{t.navKontakt}</Link>
                     <Link to="/lackiererei" className={"nav-link"}>{t.navLackierei}</Link>
@@ -246,6 +251,7 @@ function App() {
                     <Route path="/reparatur" element={<Carosserie lang={language} />} />
                     <Route path="/spenglerarbeiten" element={<Spenglerarbeiten lang={language}/>} />
                     <Route path="/impressum" element={<Impressum lang={language}/>} />
+                    <Route path="/spengler" element={<Spengler lang={language}/>} />
                     <Route path="/wiki" element={<Wiki />} />
                     <Route path="/kontakt" element={<Kontakt lang={language} />}/>
                     <Route path="/lackiererei" element={<Lackierei lang={language}/>}/>

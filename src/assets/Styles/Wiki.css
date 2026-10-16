@@ -57,3 +57,92 @@
     padding: 10px 20px;
     cursor: pointer;
 }
+
+
+
+/* Wrapper für die gesamte Seite */
+.impressum-wrapper {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Oberer Bereich mit dem roten Auto und dem "Wiki"-Schriftzug */
+
+
+.wiki-text {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Grid-Container für die 3 Boxen */
+.grid.content-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Abstand zwischen den Spalten */
+    padding: 50px 20px;
+    background-color: #ffffff; /* Falls der Hintergrund der Seite weiss sein soll */
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+/* Gemeinsames Design für alle drei Boxen (Spalten) */
+.first-column,
+.second-column,
+.third-column {
+    background-color: #f9f9f9; /* Dezenter weiss-grauer Hintergrund wie im Screenshot */
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    padding: 40px 30px;
+    width: 320px; /* Feste Breite pro Karte */
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Schöner Hover-Effekt für die Karten */
+.first-column:hover,
+.second-column:hover,
+.third-column:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Text in den Boxen */
+.info-text {
+    font-size: 1.05rem;
+    color: #2c2c2c;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* Button-Styling passend zum Screenshot */
+.btn-carosserie {
+    background-color: transparent;
+    border: 1.5px solid #4a4a4a;
+    color: #333333;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-carosserie:hover {
+    background-color: #333333;
+    color: #ffffff;
+    border-color: #333333;
+}
