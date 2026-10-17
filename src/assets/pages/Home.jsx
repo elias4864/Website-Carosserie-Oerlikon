@@ -12,11 +12,23 @@ import Eingang from '../Eingang.webp';
 
 function HomePage() {
 
-
+    const [showCookieBanner, setShowCookieBanner] = useState(false);
     /**
      * Wischeffekt der Bilder mit UseEffect
      */
+
+
+    /**
+     * Cookies für DSGVO
+     */
     useEffect(() => {
+        // Prüfen, ob bereits eine Cookie-Entscheidung im LocalStorage gespeichert ist
+        const cookieConsent = localStorage.getItem('cookieConsent');
+        if (!cookieConsent) {
+            setShowCookieBanner(true);
+        }
+
+        // IntersectionObserver für Feature Cards
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -25,7 +37,7 @@ function HomePage() {
                     }
                 });
             },
-            { threshold: 0.2}
+            { threshold: 0.2 }
         );
 
         const cards = document.querySelectorAll('.feature-card');
@@ -34,10 +46,21 @@ function HomePage() {
         return () => observer.disconnect();
     }, []);
 
+        const handleAcceptCookie = () => {
+            localStorage.setItem('Cookie Status:', 'accepted');
+            setShowCookieBanner(false);
+        };
+        const handleRejectCookie = () => {
+            localStorage.setItem('Cookie Status:', 'declined');
+            setShowCookieBanner(false);
+        }
+
+
+
 
     return (
 
-        <div className="Background-Intro">
+        <main className="Background-Intro">
 
             <div className="carosserie"><h1>Carrosserie Örlike TL AG</h1>
 
@@ -102,6 +125,7 @@ function HomePage() {
 
                 <div   style={{ position: 'relative', width: '100%', height: '100%', minHeight: '60vh' }}>
                     <iframe
+                        title="Eingang Carosserie Örlike 360 Grad Street View"
                         src="https://www.google.com/maps/embed?pb=!4v1791664335517!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJRFp5b0hOMWdF!2m2!1d47.40639798492404!2d8.462671190889116!3f190.4257737481725!4f-10.380033892848473!5f0.7820865974627469"
                         style={{
                             border: 0,
@@ -154,7 +178,67 @@ function HomePage() {
                 </p>
             </section>
 
-        </div>
+
+            {showCookieBanner && (
+                <div style={{
+                    position: 'fixed',
+                    bottom: '20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '90%',
+                    maxWidth: '600px',
+                    backgroundColor: '#1e1e1e',
+                    color: '#ffffff',
+                    padding: '18px 24px',
+                    borderRadius: '8px',
+                    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
+                    zIndex: 1000,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    textAlign: 'center'
+                }}>
+                    <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.5' }}>
+                        Wir nutzen expliziet Cookies, um die Funktionsfähigkeit meiner Webseite zu gewährleisten und die Nutzung unserer Dienste zu analysieren. Weitere Informationen finden Sie in unserer Datenschutzerklärung(DSG).
+                     </p>
+                    <div style={{ display: 'flex', gap: '12px' }}>
+                        <button
+                            onClick={handleRejectCookie}
+                            style={{
+                                padding: '8px 16px',
+                                backgroundColor: '#0626d3',
+                                border: '1px solid #666666',
+                                borderRadius: '4px',
+                                cursor: 'pointer',
+                                fontSize: '14px',
+                                color: '#ffffff',
+
+                            }}
+                        >
+                            Ablehnen
+                        </button>
+                        <button
+                            onClick={handleAcceptCookie}
+                            style={{
+                                padding: '8px 16px',
+                                backgroundColor: '#d9534f', // Oder deine Akzentfarbe (z. B. Rot)
+                                color: '#ffffff',
+                                border: 'none',
+                                borderRadius: '4px',
+                                cursor: 'pointer',
+                                fontWeight: 'bold',
+                                fontSize: '14px'
+                            }}
+                        >
+                            Akzeptieren
+                        </button>
+                    </div>
+                </div>
+            )}
+
+        </main>
 
     );
 }

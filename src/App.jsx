@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, Routes, Route, Navigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { Link, Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import Oerlikon from "./assets/Oerlikon.jpg";
 import Icon from "./assets/Icon.jpg";
@@ -15,6 +15,11 @@ import Linkedin from "./assets/Linkedin-logo.png";
 import Facebook from "./assets/Facebook.png";
 import Impressum from "./assets/pages/Impressum.jsx";
 import Wiki from "./assets/pages/Wiki.jsx";
+import ReactGA from 'react-ga4';
+ReactGA.initialize('G-M16XMEHY78'); // Ersetze dies mit deiner echten GA4 Mess-ID
+
+
+
 import Kontakt from "./assets/pages/Kontakt.jsx";
 import Lackierei from "./assets/pages/Lackierei.jsx";
 import Spengler from "./assets/pages/Spengler.jsx";
@@ -115,6 +120,17 @@ const translations = {
     }
 };
 
+
+function AnalyticsTracker() {
+    const location = useLocation();
+
+    useEffect(() => {
+        // Sendet den Seitenaufruf an Google Analytics
+        ReactGA.send({ hitType: 'pageview', page: location.pathname + location.search });
+    }, [location]);
+
+    return null;
+}
 function App() {
     const [language, setLanguage] = useState("de");
     const [showPhoneModal, setShowPhoneModal] = useState(false);
@@ -171,6 +187,7 @@ function App() {
 
     return (
         <>
+            <AnalyticsTracker />
             <Helmet>
                 <html lang={language} />
                 <title>{t.metaTitle}</title>
@@ -271,8 +288,8 @@ function App() {
                 ▲
             </button>
 
-            {/* Hauptinhalt & Routing */}
-            <div className="content">
+
+                <div className="content">
                 <Routes>
                     <Route path="/" element={<Home lang={language} />} />
                     <Route path="/home" element={<Home lang={language} />} />
