@@ -1,120 +1,101 @@
-
-
-
-
-.wiki .auto{
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.wiki{
-    position: relative;
-    width: 100%;
-    min-height: 200vh;
-
-    /* Hintergrundbild-Einstellungen */
-    background-image: url('../Rot.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: inline-block;
-
-    /* Perfekte Zentrierung (Horizontal & Vertikal) */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.impressum-wrapper {
-    display: flex;
-    flex-direction: column; /* Oder row, je nach gewünschtem Design */
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.content-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 600px; /* Begrenzt die Breite, damit der Text sauber umbricht */
-    width: 100%;
-}
-
-.info-text {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    margin-bottom: 15px;
-    word-wrap: break-word; /* Verhindert, dass langer Text aus dem Bereich ragt */
-}
-
-.btn-carosserie {
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-
-
-/* Wrapper für die gesamte Seite */
+/* Base Layout */
 .impressum-wrapper {
     width: 100%;
     box-sizing: border-box;
     font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Oberer Bereich mit dem roten Auto und dem "Wiki"-Schriftzug */
 
+
+.wiki .auto {
+    height: 100%;
+    object-fit: cover;
+    background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
+    background-position: center;  /* Zentriert das Bild */
+    background-repeat: no-repeat;
+    width: 100vw;                 /* Nutzt die volle Bildschirmbreite */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-height: 400px;
+    box-sizing: border-box;
+    display: block;
+}
+
+
+.wiki {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Höhe des Banners */
+
+    /* Hintergrundbild */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center; /* Vertikale Ausrichtung */
+}
 
 .wiki-text {
     position: absolute;
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 4rem;
-    font-weight: bold;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    left: 15%; /* Position horizontal genau auf dem Scheinwerfer */
+    color: #ffffff;
+    font-size: 6.5rem; /* Schriftgröße deutlich vergrößert */
+    font-weight: 800; /* Extra fett wie auf dem Bild */
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    line-height: 1;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Sanfter Schatten für mehr Tiefe */
 }
 
-/* Grid-Container für die 3 Boxen */
+/* Grid Container – Erzwingt 3 Boxen nebeneinander */
 .grid.content-container {
     display: flex;
+    flex-direction: row; /* Nebeneinander */
+    flex-wrap: wrap;     /* Umbruch bei mehr als 3 Karten */
     justify-content: center;
-    gap: 30px; /* Abstand zwischen den Spalten */
-    padding: 50px 20px;
-    background-color: #ffffff; /* Falls der Hintergrund der Seite weiss sein soll */
-    flex-wrap: wrap;
+    gap: 30px;           /* Abstand zwischen den Boxen */
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 1200px;
+    padding: 60px 20px;
     box-sizing: border-box;
+    margin: 0 auto;
 }
 
-/* Gemeinsames Design für alle drei Boxen (Spalten) */
-.first-column,
-.second-column,
-.third-column {
-    background-color: #f9f9f9; /* Dezenter weiss-grauer Hintergrund wie im Screenshot */
+/* Karten / Spalten Styling */
+.column {
+    background-color: #f9f9f9;
     border: 1px solid #eaeaea;
-    border-radius: 4px;
-    padding: 40px 30px;
-    width: 320px; /* Feste Breite pro Karte */
+    border-radius: 5px;
+    padding: 40px 25px;
+
+    /* Genau 3 Boxen pro Reihe (abzüglich Gap) */
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+
     min-height: 220px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     text-align: center;
+
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Schöner Hover-Effekt für die Karten */
-.first-column:hover,
-.second-column:hover,
-.third-column:hover {
+/* Hover-Effekt */
+.column:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
@@ -126,19 +107,20 @@
     font-weight: 600;
     line-height: 1.5;
     margin-bottom: 25px;
+    word-wrap: break-word;
 }
 
-/* Button-Styling passend zum Screenshot */
+/* Button-Styling */
 .btn-carosserie {
     background-color: transparent;
-    border: 1.5px solid #4a4a4a;
+    border: 3px solid #4a4a4a;
     color: #333333;
-    padding: 10px 20px;
     font-size: 0.9rem;
     font-weight: 500;
-    border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    border-radius: 30px;
+    padding: 8px 18px;
 }
 
 .btn-carosserie:hover {
