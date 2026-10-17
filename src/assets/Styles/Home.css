@@ -38,25 +38,30 @@ html, body {
     padding-bottom: 4rem;
 }
 .carosserie{
-position: relative;
-width: 100vw;
-left: 50%;
-margin-left: -50vw;
 
-min-height: 60vh;
-background-image: url('../Eingang.webp');
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
+    min-height: 60vh;
 
-padding: 60px 20px;
-box-sizing: border-box;
+
+    background-image: url('../Eingang.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Wichtig: Skaliert das Bild über die volle Fläche */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 60px 20px;
+    box-sizing: border-box;
 
     }
 

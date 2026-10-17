@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link, Routes, Route } from "react-router-dom";
-import {Navigate} from "react-router-dom";
+import { Link, Routes, Route, Navigate } from "react-router-dom";
 
 import Oerlikon from "./assets/Oerlikon.jpg";
 import Icon from "./assets/Icon.jpg";
@@ -16,15 +15,10 @@ import Linkedin from "./assets/Linkedin-logo.png";
 import Facebook from "./assets/Facebook.png";
 import Impressum from "./assets/pages/Impressum.jsx";
 import Wiki from "./assets/pages/Wiki.jsx";
-import  Kontakt from "./assets/pages/Kontakt.jsx";
+import Kontakt from "./assets/pages/Kontakt.jsx";
 import Lackierei from "./assets/pages/Lackierei.jsx";
 import Spengler from "./assets/pages/Spengler.jsx";
-
-
-/**
- * Content-Translations for all languages (Language-Dropdown)
- * @type {{de: {navHome: string, navCarrosserie: string, navAufbereitung: string, modalTitle: string, phoneLabel: string, callBtn: string, closeBtn: string, contactTitle: string, hoursTitle: string, hoursWeek: string, hoursFri: string, socialText: string}, en: {navHome: string, navCarrosserie: string, navAufbereitung: string, modalTitle: string, phoneLabel: string, callBtn: string, closeBtn: string, contactTitle: string, hoursTitle: string, hoursWeek: string, hoursFri: string, socialText: string}, it: {navHome: string, navCarrosserie: string, navAufbereitung: string, modalTitle: string, phoneLabel: string, callBtn: string, closeBtn: string, contactTitle: string, hoursTitle: string, hoursWeek: string, hoursFri: string, socialText: string}, fr: {navHome: string, navCarrosserie: string, navAufbereitung: string, modalTitle: string, phoneLabel: string, callBtn: string, closeBtn: string, contactTitle: string, hoursTitle: string, hoursWeek: string, hoursFri: string, socialText: string}}}
- */
+import { Helmet } from "react-helmet-async";
 
 const translations = {
     de: {
@@ -32,9 +26,9 @@ const translations = {
         navCarrosserie: "Carrosserie",
         navAufbereitung: "Aufbereitung",
         navKontakt: "Kontakt",
-        navLackierei:"Lackiererei",
-        navSpenglerei:"Spenglerei",
-        navSpengler:"Spengler",
+        navLackierei: "Lackiererei",
+        navSpenglerei: "Spenglerei",
+        navSpengler: "Spengler",
         modalTitle: "Nehmen Sie jetzt Kontakt mit uns auf",
         phoneLabel: "Telefon:",
         callBtn: "Jetzt anrufen",
@@ -46,18 +40,19 @@ const translations = {
         socialText: "Folgen Sie uns jetzt auf unseren Social Media Kanälen:",
         companyTitle: "Carrosserie Örlike TL AG",
         companyOwners: "Duje Antonina / Michael Nufer",
-        companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen"
+        companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
+        metaTitle: "Carrosserie Örlike TL AG | Carrosserie, Lackiererei & Spenglerei in Oberengstringen",
+        metaDesc: "Professionelle Carrosseriearbeiten, Unfallinstandsetzung, Lackiererei, Spenglerei und Fahrzeugaufbereitung in Oberengstringen / Zürich."
     },
     en: {
         navHome: "Home",
         navCarrosserie: "body Shop",
         navAufbereitung: "Car Detailing",
         navKontakt: "Contact",
-        navSpenglerei:"Sheet Metal Work",
-        navSpengler:"tin man",
-
+        navSpenglerei: "Sheet Metal Work",
+        navSpengler: "tin man",
         modalTitle: "Get in touch with us now",
-        navLackiererei:"paint shop",
+        navLackiererei: "paint shop",
         phoneLabel: "Phone:",
         callBtn: "Call now",
         closeBtn: "Close",
@@ -68,17 +63,18 @@ const translations = {
         socialText: "Follow us now on our social media channels:",
         companyTitle: "Carrosserie Örlike TL AG",
         companyOwners: "Duje Antonina / Michael Nufer",
-        companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen"
+        companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
+        metaTitle: "Carrosserie Örlike TL AG | Body & Paint Shop Oberengstringen",
+        metaDesc: "Professional body shop, paint shop, sheet metal work, and car detailing in Oberengstringen, Zurich."
     },
     it: {
         navHome: "Home",
         navCarrosserie: "Carrozzeria",
         navAufbereitung: "Preparazione",
         navKontakt: "Contatti",
-        navLackiererei:"Reparto verniciatura",
-        navSpenglerei:"Lattoneria",
-        navSpengler:"lattioniere",
-
+        navLackiererei: "Reparto verniciatura",
+        navSpenglerei: "Lattoneria",
+        navSpengler: "lattioniere",
         modalTitle: "Mettetevi in contatto con noi ora",
         phoneLabel: "Telefono:",
         callBtn: "Chiama ora",
@@ -90,16 +86,18 @@ const translations = {
         socialText: "Seguiteci ora sui nostri canali social:",
         companyTitle: "Carrozzeria Örlike TL AG",
         companyOwners: "Duje Antonina / Michael Nufer",
-        companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen"
+        companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
+        metaTitle: "Carrozzeria Örlike TL AG | Carrozzeria e Verniciatura Oberengstringen",
+        metaDesc: "Servizi professionali di carrozzeria, verniciatura, lattoneria e preparazione auto a Oberengstringen / Zurigo."
     },
     fr: {
         navHome: "Accueil",
         navCarrosserie: "Carrosserie",
         navAufbereitung: "Préparation",
         navKontakt: "Contact",
-        navLackiererei:"Atelier de peinture",
-        navSpenglerei:"Zinguerie",
-        navSpengler:"plombier",
+        navLackiererei: "Atelier de peinture",
+        navSpenglerei: "Zinguerie",
+        navSpengler: "plombier",
         modalTitle: "Contactez-nous dès maintenant",
         phoneLabel: "Téléphone:",
         callBtn: "Appeler maintenant",
@@ -111,39 +109,22 @@ const translations = {
         socialText: "Suivez-nous dès maintenant sur nos réseaux sociaux:",
         companyTitle: "Carrosserie Örlike TL AG",
         companyOwners: "Duje Antonina / Michael Nufer",
-        companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen"
+        companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
+        metaTitle: "Carrosserie Örlike TL AG | Carrosserie & Peinture à Oberengstringen",
+        metaDesc: "Services professionnels de carrosserie, peinture, zinguerie et préparation automobile à Oberengstringen / Zurich."
     }
 };
+
 function App() {
-
-    /**
-     * Language States(Hook) Default on German
-     */
     const [language, setLanguage] = useState("de");
-
-    // Telefon-Popup State
     const [showPhoneModal, setShowPhoneModal] = useState(false);
 
-
-    /**
-     * Loading Languages(Hook)-Handler (Set) wehen changing Dropwond on Language
-     * @param e
-     */
     const handleLanguageChange = (e) => {
         setLanguage(e.target.value);
     };
 
-    /**
-     * Load Translations text for all languages of Language-Dropwown
-     */
-
     const t = translations[language];
 
-
-
-    /**
-     * Scroll-To-Top Funktion
-     */
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -151,9 +132,57 @@ function App() {
         });
     };
 
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "AutoRepair",
+        "name": "Carrosserie Örlike TL AG",
+        "image": "https://oerlike.ch/assets/Icon.jpg",
+        "@id": "https://oerlike.ch",
+        "url": "https://oerlike.ch",
+        "telephone": "+41443119412",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Fabrikstrasse 17",
+            "addressLocality": "Oberengstringen",
+            "postalCode": "8102",
+            "addressCountry": "CH"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 47.412,
+            "longitude": 8.468
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+                "opens": "07:30",
+                "closes": "17:30"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Friday"],
+                "opens": "07:30",
+                "closes": "16:30"
+            }
+        ],
+        "priceRange": "$$"
+    };
+
     return (
-        <div className="app-container">
-            {/* Navigationsleiste */}
+        <>
+            <Helmet>
+                <html lang={language} />
+                <title>{t.metaTitle}</title>
+                <meta name="description" content={t.metaDesc} />
+                <link rel="canonical" href="https://oerlike.ch" />
+
+                {/* Structured Data (Google Schema / Local Business) */}
+                <script type="application/ld+json">
+                    {JSON.stringify(structuredData)}
+                </script>
+            </Helmet>
+
             <nav className="navbar">
                 <div className="navbar-logo">
                     <Link to="/home" className="logo-link">
@@ -171,9 +200,8 @@ function App() {
                     <Link to="/spenglerarbeiten" className="nav-link active">{t.navSpenglerei}</Link>
                     <Link to="/spengler" className="nav-link active">{t.navSpengler}</Link>
                     <Link to="/aufbereitung" className="nav-link">{t.navAufbereitung}</Link>
-                    <Link to="/kontakt" className={"nav-link"}>{t.navKontakt}</Link>
-                    <Link to="/lackiererei" className={"nav-link"}>{t.navLackierei}</Link>
-
+                    <Link to="/kontakt" className="nav-link">{t.navKontakt}</Link>
+                    <Link to="/lackiererei" className="nav-link">{t.navLackierei}</Link>
 
                     {/* Sprachauswahl Dropdown */}
                     <div className="language-selector">
@@ -222,9 +250,9 @@ function App() {
                     aria-labelledby="modal-title"
                 >
                     <div className="phone-modal-content" onClick={(e) => e.stopPropagation()}>
-                        <h2 id="modal-title">Nehmen Sie  jetzt Kontakt mit uns auf </h2>
-                        <span>&#128073;</span> <p>Telefon: <strong>044 311 94 12</strong></p> <span>&#128072;</span>
-                        <a href="+41443119412" onClick={() => window.location.href = "tel:+41443119412"} className="call-btn">
+                        <h2 id="modal-title">Nehmen Sie jetzt Kontakt mit uns auf</h2>
+                        <span>👉</span> <p>Telefon: <strong>044 311 94 12</strong></p> <span>👈</span>
+                        <a href="tel:+41443119412" className="call-btn">
                             {t.callBtn}
                         </a>
                         <button
@@ -246,15 +274,15 @@ function App() {
             {/* Hauptinhalt & Routing */}
             <div className="content">
                 <Routes>
-                    <Route path="/" element={<Home  lang={language}/>} />
-                    <Route path="/home" element={<Home  lang={language}/>} />
+                    <Route path="/" element={<Home lang={language} />} />
+                    <Route path="/home" element={<Home lang={language} />} />
                     <Route path="/reparatur" element={<Carosserie lang={language} />} />
-                    <Route path="/spenglerarbeiten" element={<Spenglerarbeiten lang={language}/>} />
-                    <Route path="/impressum" element={<Impressum lang={language}/>} />
-                    <Route path="/spengler" element={<Spengler lang={language}/>} />
+                    <Route path="/spenglerarbeiten" element={<Spenglerarbeiten lang={language} />} />
+                    <Route path="/impressum" element={<Impressum lang={language} />} />
+                    <Route path="/spengler" element={<Spengler lang={language} />} />
                     <Route path="/wiki" element={<Wiki />} />
-                    <Route path="/kontakt" element={<Kontakt lang={language} />}/>
-                    <Route path="/lackiererei" element={<Lackierei lang={language}/>}/>
+                    <Route path="/kontakt" element={<Kontakt lang={language} />} />
+                    <Route path="/lackiererei" element={<Lackierei lang={language} />} />
                     <Route path="/aufbereitung" element={<Aufbereitung lang={language} />} />
                 </Routes>
             </div>
@@ -293,11 +321,11 @@ function App() {
                         </p>
 
                         <section className="social-media">
-                            <span>&#128073;</span>
+                            <span>👉</span>
                             <p className="social-heading">
                                 <span>{t.socialText}</span>
                             </p>
-                            <span>&#128072;</span>
+                            <span>👈</span>
 
                             <div className="social-links">
                                 <a href="https://www.instagram.com/carrosserie_oerlike/" target="_blank" rel="noreferrer">
@@ -315,11 +343,11 @@ function App() {
                             </div>
                         </section>
 
-                        <p className="seo-text">SEO & Webdesign by <a  href="https://marketingmaster.ch" className="marketingmaster">marketingmaster.ch</a> with love</p>
+                        <p className="seo-text">SEO & Webdesign by <a href="https://marketingmaster.ch" className="marketingmaster">marketingmaster.ch</a> with love</p>
                     </div>
                 </div>
             </footer>
-        </div>
+        </>
     );
 }
 
