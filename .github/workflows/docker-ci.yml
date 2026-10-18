@@ -1,4 +1,4 @@
-name: Dev CI Pipeline
+name: CI/CD-Pipeline für  Carosserie Deployment
 
 on:
   push:
@@ -17,18 +17,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
-      - name: Ordnerstruktur anzeigen & Build ausführen
+      - name: Dependecies installieren & Frontend builden
         run: |
           echo "=== Aktuelles Verzeichnis ==="
           ls -la
-          
+
           # Ordner suchen, der die package.json enthält
-          TARGET_DIR=$(find . -maxdepth 2 -name "package.json" -exec dirname {} \;)
+          TARGET_DIR=$(find . -maxdepth 2 -name "package.json" -exec dirname {} \; | head -n 1)
           echo "Gefundenes Projektverzeichnis: $TARGET_DIR"
-          
+
           cd "$TARGET_DIR"
-          npm ci
+          
+          # Neu: --legacy-peer-deps schützt vor Babel-Abstürzen
+          npm ci --legacy-peer-deps
           npm run build
 
       - name: Set up Docker Buildx
@@ -36,4 +40,7 @@ jobs:
 
       - name: Docker Image via Docker Compose bauen
         run: |
+          # Falls docker-compose.yml im selben Unterordner liegt:
+          TARGET_DIR=$(find . -maxdepth 2 -name "package.json" -exec dirname {} \; | head -n 1)
+          cd "$TARGET_DIR"
           docker compose build frontend
