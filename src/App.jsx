@@ -23,6 +23,7 @@ ReactGA.initialize('G-M16XMEHY78'); // Ersetze dies mit deiner echten GA4 Mess-I
 import Kontakt from "./assets/pages/Kontakt.jsx";
 import Lackierei from "./assets/pages/Lackierei.jsx";
 import Spengler from "./assets/pages/Spengler.jsx";
+import Whatsapp from "./assets/Whatsapp.png";
 import { Helmet } from "react-helmet-async";
 
 const translations = {
@@ -47,7 +48,7 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrosserie Örlike TL AG | Carrosserie, Lackiererei & Spenglerei in Oberengstringen",
-        metaTitle2:"Impressum",
+        metaTitle2:"Impressum- Carrosserie Örlike TL AG",
         metaDesc: "Professionelle Carrosseriearbeiten, Unfallinstandsetzung, Lackiererei, Spenglerei und Fahrzeugaufbereitung in Oberengstringen / Zürich.",
 
     },
@@ -73,7 +74,7 @@ const translations = {
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrosserie Örlike TL AG | Body & Paint Shop Oberengstringen",
         metaDesc: "Professional body shop, paint shop, sheet metal work, and car detailing in Oberengstringen, Zurich." ,
-        metaTitle2: "imprint"
+        metaTitle2: "imprint- Carrosserie Örlike TL AG"
 
 
     },
@@ -99,7 +100,7 @@ const translations = {
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrozzeria Örlike TL AG | Carrozzeria e Verniciatura Oberengstringen",
         metaDesc: "Servizi professionali di carrozzeria, verniciatura, lattoneria e preparazione auto a Oberengstringen / Zurigo.",
-        metaTitle2:"Note legali"
+        metaTitle2:"Note legali- Carrosserie Örlike TL AG"
     },
     fr: {
         navHome: "Accueil",
@@ -123,7 +124,7 @@ const translations = {
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrosserie Örlike TL AG | Carrosserie & Peinture à Oberengstringen",
         metaDesc: "Services professionnels de carrosserie, peinture, zinguerie et préparation automobile à Oberengstringen / Zurich.",
-        metaTitle2:"Mentions légales"
+        metaTitle2:"Mentions légales- Carrosserie Örlike TL AG"
 
     }
 };
@@ -142,6 +143,24 @@ function AnalyticsTracker() {
 function App() {
     const [language, setLanguage] = useState("de");
     const [showPhoneModal, setShowPhoneModal] = useState(false);
+
+
+    /**
+     * SSL-sichere Verschlüsselung per TLS(HTTPS)
+     */
+    useEffect(() => {
+        // Prüft, ob es sich um eine lokale Entwicklungs-Umgebung handelt
+        const isLocalhost = Boolean(
+            window.location.hostname === 'localhost' ||
+            window.location.hostname === '[::1]' ||
+            window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
+        );
+
+        // Führe die Umleitung nur aus, wenn die Verbindung unverschlüsselt ist und NICHT lokal läuft
+        if (window.location.protocol === "http:" && !isLocalhost) {
+            window.location.href = window.location.href.replace("http://", "https://");
+        }
+    }, []);
 
     const handleLanguageChange = (e) => {
         setLanguage(e.target.value);
@@ -347,13 +366,14 @@ function App() {
                         </p>
 
                         <section className="social-media">
-                            <span>👉</span>
+
                             <p className="social-heading">
                                 <span>{t.socialText}</span>
                             </p>
-                            <span>👈</span>
+
 
                             <div className="social-links">
+                                <span>👉</span>
                                 <a href="https://www.instagram.com/carrosserie_oerlike/" target="_blank" rel="noreferrer">
                                     Instagram:
                                     <img src={Instagram} alt="Instagram" className="instagram-icon" />
@@ -366,7 +386,10 @@ function App() {
                                     Facebook:
                                     <img src={Facebook} alt="Facebook" className="facebook-icon" />
                                 </a>
+                                <a href="https://api.whatsapp.com/send/?phone=41765250078&text=Hallo+ID+Carrosserie+Swiss+%EF%BF%BD+Ich+m%C3%B6chte+eine+unverbindliche+Offerte+oder+einen+Termin+anfragen.+Es+geht+um+Carrosserie-+oder+Lackarbeiten+%28Park-+oder+Unfallschaden%29.+Gerne+sende+ich+Fotos+und+Fahrzeugdaten.+Vielen+Dank%21&type=phone_number&app_absent=0" target="_blank" rel="noreferrer">Whatsapp:<img src={Whatsapp} alt="Whatsapp" className="whatsapp-icon" /></a>
+                                <span>👈</span>
                             </div>
+
                         </section>
 
                         <p className="seo-text">SEO & Webdesign by <a href="https://marketingmaster.ch" className="marketingmaster">marketingmaster.ch</a> with love</p>

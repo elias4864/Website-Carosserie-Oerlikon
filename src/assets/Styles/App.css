@@ -407,6 +407,17 @@
   transition: transform 0.2s ease;
 }
 
+
+.whatsapp-icon{ width: 40px;
+  height: 40px;
+  object-fit: contain;
+  vertical-align: middle;
+  border-radius: 4px;
+  transition: transform 0.2s ease;}
+
+.whatsapp-icon:hover{
+  transform: scale(1.25);
+}
 .instagram-icon:hover {
   transform: scale(1.15);
 }

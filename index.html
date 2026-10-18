@@ -4,58 +4,74 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="./src/assets/OE.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carosserie Örlike TL AG</title>
-  <meta name="description" content="Ihr Spezialist für sämtliche Carrosserie-, Spengler- und Lackierarbeiten sowie Unfallreparaturen in Zürich Oerlikon. Seit 40 Jahren zuverlässig und zertifiziert." />
+
+  <!-- SEO Standard Meta-Tags -->
+  <title>Home - Carrosserie Örlike TL AG</title>
+  <meta id="meta-description" name="description" content="Ihr Spezialist für sämtliche Carrosserie-, Spengler- und Lackierarbeiten sowie Unfallreparaturen in Zürich Oerlikon. Seit 40 Jahren zuverlässig und zertifiziert." />
   <meta name="keywords" content="Carrosserie, Spenglerei, Lackiererei, Unfallreparatur, Zürich, Oerlikon, Carrosserie Suisse, Auto Lackieren" />
   <meta name="author" content="Carrosserie Örlike TL AG" />
   <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph Meta-Tags (Social Media Vorschau) -->
+  <meta property="og:title" content="Carrosserie Örlike TL AG | Zürich" />
+  <meta id="og-description" property="og:description" content="Ihr Spezialist für sämtliche Carrosserie- und Lackierarbeiten rund ums Fahrzeug in Zürich Oerlikon." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_CH" />
+
   <script>
     /**
-     * Dynamische Titel-Anpassung
+     * Dynamische SEO-Anpassung (Titel & Description je nach Route)
      */
-    function updateTitle() {
+    function updateSEO() {
       const path = window.location.pathname;
+      let title = "Home – Carrosserie Örlike TL AG";
+      let description = "Ihr Spezialist für sämtliche Carrosserie-, Spengler- und Lackierarbeiten sowie Unfallreparaturen in Zürich Oerlikon. Seit 40 Jahren zuverlässig und zertifiziert.";
 
-      if (path.includes('/carosserie')) {
-        document.title = "Reparatur–Carosserie Örlike TL AG";
+      if (path.includes('/spengler') || path.includes('/spenglerarbeiten')) {
+        title = "Spenglerarbeiten – Carrosserie Örlike TL AG";
+        description = "Professionelle Spenglerarbeiten und Karosseriereparaturen in Zürich Oerlikon. Präzise Instandsetzung von Blech- und Unfallschäden.";
+      } else if (path.includes('/lackiererei')) {
+        title = "Lackiererei – Carrosserie Örlike TL AG";
+        description = "Umweltfreundliche Autolackierungen, Teillackierungen und Reparaturlackierungen mit höchster Farbtongenauigkeit in Oerlikon.";
       } else if (path.includes('/aufbereitung')) {
-        document.title = "Aufbereitung–Carosserie Örlike TL AG";
+        title = "Fahrzeugaufbereitung – Carrosserie Örlike TL AG";
+        description = "Professionelle Auto-Aufbereitung, Politur und Innenraumreinigung in Zürich. Ihr Fahrzeug im Neuwagen-Glanz.";
+      } else if (path.includes('/carosserie')) {
+        title = "Unfallreparatur – Carrosserie Örlike TL AG";
+        description = "Fachgerechte Instandsetzung nach Unfallschäden samt kompletter Abwicklung mit Ihrer Versicherung.";
+      } else if (path.includes('/kontakt')) {
+        title = "Kontakt & Anfahrt – Carrosserie Örlike TL AG";
+        description = "Kontaktieren Sie die Carrosserie Örlike TL AG in Zürich Oerlikon. Öffnungszeiten, Adresse und Online-Anfrage.";
       } else if (path.includes('/impressum')) {
-        document.title = "Impressum–Carosserie Örlike TL AG";
+        title = "Impressum – Carrosserie Örlike TL AG";
+        description = "Rechtliche Informationen und Impressum der Carrosserie Örlike TL AG in Zürich Oerlikon.";
+      } else if (path.includes('/wiki')) {
+        title = "WIKI & Ratgeber – Carrosserie Örlike TL AG";
+        description = "Wissenswertes rund um Karosseriereparaturen, Versicherungsschäden und Fahrzeugpflege.";
       }
 
-      else if (path.includes('/kontakt')) {
-        document.title = "Kontakt–Carosserie Örlike TL AG";
+      // 1. Titel aktualisieren
+      document.title = title;
+
+      // 2. Meta-Description aktualisieren
+      const metaDesc = document.getElementById('meta-description');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', description);
       }
 
-
-      else if(path.includes('/lackiererei')){
-        document.title="Lackiererei- Carosserie Örlike TL AG";
-      }
-      else if(path.includes('/wiki')) {
-        document.title = "WIKI- Carosserie Örlike TL AG";
-      }
-
-      else if(path.includes('/spenglerarbeiten'))
-      {document.title = "Spenglerarbeiten- Carosserie Örlike TL AG";}
-
-      else if(path.includes('/spengler')){
-        document.title = "Spengler-Carosserie Örlike TL AG";
-      }
-
-
-
-      else {
-        document.title = "Home-Carosserie Örlike TL AG";
+      // 3. Open Graph Description aktualisieren
+      const ogDesc = document.getElementById('og-description');
+      if (ogDesc) {
+        ogDesc.setAttribute('content', description);
       }
     }
 
-    // Für reguläre Navigations-Events
-    window.addEventListener('popstate', updateTitle);
-    document.addEventListener('DOMContentLoaded', updateTitle);
+    // Event-Listener für Navigation & initiales Laden
+    window.addEventListener('popstate', updateSEO);
+    document.addEventListener('DOMContentLoaded', updateSEO);
 
-    // Observer für SPA-Routenänderungen im React-Root
-    const observer = new MutationObserver(updateTitle);
+    // MutationObserver für React SPA-Routenwechsel
+    const observer = new MutationObserver(updateSEO);
     document.addEventListener('DOMContentLoaded', () => {
       const root = document.getElementById('root');
       if (root) {
