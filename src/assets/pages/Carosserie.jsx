@@ -8,6 +8,7 @@ import Auto from '../Auto.jpg';
 
 function CarosseriePage() {
     return (
+        <main>
         <div className="Background-Intro">
             <div className="carosserie-container">
             <img className="carosserie-auto" src={Auto} />
@@ -40,6 +41,7 @@ function CarosseriePage() {
             </div> {/* Schliesst carosserie-container */}
         </div>
 
+        </main>
     );
 }
 

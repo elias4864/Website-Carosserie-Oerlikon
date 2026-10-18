@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, Routes, Route, Navigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { Link, Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import Oerlikon from "./assets/Oerlikon.jpg";
 import Icon from "./assets/Icon.jpg";
@@ -15,6 +15,11 @@ import Linkedin from "./assets/Linkedin-logo.png";
 import Facebook from "./assets/Facebook.png";
 import Impressum from "./assets/pages/Impressum.jsx";
 import Wiki from "./assets/pages/Wiki.jsx";
+import ReactGA from 'react-ga4';
+ReactGA.initialize('G-M16XMEHY78'); // Ersetze dies mit deiner echten GA4 Mess-ID
+
+
+
 import Kontakt from "./assets/pages/Kontakt.jsx";
 import Lackierei from "./assets/pages/Lackierei.jsx";
 import Spengler from "./assets/pages/Spengler.jsx";
@@ -42,7 +47,9 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrosserie Örlike TL AG | Carrosserie, Lackiererei & Spenglerei in Oberengstringen",
-        metaDesc: "Professionelle Carrosseriearbeiten, Unfallinstandsetzung, Lackiererei, Spenglerei und Fahrzeugaufbereitung in Oberengstringen / Zürich."
+        metaTitle2:"Impressum",
+        metaDesc: "Professionelle Carrosseriearbeiten, Unfallinstandsetzung, Lackiererei, Spenglerei und Fahrzeugaufbereitung in Oberengstringen / Zürich.",
+
     },
     en: {
         navHome: "Home",
@@ -65,7 +72,10 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrosserie Örlike TL AG | Body & Paint Shop Oberengstringen",
-        metaDesc: "Professional body shop, paint shop, sheet metal work, and car detailing in Oberengstringen, Zurich."
+        metaDesc: "Professional body shop, paint shop, sheet metal work, and car detailing in Oberengstringen, Zurich." ,
+        metaTitle2: "imprint"
+
+
     },
     it: {
         navHome: "Home",
@@ -88,7 +98,8 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrozzeria Örlike TL AG | Carrozzeria e Verniciatura Oberengstringen",
-        metaDesc: "Servizi professionali di carrozzeria, verniciatura, lattoneria e preparazione auto a Oberengstringen / Zurigo."
+        metaDesc: "Servizi professionali di carrozzeria, verniciatura, lattoneria e preparazione auto a Oberengstringen / Zurigo.",
+        metaTitle2:"Note legali"
     },
     fr: {
         navHome: "Accueil",
@@ -111,10 +122,23 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrosserie Örlike TL AG | Carrosserie & Peinture à Oberengstringen",
-        metaDesc: "Services professionnels de carrosserie, peinture, zinguerie et préparation automobile à Oberengstringen / Zurich."
+        metaDesc: "Services professionnels de carrosserie, peinture, zinguerie et préparation automobile à Oberengstringen / Zurich.",
+        metaTitle2:"Mentions légales"
+
     }
 };
 
+
+function AnalyticsTracker() {
+    const location = useLocation();
+
+    useEffect(() => {
+        // Sendet den Seitenaufruf an Google Analytics
+        ReactGA.send({ hitType: 'pageview', page: location.pathname + location.search });
+    }, [location]);
+
+    return null;
+}
 function App() {
     const [language, setLanguage] = useState("de");
     const [showPhoneModal, setShowPhoneModal] = useState(false);
@@ -171,10 +195,12 @@ function App() {
 
     return (
         <>
+            <AnalyticsTracker />
             <Helmet>
                 <html lang={language} />
                 <title>{t.metaTitle}</title>
                 <meta name="description" content={t.metaDesc} />
+                <title >{t.metaTitle2}</title>
                 <link rel="canonical" href="https://oerlike.ch" />
 
                 {/* Structured Data (Google Schema / Local Business) */}
@@ -271,8 +297,8 @@ function App() {
                 ▲
             </button>
 
-            {/* Hauptinhalt & Routing */}
-            <div className="content">
+
+                <div className="content">
                 <Routes>
                     <Route path="/" element={<Home lang={language} />} />
                     <Route path="/home" element={<Home lang={language} />} />
