@@ -4,6 +4,7 @@ import Schrauben from '../Schrauben.jpg';
 import Lackierei from '../Lackierei.jpg';
 import Team from '../Team.jpg';
 import '../Styles/Home.css';
+import '../Styles/App.css';
 import React, {useState,useEffect} from "react";
 import Eingang from '../Eingang.webp';
 
@@ -48,13 +49,15 @@ function HomePage() {
 
         const handleAcceptCookie = () => {
             localStorage.setItem('Cookie Status:', 'accepted');
+            alert("Cookie wurde akzeptiert!");
             setShowCookieBanner(false);
-        };
+console.log("Cookie wurde akzeptiert!");
         const handleRejectCookie = () => {
             localStorage.setItem('Cookie Status:', 'declined');
             setShowCookieBanner(false);
-        }
-
+            alert("Cookie wurde abgelehnt!");
+console.log("Cookie wurde abgelehnt!");
+}
 
 
 
@@ -241,6 +244,5 @@ function HomePage() {
         </main>
 
     );
-}
-
+}  };
 export default HomePage;

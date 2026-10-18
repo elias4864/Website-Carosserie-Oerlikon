@@ -47,7 +47,9 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrosserie Örlike TL AG | Carrosserie, Lackiererei & Spenglerei in Oberengstringen",
-        metaDesc: "Professionelle Carrosseriearbeiten, Unfallinstandsetzung, Lackiererei, Spenglerei und Fahrzeugaufbereitung in Oberengstringen / Zürich."
+        metaTitle2:"Impressum",
+        metaDesc: "Professionelle Carrosseriearbeiten, Unfallinstandsetzung, Lackiererei, Spenglerei und Fahrzeugaufbereitung in Oberengstringen / Zürich.",
+
     },
     en: {
         navHome: "Home",
@@ -70,7 +72,10 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrosserie Örlike TL AG | Body & Paint Shop Oberengstringen",
-        metaDesc: "Professional body shop, paint shop, sheet metal work, and car detailing in Oberengstringen, Zurich."
+        metaDesc: "Professional body shop, paint shop, sheet metal work, and car detailing in Oberengstringen, Zurich." ,
+        metaTitle2: "imprint"
+
+
     },
     it: {
         navHome: "Home",
@@ -93,7 +98,8 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrozzeria Örlike TL AG | Carrozzeria e Verniciatura Oberengstringen",
-        metaDesc: "Servizi professionali di carrozzeria, verniciatura, lattoneria e preparazione auto a Oberengstringen / Zurigo."
+        metaDesc: "Servizi professionali di carrozzeria, verniciatura, lattoneria e preparazione auto a Oberengstringen / Zurigo.",
+        metaTitle2:"Note legali"
     },
     fr: {
         navHome: "Accueil",
@@ -116,7 +122,9 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrosserie Örlike TL AG | Carrosserie & Peinture à Oberengstringen",
-        metaDesc: "Services professionnels de carrosserie, peinture, zinguerie et préparation automobile à Oberengstringen / Zurich."
+        metaDesc: "Services professionnels de carrosserie, peinture, zinguerie et préparation automobile à Oberengstringen / Zurich.",
+        metaTitle2:"Mentions légales"
+
     }
 };
 
@@ -192,6 +200,7 @@ function App() {
                 <html lang={language} />
                 <title>{t.metaTitle}</title>
                 <meta name="description" content={t.metaDesc} />
+                <title >{t.metaTitle2}</title>
                 <link rel="canonical" href="https://oerlike.ch" />
 
                 {/* Structured Data (Google Schema / Local Business) */}
