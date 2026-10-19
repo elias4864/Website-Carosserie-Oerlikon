@@ -30,9 +30,11 @@ const translations = {
     de: {
         navHome: "Home",
         navCarrosserie: "Carrosserie",
-        navAufbereitung: "Aufbereitung",
+        navAufbereitung: "Autoaufbereitung",
         navKontakt: "Kontakt",
-        navLackierei: "Lackiererei",
+        navLackierei: "Autolackiererei",
+
+        navLackierereititle:"Lackierei",
         navAutolackieren: "Auto lackieren",
         navSpenglerei: "Spenglerei",
         navGalerie: "Galerie",
@@ -64,8 +66,9 @@ const translations = {
         navAutopflege: "Car Care",
         navSpengler: "Spengler",
         modalTitle: "Get in touch with us now",
-        navLackiererei: "Paint shop",
+        navLackiererei: "Auto Body and Paint Shop",
         navAutolackieren: "Car painting",
+        navLackierereititle:"paint shop",
         navGalerie: "Gallery",
         phoneLabel: "Phone:",
         callBtn: "Call now",
@@ -84,10 +87,12 @@ const translations = {
     it: {
         navHome: "Home",
         navCarrosserie: "Carrozzeria",
-        navAufbereitung: "Preparazione",
+        navAufbereitung: "Preparazione auto",
         navKontakt: "Contatti",
-        navLackiererei: "Verniciatura",
+        navLackiererei: "Carrozzeria (verniciatura auto)",
         navAutolackieren: "Verniciare l'auto",
+        navLackierereititle:"Reparto verniciatura",
+
         navAutopflege: "Cura dell'auto",
         navSpenglerei: "Lattoneria",
         navSpengler: "Lattoniere",
@@ -110,10 +115,11 @@ const translations = {
     fr: {
         navHome: "Accueil",
         navCarrosserie: "Carrosserie",
-        navAufbereitung: "Préparation",
+        navAufbereitung: "Préparation automobile",
         navKontakt: "Contact",
         navGalerie: "Galerie",
-        navLackiererei: "Atelier de peinture",
+        navLackiererei: "Atelier de peinture automobile",
+        navLackierereititle:"atelier de peinture",
         navAutolackieren: "Peindre une voiture",
         navFahrzeugaufbereitung: "Préparation esthétique de véhicules",
         navAutopflege: "Entretien automobile",
@@ -252,9 +258,9 @@ function App() {
 
                     {/* Dropdown für Lackierung */}
                     <div className="dropdown">
-                        <span className="nav-link">{t.navLackierei} ▾</span>
+                        <span className="nav-link">{t.navLackierereititle} ▾</span>
                         <div className="dropdown-content">
-                            <Link to="/lackiererei">{t.navLackierei}</Link>
+                            <Link to="/lackiererei">{t.navLackiererei}</Link>
                             <Link to="/lackieren">{t.navAutolackieren}</Link>
                         </div>
                     </div>
@@ -269,14 +275,13 @@ function App() {
                         </div>
                     </div>
 
+
                     <div className="dropdown">
-                        <span className="nav-link">{t.navKontakt}▾</span>
-                        <div  className="dropdown-content>">
-
-
+                        <span className="nav-link">{t.navKontakt} ▾</span>
+                        <div className="dropdown-content">
                     <Link to="/galerie" className="nav-link">{t.navGalerie}</Link>
                     <Link to="/kontakt" className="nav-link">{t.navKontakt}</Link>
-                      </div>
+                        </div>
                     </div>
 
                     {/* Sprachauswahl Dropdown */}

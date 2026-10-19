@@ -2,7 +2,7 @@ import React from "react";
 import "../Styles/Autopflege.css";
 import Autopflegebild from "../Autopflege.jpg";
 
-function Autopflege() {
+function Autopflege({lang}) {
     return (
         <div className="Background-Intro">
             {/* Bild-Hero über die volle Breite */}

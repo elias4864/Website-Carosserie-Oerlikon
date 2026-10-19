@@ -4,7 +4,7 @@ import  Fahrzeugaufbereitungbild from '../Fahzeugaufbereitung.jpg';
 import '../Styles/Fahrzeugaufbereitung.css';
 import autoaufbereitung from "../Autoaufberiten.jpg";
 
-function Fahrzeugaufbereitung(){
+function Fahrzeugaufbereitung({lang}){
     return (
         <div className="fahrzeug-container">
             <img src={Fahrzeugaufbereitungbild} />

@@ -2,7 +2,7 @@ import React from "react";
 import Lackieren from "../Autolackieren.jpg";
 import "../Styles/Autolackieren.css";
 
-function Autolackieren() {
+function Autolackieren({lang}) {
     return (
             <main className="galerie-container">
                 <img src={Lackieren} alt="Autolackieren" className="lackieren"/>

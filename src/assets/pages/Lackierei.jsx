@@ -3,7 +3,7 @@ import Rot from "../Rot.jpg";
 import "../Styles/Lackiererei.css";
 import Lackiererei from "../Lackiererei.jpg";
 
-function Lackierei() {
+function Lackierei({lang}) {
     return (
         <div className="Background-Intro">
                 {/* Full-Width Bild-Wrapper */}

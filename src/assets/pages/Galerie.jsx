@@ -29,6 +29,7 @@ function Galeriepage({ lang }) {
         { src: Blauhinten, alt:"Blauhinten" },
         {src:Kaputt, alt: "Kaputt" },
         {src:Kaputt2, alt: "Kaputt" },
+
     ];
 
     return (
