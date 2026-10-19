@@ -1,0 +1,56 @@
+.lackieren{
+    background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
+    background-position: center;  /* Zentriert das Bild */
+    background-repeat: no-repeat;
+    width: 100vw;                 /* Nutzt die volle Bildschirmbreite */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-height: 400px;
+    box-sizing: border-box;
+}
+
+
+
+.highlight {
+    font-family: 'Orbitron', sans-serif;
+    color: #9e1b1b; /* Rotton für Links und Firmenname */
+    text-decoration: none;
+
+}
+
+
+
+h2 {
+    color: black;
+    font-weight: 700;
+    font-size: 1.9rem;
+}
+
+
+
+
+
+
+p.highlight:hover {
+    text-decoration: underline;
+    font-family: 'Orbitron', sans-serif;
+
+
+    color: #9e1b1b; /* Rotton für Links und Firmenname */
+
+}
+
+
+
+
+
+a.highlight:hover {
+    text-decoration: underline;
+}
+
+h1{
+    color: white;
+}

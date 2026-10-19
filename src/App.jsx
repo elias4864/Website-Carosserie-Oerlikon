@@ -26,6 +26,8 @@ import Spengler from "./assets/pages/Spengler.jsx";
 import Whatsapp from "./assets/Whatsapp.png";
 import { Helmet } from "react-helmet-async";
 import Galerie from "./assets/pages/Galerie.jsx";
+import Lackieren from "./assets/pages/Autolackieren.jsx";
+import Autolackieren from "./assets/pages/Autolackieren.jsx";
 
 const translations = {
     de: {
@@ -34,7 +36,10 @@ const translations = {
         navAufbereitung: "Aufbereitung",
         navKontakt: "Kontakt",
         navLackierei: "Lackiererei",
+        navAutolackieren:"Auto lackieren",
+
         navSpenglerei: "Spenglerei",
+
         navGalerie: "Galerie",
         navSpengler: "Spengler",
         modalTitle: "Nehmen Sie jetzt Kontakt mit uns auf",
@@ -63,6 +68,7 @@ const translations = {
         navSpengler: "tin man",
         modalTitle: "Get in touch with us now",
         navLackiererei: "paint shop",
+        navAutolackieren: "Car painting",
         navGalerie: "gallery",
         phoneLabel: "Phone:",
         callBtn: "Call now",
@@ -87,6 +93,7 @@ const translations = {
         navAufbereitung: "Preparazione",
         navKontakt: "Contatti",
         navLackiererei: "Reparto verniciatura",
+        navAutolackieren: "Verniciare l'auto",
         navSpenglerei: "Lattoneria",
         navSpengler: "lattioniere",
         navGalerie:"Galleria",
@@ -113,6 +120,7 @@ const translations = {
         navKontakt: "Contact",
         navGalerie:"galerie",
         navLackiererei: "Atelier de peinture",
+        navAutolackieren: "Peindre une voiture",
         navSpenglerei: "Zinguerie",
         navSpengler: "plombier",
         modalTitle: "Contactez-nous dès maintenant",
@@ -253,6 +261,7 @@ function App() {
                     <Link to="/kontakt" className="nav-link">{t.navKontakt}</Link>
                     <Link to="/lackiererei" className="nav-link">{t.navLackierei}</Link>
                     <Link to="/galerie" className="nav-link">{t.navGalerie}</Link>
+                    <Link to="/lackieren" className="nav-link">{t.navAutolackieren}</Link>
 
                     {/* Sprachauswahl Dropdown */}
                     <div className="language-selector">
@@ -336,6 +345,8 @@ function App() {
                     <Route path="/lackiererei" element={<Lackierei lang={language} />} />
                     <Route path="/aufbereitung" element={<Aufbereitung lang={language} />} />
                     <Route path="/galerie" element={<Galerie lang={language} />} />
+                    <Route path="/lackieren" element={<Autolackieren lang={language}/>}/>
+
                 </Routes>
             </div>
 
