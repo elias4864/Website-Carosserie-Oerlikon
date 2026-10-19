@@ -6,7 +6,7 @@ import '../Styles/App.css';
 import Auto from '../Auto.jpg';
 
 
-function CarosseriePage() {
+function CarosseriePage({lang}) {
     return (
         <main>
         <div className="Background-Intro">

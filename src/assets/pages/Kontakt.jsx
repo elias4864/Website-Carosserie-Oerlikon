@@ -33,7 +33,7 @@ const hero =[
     Michael,
     Peter
 ]
-function Kontakt(){
+function Kontakt({lang}){
 
 
 

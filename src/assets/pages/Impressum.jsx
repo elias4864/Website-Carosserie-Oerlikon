@@ -3,7 +3,7 @@ import Rot from '../Rot.jpg';
 import '../Styles/Impressum.css';
 
 
-function ImpressumPage() {
+function ImpressumPage({lang}) {
     return (
         <div className="impressum-wrapper">
         <img src={Rot} className="auto"/>

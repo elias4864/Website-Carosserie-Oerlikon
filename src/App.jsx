@@ -25,6 +25,7 @@ import Lackierei from "./assets/pages/Lackierei.jsx";
 import Spengler from "./assets/pages/Spengler.jsx";
 import Whatsapp from "./assets/Whatsapp.png";
 import { Helmet } from "react-helmet-async";
+import Galerie from "./assets/pages/Galerie.jsx";
 
 const translations = {
     de: {
@@ -34,6 +35,7 @@ const translations = {
         navKontakt: "Kontakt",
         navLackierei: "Lackiererei",
         navSpenglerei: "Spenglerei",
+        navGalerie: "Galerie",
         navSpengler: "Spengler",
         modalTitle: "Nehmen Sie jetzt Kontakt mit uns auf",
         phoneLabel: "Telefon:",
@@ -61,6 +63,7 @@ const translations = {
         navSpengler: "tin man",
         modalTitle: "Get in touch with us now",
         navLackiererei: "paint shop",
+        navGalerie: "gallery",
         phoneLabel: "Phone:",
         callBtn: "Call now",
         closeBtn: "Close",
@@ -86,6 +89,7 @@ const translations = {
         navLackiererei: "Reparto verniciatura",
         navSpenglerei: "Lattoneria",
         navSpengler: "lattioniere",
+        navGalerie:"Galleria",
         modalTitle: "Mettetevi in contatto con noi ora",
         phoneLabel: "Telefono:",
         callBtn: "Chiama ora",
@@ -107,6 +111,7 @@ const translations = {
         navCarrosserie: "Carrosserie",
         navAufbereitung: "Préparation",
         navKontakt: "Contact",
+        navGalerie:"galerie",
         navLackiererei: "Atelier de peinture",
         navSpenglerei: "Zinguerie",
         navSpengler: "plombier",
@@ -247,6 +252,7 @@ function App() {
                     <Link to="/aufbereitung" className="nav-link">{t.navAufbereitung}</Link>
                     <Link to="/kontakt" className="nav-link">{t.navKontakt}</Link>
                     <Link to="/lackiererei" className="nav-link">{t.navLackierei}</Link>
+                    <Link to="/galerie" className="nav-link">{t.navGalerie}</Link>
 
                     {/* Sprachauswahl Dropdown */}
                     <div className="language-selector">
@@ -329,6 +335,7 @@ function App() {
                     <Route path="/kontakt" element={<Kontakt lang={language} />} />
                     <Route path="/lackiererei" element={<Lackierei lang={language} />} />
                     <Route path="/aufbereitung" element={<Aufbereitung lang={language} />} />
+                    <Route path="/galerie" element={<Galerie lang={language} />} />
                 </Routes>
             </div>
 

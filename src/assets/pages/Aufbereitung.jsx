@@ -5,7 +5,7 @@ import '../Styles/Home.css';
 
 
 
-function AufbereitungPage() {
+function AufbereitungPage({lang}) {
     return (
         <div className="aufbereitung-container">
             {/* Das Bild-Tag wurde korrekt geschlossen und mit alt-Text ergänzt */}

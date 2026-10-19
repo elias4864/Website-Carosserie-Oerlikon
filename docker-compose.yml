@@ -1,7 +1,7 @@
 services:
   frontend:
     build:
-      context: ./mein-react-template
+      context: .
     container_name: carosserie-oerlikon
     restart: unless-stopped
     ports:

@@ -11,7 +11,7 @@ import Eingang from '../Eingang.webp';
 
 
 
-function HomePage() {
+function HomePage({lang}) {
 
     const [showCookieBanner, setShowCookieBanner] = useState(false);
     /**
