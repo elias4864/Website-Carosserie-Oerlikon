@@ -1,3 +1,15 @@
-.anfrage{
+.submit-btn{
 
+}
+
+.submit-btn:hover{
+    background-color: orangered;
+    color:gold;
+
+}
+
+
+.text-box{
+    background-color: orangered;
+    color:gold;
 }
