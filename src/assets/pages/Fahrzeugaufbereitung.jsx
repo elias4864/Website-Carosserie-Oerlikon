@@ -19,7 +19,7 @@ function Fahrzeugaufbereitung(){
                 <p>
                     Die Fahrzeugaufbereitung ist einer der wichtigsten Arbeitsbereiche unseres Fachbetriebes. Wir sind perfekt auf die intensive Pflege Ihres Autos ausgerichtet: Unsere Mitarbeiter reinigen Ihren Wagen mit viel Hingabe und lassen keine Stelle aus. Egal, um welche Art von Fahrzeug es sich handelt – wenn Sie sich an die Carrosserie Örlike wenden, bekommen Sie Ihr Gefährt im Bestzustand zurück.
                 </p>
-                <h1>Aufbereitung von Firmenfahrzeugen</h1>
+                <h2>Aufbereitung von Firmenfahrzeugen</h2>
                 <p>
                     Ob Malerbetrieb, Reinigungsservice oder Menüdienst – wer bei seinen Kunden mit einem Wagen vorfährt, dessen Aussenhaut verbeult oder stark korrodiert ist, hinterlässt keinen guten Eindruck. Wir lassen Ihren Firmenfahrzeugen eine umfassende Pflege zukommen: Unsere Mitarbeiter wenden ihre ganze Kunstfertigkeit an und bringen die Kotflügel, Scheiben und Verkleidungen Ihres Wagens wieder zum Glänzen. Selbst bei alten Autos können wir im Rahmen einer Fahrzeugaufbereitung viel bewirken. Roststellen an der Karosserie werden von uns schonend entfernt und so bearbeitet, dass man sie mit blossem Auge kaum erkennen kann.
                 </p>

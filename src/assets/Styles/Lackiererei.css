@@ -80,3 +80,9 @@
         font-size: 1.25rem;
     }
 }
+
+
+.highlight{
+    color: #9e1b1b;
+    text-decoration: underline;
+}

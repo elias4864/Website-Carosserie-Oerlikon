@@ -1,8 +1,5 @@
-import React, {useEffect, useState} from "react";
-import { Link, Routes, Route, Navigate, useLocation } from "react-router-dom";
-
-import Oerlikon from "./assets/Oerlikon.jpg";
-import Icon from "./assets/Icon.jpg";
+import React, { useEffect, useState } from "react";
+import { Link, Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "./assets/pages/Home.jsx";
 import Carosserie from "./assets/pages/Carosserie.jsx";
@@ -16,9 +13,8 @@ import Facebook from "./assets/Facebook.png";
 import Impressum from "./assets/pages/Impressum.jsx";
 import Wiki from "./assets/pages/Wiki.jsx";
 import ReactGA from 'react-ga4';
-ReactGA.initialize('G-M16XMEHY78'); // Ersetze dies mit deiner echten GA4 Mess-ID
 
-
+ReactGA.initialize('G-M16XMEHY78');
 
 import Kontakt from "./assets/pages/Kontakt.jsx";
 import Lackierei from "./assets/pages/Lackierei.jsx";
@@ -37,15 +33,12 @@ const translations = {
         navAufbereitung: "Aufbereitung",
         navKontakt: "Kontakt",
         navLackierei: "Lackiererei",
-        navAutolackieren:"Auto lackieren",
-
+        navAutolackieren: "Auto lackieren",
         navSpenglerei: "Spenglerei",
-
-
         navGalerie: "Galerie",
         navSpengler: "Spengler",
-        navAutopflege:"Autopflege",
-        navFahrzeugaufbereitung:"Fahrzeugaufbereitung",
+        navAutopflege: "Autopflege",
+        navFahrzeugaufbereitung: "Fahrzeugaufbereitung",
         modalTitle: "Nehmen Sie jetzt Kontakt mit uns auf",
         phoneLabel: "Telefon:",
         callBtn: "Jetzt anrufen",
@@ -59,23 +52,21 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrosserie Örlike TL AG | Carrosserie, Lackiererei & Spenglerei in Oberengstringen",
-        metaTitle2:"Impressum- Carrosserie Örlike TL AG",
         metaDesc: "Professionelle Carrosseriearbeiten, Unfallinstandsetzung, Lackiererei, Spenglerei und Fahrzeugaufbereitung in Oberengstringen / Zürich.",
-
     },
     en: {
         navHome: "Home",
-        navCarrosserie: "body Shop",
+        navCarrosserie: "Body Shop",
         navAufbereitung: "Car Detailing",
         navKontakt: "Contact",
         navSpenglerei: "Sheet Metal Work",
         navFahrzeugaufbereitung: "Vehicle detailing",
-        navAutopflege:"Car Care",
-        navSpengler: "tin man",
+        navAutopflege: "Car Care",
+        navSpengler: "Spengler",
         modalTitle: "Get in touch with us now",
-        navLackiererei: "paint shop",
+        navLackiererei: "Paint shop",
         navAutolackieren: "Car painting",
-        navGalerie: "gallery",
+        navGalerie: "Gallery",
         phoneLabel: "Phone:",
         callBtn: "Call now",
         closeBtn: "Close",
@@ -88,22 +79,19 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrosserie Örlike TL AG | Body & Paint Shop Oberengstringen",
-        metaDesc: "Professional body shop, paint shop, sheet metal work, and car detailing in Oberengstringen, Zurich." ,
-        metaTitle2: "imprint- Carrosserie Örlike TL AG"
-
-
+        metaDesc: "Professional body shop, paint shop, sheet metal work, and car detailing in Oberengstringen, Zurich."
     },
     it: {
         navHome: "Home",
         navCarrosserie: "Carrozzeria",
         navAufbereitung: "Preparazione",
         navKontakt: "Contatti",
-        navLackiererei: "Cura estetica del veicolo",
+        navLackiererei: "Verniciatura",
         navAutolackieren: "Verniciare l'auto",
-        navAutopflege:"Cura dell'auto",
+        navAutopflege: "Cura dell'auto",
         navSpenglerei: "Lattoneria",
-        navSpengler: "lattioniere",
-        navGalerie:"Galleria",
+        navSpengler: "Lattoniere",
+        navGalerie: "Galleria",
         modalTitle: "Mettetevi in contatto con noi ora",
         phoneLabel: "Telefono:",
         callBtn: "Chiama ora",
@@ -117,21 +105,20 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrozzeria Örlike TL AG | Carrozzeria e Verniciatura Oberengstringen",
-        metaDesc: "Servizi professionali di carrozzeria, verniciatura, lattoneria e preparazione auto a Oberengstringen / Zurigo.",
-        metaTitle2:"Note legali- Carrosserie Örlike TL AG"
+        metaDesc: "Servizi professionali di carrozzeria, verniciatura, lattoneria e preparazione auto a Oberengstringen / Zurigo."
     },
     fr: {
         navHome: "Accueil",
         navCarrosserie: "Carrosserie",
         navAufbereitung: "Préparation",
         navKontakt: "Contact",
-        navGalerie:"galerie",
+        navGalerie: "Galerie",
         navLackiererei: "Atelier de peinture",
         navAutolackieren: "Peindre une voiture",
-        navFahrzeugaufbereitung:"Préparation esthétique de véhicules",
-        navAutopflege:"Entretien automobile",
+        navFahrzeugaufbereitung: "Préparation esthétique de véhicules",
+        navAutopflege: "Entretien automobile",
         navSpenglerei: "Zinguerie",
-        navSpengler: "plombier",
+        navSpengler: "Spengler",
         modalTitle: "Contactez-nous dès maintenant",
         phoneLabel: "Téléphone:",
         callBtn: "Appeler maintenant",
@@ -145,40 +132,31 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrosserie Örlike TL AG | Carrosserie & Peinture à Oberengstringen",
-        metaDesc: "Services professionnels de carrosserie, peinture, zinguerie et préparation automobile à Oberengstringen / Zurich.",
-        metaTitle2:"Mentions légales- Carrosserie Örlike TL AG"
-
+        metaDesc: "Services professionnels de carrosserie, peinture, zinguerie et préparation automobile à Oberengstringen / Zurich."
     }
 };
-
 
 function AnalyticsTracker() {
     const location = useLocation();
 
     useEffect(() => {
-        // Sendet den Seitenaufruf an Google Analytics
         ReactGA.send({ hitType: 'pageview', page: location.pathname + location.search });
     }, [location]);
 
     return null;
 }
+
 function App() {
     const [language, setLanguage] = useState("de");
     const [showPhoneModal, setShowPhoneModal] = useState(false);
 
-
-    /**
-     * SSL-sichere Verschlüsselung per TLS(HTTPS)
-     */
     useEffect(() => {
-        // Prüft, ob es sich um eine lokale Entwicklungs-Umgebung handelt
         const isLocalhost = Boolean(
             window.location.hostname === 'localhost' ||
             window.location.hostname === '[::1]' ||
             window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
         );
 
-        // Führe die Umleitung nur aus, wenn die Verbindung unverschlüsselt ist und NICHT lokal läuft
         if (window.location.protocol === "http:" && !isLocalhost) {
             window.location.href = window.location.href.replace("http://", "https://");
         }
@@ -241,10 +219,8 @@ function App() {
                 <html lang={language} />
                 <title>{t.metaTitle}</title>
                 <meta name="description" content={t.metaDesc} />
-                <title >{t.metaTitle2}</title>
                 <link rel="canonical" href="https://oerlike.ch" />
 
-                {/* Structured Data (Google Schema / Local Business) */}
                 <script type="application/ld+json">
                     {JSON.stringify(structuredData)}
                 </script>
@@ -263,16 +239,45 @@ function App() {
 
                 <div className="nav-links">
                     <Link to="/home" className="nav-link active">{t.navHome}</Link>
-                    <Link to="/reparatur" className="nav-link">{t.navCarrosserie}</Link>
-                    <Link to="/spenglerarbeiten" className="nav-link active">{t.navSpenglerei}</Link>
-                    <Link to="/spengler" className="nav-link active">{t.navSpengler}</Link>
-                    <Link to="/aufbereitung" className="nav-link">{t.navAufbereitung}</Link>
-                    <Link to="/kontakt" className="nav-link">{t.navKontakt}</Link>
-                    <Link to="/lackiererei" className="nav-link">{t.navLackierei}</Link>
+
+                    {/* Dropdown für Carrosserie & Spenglerei */}
+                    <div className="dropdown">
+                        <span className="nav-link">{t.navCarrosserie} ▾</span>
+                        <div className="dropdown-content">
+                            <Link to="/reparatur">{t.navCarrosserie}</Link>
+                            <Link to="/spenglerarbeiten">{t.navSpenglerei}</Link>
+                            <Link to="/spengler">{t.navSpengler}</Link>
+                        </div>
+                    </div>
+
+                    {/* Dropdown für Lackierung */}
+                    <div className="dropdown">
+                        <span className="nav-link">{t.navLackierei} ▾</span>
+                        <div className="dropdown-content">
+                            <Link to="/lackiererei">{t.navLackierei}</Link>
+                            <Link to="/lackieren">{t.navAutolackieren}</Link>
+                        </div>
+                    </div>
+
+                    {/* Dropdown für Aufbereitung */}
+                    <div className="dropdown">
+                        <span className="nav-link">{t.navAufbereitung} ▾</span>
+                        <div className="dropdown-content">
+                            <Link to="/aufbereitung">{t.navAufbereitung}</Link>
+                            <Link to="/autopflege">{t.navAutopflege}</Link>
+                            <Link to="/fahrzeugaufbereitung">{t.navFahrzeugaufbereitung}</Link>
+                        </div>
+                    </div>
+
+                    <div className="dropdown">
+                        <span className="nav-link">{t.navKontakt}▾</span>
+                        <div  className="dropdown-content>">
+
+
                     <Link to="/galerie" className="nav-link">{t.navGalerie}</Link>
-                    <Link to="/lackieren" className="nav-link">{t.navAutolackieren}</Link>
-                    <Link to="/autopflege" className="nav-link">{t.navAutopflege}</Link>
-                    <Link to="/fahrzeugaufbereitung" className="nav-link">{t.navFahrzeugaufbereitung}</Link>
+                    <Link to="/kontakt" className="nav-link">{t.navKontakt}</Link>
+                      </div>
+                    </div>
 
                     {/* Sprachauswahl Dropdown */}
                     <div className="language-selector">
@@ -342,7 +347,6 @@ function App() {
                 ▲
             </button>
 
-
             <div className="content">
                 <Routes>
                     <Route path="/" element={<Home lang={language} />} />
@@ -356,10 +360,9 @@ function App() {
                     <Route path="/lackiererei" element={<Lackierei lang={language} />} />
                     <Route path="/aufbereitung" element={<Aufbereitung lang={language} />} />
                     <Route path="/galerie" element={<Galerie lang={language} />} />
-                    <Route path="/lackieren" element={<Autolackieren lang={language}/>}/>
+                    <Route path="/lackieren" element={<Autolackieren lang={language} />} />
                     <Route path="/autopflege" element={<Autopflege lang={language} />} />
                     <Route path="/fahrzeugaufbereitung" element={<Fahrzeugaufbereitung lang={language} />} />
-
                 </Routes>
             </div>
 
@@ -397,11 +400,9 @@ function App() {
                         </p>
 
                         <section className="social-media">
-
                             <p className="social-heading">
                                 <span>{t.socialText}</span>
                             </p>
-
 
                             <div className="social-links">
                                 <span>👉</span>
@@ -417,10 +418,12 @@ function App() {
                                     Facebook:
                                     <img src={Facebook} alt="Facebook" className="facebook-icon" />
                                 </a>
-                                <a href="https://api.whatsapp.com/send/?phone=41765250078&text=Hallo+ID+Carrosserie+Swiss+%EF%BF%BD+Ich+m%C3%B6chte+eine+unverbindliche+Offerte+oder+einen+Termin+anfragen.+Es+geht+um+Carrosserie-+oder+Lackarbeiten+%28Park-+oder+Unfallschaden%29.+Gerne+sende+ich+Fotos+und+Fahrzeugdaten.+Vielen+Dank%21&type=phone_number&app_absent=0" target="_blank" rel="noreferrer">Whatsapp:<img src={Whatsapp} alt="Whatsapp" className="whatsapp-icon" /></a>
+                                <a href="https://api.whatsapp.com/send/?phone=41765250078&text=Hallo+ID+Carrosserie+Swiss+%EF%BF%BD+Ich+m%C3%B6chte+eine+unverbindliche+Offerte+oder+einen+Termin+anfragen.+Es+geht+um+Carrosserie-+oder+Lackarbeiten+%28Park-+oder+Unfallschaden%29.+Gerne+sende+ich+Fotos+und+Fahrzeugdaten.+Vielen+Dank%21&type=phone_number&app_absent=0" target="_blank" rel="noreferrer">
+                                    Whatsapp:
+                                    <img src={Whatsapp} alt="Whatsapp" className="whatsapp-icon" />
+                                </a>
                                 <span>👈</span>
                             </div>
-
                         </section>
 
                         <p className="seo-text">SEO & Webdesign by <a href="https://marketingmaster.ch" className="marketingmaster">marketingmaster.ch</a> with love</p>

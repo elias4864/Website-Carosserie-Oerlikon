@@ -603,3 +603,36 @@ footer {
   background-color: #9e1b1b;
   transform: translateY(-2px);
 }
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  z-index: 100;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.95rem;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: #a81c1c;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
