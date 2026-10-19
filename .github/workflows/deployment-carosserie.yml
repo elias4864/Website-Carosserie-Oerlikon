@@ -17,7 +17,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
           cache-dependency-path: './mein-react-template/package-lock.json'
 
       - name: Frontend Dependencies installieren & Build testen
