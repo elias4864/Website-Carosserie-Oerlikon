@@ -118,3 +118,10 @@ html, body {
   overflow-x: hidden; /* Verhindert seitliches Verschieben komplett */
   background-color: #f8f9fa;
 }
+
+#root {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background-color: white !important;
+}

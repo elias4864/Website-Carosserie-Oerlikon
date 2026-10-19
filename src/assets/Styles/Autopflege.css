@@ -1,0 +1,56 @@
+.content-section h2, h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff; /* Weiß */
+    border-bottom: 2px solid #9e1b1b; /* Rotakzent */
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.content-section {
+    font-size: 1.5rem;
+}
+
+/* Zwischenüberschriften */
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: black; /* Weiß */
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+/* Fließtext-Absätze */
+.content-section p {
+    font-size: 1.05rem;
+    color: #dddddd; /* Helles Weiß/Hellgrau */
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+}
+
+.autopflege-container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px; /* Abstand zwischen den einzelnen <section>-Blöcken */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+    color: black;
+    box-sizing: border-box;
+
+}
+
+.lackieren{
+    background-size: cover;       /* Skaliert das Bild auf die volle Fläche */
+    background-position: center;  /* Zentriert das Bild */
+    background-repeat: no-repeat;
+    width: 100vw;                 /* Nutzt die volle Bildschirmbreite */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-height: 400px;
+    box-sizing: border-box;
+}

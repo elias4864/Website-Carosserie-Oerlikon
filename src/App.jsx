@@ -26,8 +26,9 @@ import Spengler from "./assets/pages/Spengler.jsx";
 import Whatsapp from "./assets/Whatsapp.png";
 import { Helmet } from "react-helmet-async";
 import Galerie from "./assets/pages/Galerie.jsx";
-import Lackieren from "./assets/pages/Autolackieren.jsx";
 import Autolackieren from "./assets/pages/Autolackieren.jsx";
+import Autopflege from "./assets/pages/Autopflege.jsx";
+import Fahrzeugaufbereitung from "./assets/pages/Fahrzeugaufbereitung.jsx";
 
 const translations = {
     de: {
@@ -40,8 +41,11 @@ const translations = {
 
         navSpenglerei: "Spenglerei",
 
+
         navGalerie: "Galerie",
         navSpengler: "Spengler",
+        navAutopflege:"Autopflege",
+        navFahrzeugaufbereitung:"Fahrzeugaufberitung",
         modalTitle: "Nehmen Sie jetzt Kontakt mit uns auf",
         phoneLabel: "Telefon:",
         callBtn: "Jetzt anrufen",
@@ -65,6 +69,8 @@ const translations = {
         navAufbereitung: "Car Detailing",
         navKontakt: "Contact",
         navSpenglerei: "Sheet Metal Work",
+        navFahrzeugaufbereitung: "Vehicle detailing",
+        navAutopflege:"Car Care",
         navSpengler: "tin man",
         modalTitle: "Get in touch with us now",
         navLackiererei: "paint shop",
@@ -92,8 +98,9 @@ const translations = {
         navCarrosserie: "Carrozzeria",
         navAufbereitung: "Preparazione",
         navKontakt: "Contatti",
-        navLackiererei: "Reparto verniciatura",
+        navLackiererei: "Cura estetica del veicolo",
         navAutolackieren: "Verniciare l'auto",
+        navAutopflege:"Cura dell'auto",
         navSpenglerei: "Lattoneria",
         navSpengler: "lattioniere",
         navGalerie:"Galleria",
@@ -121,6 +128,8 @@ const translations = {
         navGalerie:"galerie",
         navLackiererei: "Atelier de peinture",
         navAutolackieren: "Peindre une voiture",
+        navFahrzeugaufbereitung:"Préparation esthétique de véhicules",
+        navAutopflege:"Entretien automobile",
         navSpenglerei: "Zinguerie",
         navSpengler: "plombier",
         modalTitle: "Contactez-nous dès maintenant",
@@ -262,6 +271,8 @@ function App() {
                     <Link to="/lackiererei" className="nav-link">{t.navLackierei}</Link>
                     <Link to="/galerie" className="nav-link">{t.navGalerie}</Link>
                     <Link to="/lackieren" className="nav-link">{t.navAutolackieren}</Link>
+                    <Link to="/autopflege" className="nav-link">{t.navAutopflege}</Link>
+                    <Link to="/fahrzeugaufbereitung" className="nav-link">{t.navFahrzeugaufbereitung}</Link>
 
                     {/* Sprachauswahl Dropdown */}
                     <div className="language-selector">
@@ -332,7 +343,7 @@ function App() {
             </button>
 
 
-                <div className="content">
+            <div className="content">
                 <Routes>
                     <Route path="/" element={<Home lang={language} />} />
                     <Route path="/home" element={<Home lang={language} />} />
@@ -346,6 +357,8 @@ function App() {
                     <Route path="/aufbereitung" element={<Aufbereitung lang={language} />} />
                     <Route path="/galerie" element={<Galerie lang={language} />} />
                     <Route path="/lackieren" element={<Autolackieren lang={language}/>}/>
+                    <Route path="/autopflege" element={<Autopflege lang={language} />} />
+                    <Route path="/fahrzeugaufbereitung" element={<Fahrzeugaufbereitung lang={language} />} />
 
                 </Routes>
             </div>

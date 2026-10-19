@@ -1,26 +1,15 @@
-
-
 import Schrauben from '../Schrauben.jpg';
 import Lackierei from '../Lackierei.jpg';
-import Team from '../Team.jpg';
+import Teams from '../Teams.jpg';
 import '../Styles/Home.css';
 import '../Styles/App.css';
-import React, {useState,useEffect} from "react";
-import Eingang from '../Eingang.webp';
+import React, { useState, useEffect } from "react";
 
-
-
-
-function HomePage({lang}) {
-
+function HomePage({ lang }) {
     const [showCookieBanner, setShowCookieBanner] = useState(false);
-    /**
-     * Wischeffekt der Bilder mit UseEffect
-     */
-
 
     /**
-     * Cookies für DSGVO
+     * Cookies für DSGVO & IntersectionObserver
      */
     useEffect(() => {
         // Prüfen, ob bereits eine Cookie-Entscheidung im LocalStorage gespeichert ist
@@ -47,41 +36,35 @@ function HomePage({lang}) {
         return () => observer.disconnect();
     }, []);
 
-        const handleAcceptCookie = () => {
-            localStorage.setItem('Cookie Status:', 'accepted');
-            alert("Cookie wurde akzeptiert!");
-            setShowCookieBanner(false);
-console.log("Cookie wurde akzeptiert!");
-        const handleRejectCookie = () => {
-            localStorage.setItem('Cookie Status:', 'declined');
-            setShowCookieBanner(false);
-            alert("Cookie wurde abgelehnt!");
-console.log("Cookie wurde abgelehnt!");
-}
+    const handleAcceptCookie = () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        alert("Cookie wurde akzeptiert!");
+        setShowCookieBanner(false);
+        console.log("Cookie wurde akzeptiert!");
+    };
 
-
+    const handleRejectCookie = () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        setShowCookieBanner(false);
+        alert("Cookie wurde abgelehnt!");
+        console.log("Cookie wurde abgelehnt!");
+    };
 
     return (
-
         <main className="Background-Intro">
-
-            <div className="carosserie"><h1>Carrosserie Örlike TL AG</h1>
-
-
-
+            <div className="carosserie">
+                <h1>Carrosserie Örlike TL AG</h1>
                 <p>Ihr Spezialist für sämtliche Carrosserie und Lackierarbeiten rund ums Fahrzeug</p>
             </div>
+
             <section className="border-welcome">
-                <h2 >Herzlich Willkommen bei Carrosserie <span className="highlight-red">Örlike</span> TL AG</h2>
+                <h2>Herzlich Willkommen bei Carrosserie <span className="highlight-red">Örlike</span> TL AG</h2>
 
-                <p className="subtitle ">Wir sind Ihr Spezialist für sämtliche Carrosserie und Lackierarbeiten rund ums
-                    Fahrzeug.</p>
+                <p className="subtitle">Wir sind Ihr Spezialist für sämtliche Carrosserie und Lackierarbeiten rund ums Fahrzeug.</p>
 
-                <p>In unserem Zürcher Carrosserie Spritzwerk tätigen wir sowohl Reparaturlackierungen nach einem Unfall
-                    als auch Speziallackierungen.</p>
+                <p>In unserem Zürcher Carrosserie Spritzwerk tätigen wir sowohl Reparaturlackierungen nach einem Unfall als auch Speziallackierungen.</p>
 
-                <p>Informieren Sie sich auf unserer Webseite über unsere Dienstleistungen und kontaktieren Sie uns bei
-                    Fragen.</p>
+                <p>Informieren Sie sich auf unserer Webseite über unsere Dienstleistungen und kontaktieren Sie uns bei Fragen.</p>
 
                 <p className="closing">Wir freuen uns auf Sie!</p>
             </section>
@@ -89,7 +72,7 @@ console.log("Cookie wurde abgelehnt!");
             <section className="services-section">
                 <div className="feature-card text-left">
                     <div className="image-wrapper">
-                        <img src={Schrauben} alt="Carrosserie Spenglerei"/>
+                        <img src={Schrauben} alt="Carrosserie Spenglerei" />
                     </div>
                     <div className="text-box">
                         <h3>Carrosserie Spenglerei</h3>
@@ -102,7 +85,7 @@ console.log("Cookie wurde abgelehnt!");
 
                 <div className="feature-card text-right">
                     <div className="image-wrapper">
-                        <img src={Lackierei} alt="Lackiererei"/>
+                        <img src={Lackierei} alt="Lackiererei" />
                     </div>
                     <div className="text-box">
                         <h3>Lackiererei</h3>
@@ -115,7 +98,7 @@ console.log("Cookie wurde abgelehnt!");
 
                 <div className="feature-card text-left">
                     <div className="image-wrapper">
-                        <img src={Team} alt="Team"/>
+                        <img src={Teams} alt="Team" />
                     </div>
                     <div className="text-box">
                         <h3>Team</h3>
@@ -125,8 +108,7 @@ console.log("Cookie wurde abgelehnt!");
                     </div>
                 </div>
 
-
-                <div   style={{ position: 'relative', width: '100%', height: '100%', minHeight: '60vh' }}>
+                <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: '60vh' }}>
                     <iframe
                         title="Eingang Carosserie Örlike 360 Grad Street View"
                         src="https://www.google.com/maps/embed?pb=!4v1791664335517!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJRFp5b0hOMWdF!2m2!1d47.40639798492404!2d8.462671190889116!3f190.4257737481725!4f-10.380033892848473!5f0.7820865974627469"
@@ -157,30 +139,22 @@ console.log("Cookie wurde abgelehnt!");
                             zIndex: 10
                         }}
                     >
-                        Powered by <strong><a   href="https://marketingmaster.ch" className="marketingmaster">marketingmaster.ch</a></strong>
+                        Powered by <strong><a href="https://marketingmaster.ch" className="marketingmaster">marketingmaster.ch</a></strong>
                     </p>
                 </div>
-
-
             </section>
 
             <section className="border-welcome">
-                <p>Seit 40 Jahren ist die Carrosserie Örlike TL AG als Aktiengesellschaft in Zürich ansässig.
-
+                <p>
+                    Seit 40 Jahren ist die Carrosserie Örlike TL AG als Aktiengesellschaft in Zürich ansässig.
                     In dieser Zeit haben wir uns in der Umgebung einen ausgezeichneten Ruf erarbeitet und begeistern
                     tagtäglich unsere Kunden.
-
                     Zu unserem Kerngebiet zählen die Spenglerei, die Lackiererei wie auch das Aufbereiten von Fahrzeugen, beispielsweise nach einem Unfall.
-
                     Als zertifizierter Reparaturbetrieb nach Carrosserie Suisse-Standards erledigen unsere Mitarbeiter die Aufgaben an Ihrem Fahrzeug zuverlässig, qualitativ und mit hohem Fachwissen.
-
                     Informieren Sie sich auf unserer Webseite über unsere Dienstleistungen, kontaktieren Sie uns bei Fragen oder kommen Sie direkt bei uns vorbei.
-
                     Wir freuen uns auf Sie!
-
                 </p>
             </section>
-
 
             {showCookieBanner && (
                 <div style={{
@@ -204,8 +178,8 @@ console.log("Cookie wurde abgelehnt!");
                     textAlign: 'center'
                 }}>
                     <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.5' }}>
-                        Wir nutzen expliziet Cookies, um die Funktionsfähigkeit meiner Webseite zu gewährleisten und die Nutzung unserer Dienste zu analysieren. Weitere Informationen finden Sie in unserer Datenschutzerklärung(DSG).
-                     </p>
+                        Wir nutzen explizit Cookies, um die Funktionsfähigkeit unserer Webseite zu gewährleisten und die Nutzung unserer Dienste zu analysieren. Weitere Informationen finden Sie in unserer Datenschutzerklärung (DSG).
+                    </p>
                     <div style={{ display: 'flex', gap: '12px' }}>
                         <button
                             onClick={handleRejectCookie}
@@ -217,7 +191,6 @@ console.log("Cookie wurde abgelehnt!");
                                 cursor: 'pointer',
                                 fontSize: '14px',
                                 color: '#ffffff',
-
                             }}
                         >
                             Ablehnen
@@ -226,7 +199,7 @@ console.log("Cookie wurde abgelehnt!");
                             onClick={handleAcceptCookie}
                             style={{
                                 padding: '8px 16px',
-                                backgroundColor: '#d9534f', // Oder deine Akzentfarbe (z. B. Rot)
+                                backgroundColor: '#d9534f',
                                 color: '#ffffff',
                                 border: 'none',
                                 borderRadius: '4px',
@@ -240,9 +213,8 @@ console.log("Cookie wurde abgelehnt!");
                     </div>
                 </div>
             )}
-
         </main>
-
     );
-}  };
+}
+
 export default HomePage;

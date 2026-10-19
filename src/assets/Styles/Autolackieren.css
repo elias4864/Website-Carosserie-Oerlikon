@@ -17,7 +17,29 @@
 .highlight {
     font-family: 'Orbitron', sans-serif;
     color: #9e1b1b; /* Rotton für Links und Firmenname */
-    text-decoration: none;
+    text-decoration: underline;
+
+}
+
+
+
+h2 {
+    color: black;
+    font-weight: 700;
+    font-size: 1.9rem;
+}
+
+
+
+
+
+
+p.highlight:hover {
+    text-decoration: underline;
+    font-family: 'Orbitron', sans-serif;
+
+
+    color: #9e1b1b; /* Rotton für Links und Firmenname */
 
 }
 
