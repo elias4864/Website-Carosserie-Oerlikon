@@ -611,17 +611,45 @@ footer {
 
 }
 
-.newsletter-btn{
+.newsletter-btn {
   position: absolute;
-  color:brown;
-  border-radius: 25px;
+  width: 100%;             /* Nimmt die volle Breite ein */
+  max-width: 300px;        /* Befehlsgrenze für maximale Breite */
+  padding: 12px 20px;      /* Innenabstand für mehr Höhe und Klickfläche */
+  font-size: 1rem;
+  font-weight: bold;
+  color: brown;
   background-color: gold;
-
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
+.newsletter-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.newsletter-checkbox-wrapper input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #d90429; /* Passen Sie die Farbe an Ihre Markenfarbe an */
+}
+
+.newsletter-checkbox-wrapper label {
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #fff;
+}
 .newsletter-btn:hover {
   background-color: blue;
   text-decoration: underline;
+  transform: scale(1.02);
 }
 
 .dropdown-content {

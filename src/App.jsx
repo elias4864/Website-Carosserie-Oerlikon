@@ -11,6 +11,7 @@ import Instagram from "./assets/Instagram.jpg";
 import Linkedin from "./assets/Linkedin-logo.png";
 import Facebook from "./assets/Facebook.png";
 import Impressum from "./assets/pages/Impressum.jsx";
+import Anfrage from "./assets/pages/Anfrage.jsx";
 import Wiki from "./assets/pages/Wiki.jsx";
 import ReactGA from 'react-ga4';
 
@@ -42,6 +43,7 @@ const translations = {
         navLackierereititle:"Lackierei",
         navAutolackieren: "Auto lackieren",
         newsletterTitle: " Mein Newsletter abonnieren",
+        navKontakt2:"Kontakt aufnehmen",
         newsletterDesc: "Abonnieren Sie unseren Newsletter für aktuelle Angebote und News.",
         newsletterEmailPlaceholder: "Ihre E-Mail-Adresse",
         newsletterSubmit: "Abonnieren",
@@ -71,6 +73,7 @@ const translations = {
         navCarrosserie: "Body Shop",
         navAufbereitung: "Car Detailing",
         navAufbereitungTitle:"Processing",
+        navKontakt2: "make contact",
         navKontakt: "Contact",
         navSpenglerei: "Sheet Metal Work",
         navFahrzeugaufbereitung: "Vehicle detailing",
@@ -106,6 +109,7 @@ const translations = {
         navAufbereitung: "Preparazione auto",
         navAufbereitungTitle:"Trattamento",
         navKontakt: "Contatti",
+        navKontakt2:"make contact",
         navLackiererei: "Carrozzeria (verniciatura auto)",
         navAutolackieren: "Verniciare l'auto",
         navLackierereititle:"Reparto verniciatura",
@@ -145,6 +149,7 @@ const translations = {
         navLackiererei: "Atelier de peinture automobile",
         navLackierereititle:"atelier de peinture",
         navAutolackieren: "Peindre une voiture",
+        navKontakt2:"Prendre contact",
         navFahrzeugaufbereitung: "Préparation esthétique de véhicules",
         navAutopflege: "Entretien automobile",
         newsletterTitle: "S'abonner à la Newsletter",
@@ -316,6 +321,9 @@ function App() {
                         </div>
                     </div>
 
+
+                    <Link to="/anfrage" className="nav-link">{t.navKontakt2}</Link>
+
                     {/* Sprachauswahl Dropdown */}
                     <div className="language-selector">
                         <select
@@ -397,6 +405,7 @@ function App() {
                     <Route path="/lackiererei" element={<Lackierei lang={language} />} />
                     <Route path="/aufbereitung" element={<Aufbereitung lang={language} />} />
                     <Route path="/galerie" element={<Galerie lang={language} />} />
+                    <Route path="/anfrage" element={<Anfrage lang={language} />} />
                     <Route path="/lackieren" element={<Autolackieren lang={language} />} />
                     <Route path="/autopflege" element={<Autopflege lang={language} />} />
                     <Route path="/fahrzeugaufbereitung" element={<Fahrzeugaufbereitung lang={language} />} />
@@ -444,6 +453,18 @@ function App() {
                                     <button type="submit" className="newsletter-btn">
                                         {t.newsletterSubmit}
                                     </button>
+
+                                    <div className="newsletter-checkbox-wrapper">
+                                        <input
+                                            type="checkbox"
+                                            id="newsletter"
+                                            name="newsletter"
+                                            value="ja"
+                                        />
+                                        <label htmlFor="newsletter">
+                                            Ich möchte den Newsletter der Carrosserie Örlike jetzt abonnieren
+                                        </label>
+                                    </div>
                                 </form>
                             )}
                         </section>
