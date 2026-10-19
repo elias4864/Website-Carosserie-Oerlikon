@@ -26,8 +26,7 @@ import Galerie from "./assets/pages/Galerie.jsx";
 import Autolackieren from "./assets/pages/Autolackieren.jsx";
 import Autopflege from "./assets/pages/Autopflege.jsx";
 import Fahrzeugaufbereitung from "./assets/pages/Fahrzeugaufbereitung.jsx";
-
-
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -42,7 +41,7 @@ const translations = {
 
         navLackierereititle:"Lackierei",
         navAutolackieren: "Auto lackieren",
-        newsletterTitle: " Mein Newsletter abonnieren",
+        newsletterTitle: " Unser Newsletter abonnieren",
         navKontakt2:"Kontakt aufnehmen",
         newsletterDesc: "Abonnieren Sie unseren Newsletter für aktuelle Angebote und News.",
         newsletterEmailPlaceholder: "Ihre E-Mail-Adresse",
@@ -83,7 +82,7 @@ const translations = {
         navLackiererei: "Auto Body and Paint Shop",
         navAutolackieren: "Car painting",
         navLackierereititle:"paint shop",
-        newsletterTitle: "Subscribe to Newsletter",
+        newsletterTitle: "Subscribe to our Newsletter",
         newsletterDesc: "Subscribe to our newsletter for the latest offers and news.",
         newsletterEmailPlaceholder: "Your email address",
         newsletterSubmit: "Subscribe",
@@ -113,7 +112,7 @@ const translations = {
         navLackiererei: "Carrozzeria (verniciatura auto)",
         navAutolackieren: "Verniciare l'auto",
         navLackierereititle:"Reparto verniciatura",
-        newsletterTitle: "Iscriviti alla Newsletter",
+        newsletterTitle: "Iscriviti alla nostro Newsletter",
         newsletterDesc: "Iscriviti alla nostra newsletter per ricevere le ultime offerte e novità.",
         newsletterEmailPlaceholder: "Il tuo indirizzo e-mail",
         newsletterSubmit: "Iscriviti",
@@ -152,7 +151,7 @@ const translations = {
         navKontakt2:"Prendre contact",
         navFahrzeugaufbereitung: "Préparation esthétique de véhicules",
         navAutopflege: "Entretien automobile",
-        newsletterTitle: "S'abonner à la Newsletter",
+        newsletterTitle: "S'abonner à notre Newsletter",
         newsletterDesc: "Abonnez-vous à notre newsletter pour recevoir nos dernières offres et actualités.",
         newsletterEmailPlaceholder: "Votre adresse e-mail",
         newsletterSubmit: "S'abonner",
@@ -193,6 +192,24 @@ function App() {
     const[newsletterSubmitted, setNewsletterSubmitted] = useState();
     const[newsletterEmail, setNewsletterEmail] = useState();
 
+    const navigate=useNavigate();
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log('You clicked submit.');
+        alert("Du hat erfolgreich die Anfrage gesendet!");
+        navigate('/anfrage');
+    }
+
+
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value,
+        }));
+    };
     useEffect(() => {
         const isLocalhost = Boolean(
             window.location.hostname === 'localhost' ||
@@ -450,7 +467,7 @@ function App() {
 
                                         className="newsletter-input"
                                     />
-                                    <button type="submit" className="newsletter-btn">
+                                    <button  onClick={handleSubmit} type="submit" className="newsletter-btn">
                                         {t.newsletterSubmit}
                                     </button>
 
@@ -460,6 +477,7 @@ function App() {
                                             id="newsletter"
                                             name="newsletter"
                                             value="ja"
+                                            onChange={handleChange}
                                         />
                                         <label htmlFor="newsletter">
                                             Ich möchte den Newsletter der Carrosserie Örlike jetzt abonnieren
