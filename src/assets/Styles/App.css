@@ -608,6 +608,20 @@ footer {
 .dropdown {
   position: relative;
   display: inline-block;
+
+}
+
+.newsletter-btn{
+  position: absolute;
+  color:brown;
+  border-radius: 25px;
+  background-color: gold;
+
+}
+
+.newsletter-btn:hover {
+  background-color: blue;
+  text-decoration: underline;
 }
 
 .dropdown-content {
@@ -629,8 +643,8 @@ footer {
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
-  color: #a81c1c;
+  background-color: grey;
+  color: black;
 }
 
 .dropdown:hover .dropdown-content {

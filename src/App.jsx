@@ -26,16 +26,26 @@ import Autolackieren from "./assets/pages/Autolackieren.jsx";
 import Autopflege from "./assets/pages/Autopflege.jsx";
 import Fahrzeugaufbereitung from "./assets/pages/Fahrzeugaufbereitung.jsx";
 
+
+
+
+
 const translations = {
     de: {
         navHome: "Home",
         navCarrosserie: "Carrosserie",
         navAufbereitung: "Autoaufbereitung",
+        navAufbereitungTitle:"Aufbereitung",
         navKontakt: "Kontakt",
         navLackierei: "Autolackiererei",
 
         navLackierereititle:"Lackierei",
         navAutolackieren: "Auto lackieren",
+        newsletterTitle: " Mein Newsletter abonnieren",
+        newsletterDesc: "Abonnieren Sie unseren Newsletter für aktuelle Angebote und News.",
+        newsletterEmailPlaceholder: "Ihre E-Mail-Adresse",
+        newsletterSubmit: "Abonnieren",
+        newsletterSuccess: "Vielen Dank für Ihre Anmeldung!",
         navSpenglerei: "Spenglerei",
         navGalerie: "Galerie",
         navSpengler: "Spengler",
@@ -60,6 +70,7 @@ const translations = {
         navHome: "Home",
         navCarrosserie: "Body Shop",
         navAufbereitung: "Car Detailing",
+        navAufbereitungTitle:"Processing",
         navKontakt: "Contact",
         navSpenglerei: "Sheet Metal Work",
         navFahrzeugaufbereitung: "Vehicle detailing",
@@ -69,6 +80,11 @@ const translations = {
         navLackiererei: "Auto Body and Paint Shop",
         navAutolackieren: "Car painting",
         navLackierereititle:"paint shop",
+        newsletterTitle: "Subscribe to Newsletter",
+        newsletterDesc: "Subscribe to our newsletter for the latest offers and news.",
+        newsletterEmailPlaceholder: "Your email address",
+        newsletterSubmit: "Subscribe",
+        newsletterSuccess: "Thank you for subscribing!",
         navGalerie: "Gallery",
         phoneLabel: "Phone:",
         callBtn: "Call now",
@@ -88,10 +104,16 @@ const translations = {
         navHome: "Home",
         navCarrosserie: "Carrozzeria",
         navAufbereitung: "Preparazione auto",
+        navAufbereitungTitle:"Trattamento",
         navKontakt: "Contatti",
         navLackiererei: "Carrozzeria (verniciatura auto)",
         navAutolackieren: "Verniciare l'auto",
         navLackierereititle:"Reparto verniciatura",
+        newsletterTitle: "Iscriviti alla Newsletter",
+        newsletterDesc: "Iscriviti alla nostra newsletter per ricevere le ultime offerte e novità.",
+        newsletterEmailPlaceholder: "Il tuo indirizzo e-mail",
+        newsletterSubmit: "Iscriviti",
+        newsletterSuccess: "Grazie per l'iscrizione!",
 
         navAutopflege: "Cura dell'auto",
         navSpenglerei: "Lattoneria",
@@ -110,12 +132,14 @@ const translations = {
         companyOwners: "Duje Antonina / Michael Nufer",
         companyAddress: "Fabrikstrasse 17, 8102 Oberengstringen",
         metaTitle: "Carrozzeria Örlike TL AG | Carrozzeria e Verniciatura Oberengstringen",
-        metaDesc: "Servizi professionali di carrozzeria, verniciatura, lattoneria e preparazione auto a Oberengstringen / Zurigo."
+        metaDesc: "Servizi professionali di carrozzeria, verniciatura, lattoneria e preparazione auto a Oberengstringen / Zurigo.",
+
     },
     fr: {
         navHome: "Accueil",
         navCarrosserie: "Carrosserie",
         navAufbereitung: "Préparation automobile",
+        navAufbereitungTitle:"Traitement",
         navKontakt: "Contact",
         navGalerie: "Galerie",
         navLackiererei: "Atelier de peinture automobile",
@@ -123,6 +147,11 @@ const translations = {
         navAutolackieren: "Peindre une voiture",
         navFahrzeugaufbereitung: "Préparation esthétique de véhicules",
         navAutopflege: "Entretien automobile",
+        newsletterTitle: "S'abonner à la Newsletter",
+        newsletterDesc: "Abonnez-vous à notre newsletter pour recevoir nos dernières offres et actualités.",
+        newsletterEmailPlaceholder: "Votre adresse e-mail",
+        newsletterSubmit: "S'abonner",
+        newsletterSuccess: "Merci für votre inscription!",
         navSpenglerei: "Zinguerie",
         navSpengler: "Spengler",
         modalTitle: "Contactez-nous dès maintenant",
@@ -155,6 +184,9 @@ function AnalyticsTracker() {
 function App() {
     const [language, setLanguage] = useState("de");
     const [showPhoneModal, setShowPhoneModal] = useState(false);
+    const [handleNewsletterSubmit,setHandleNewsletterSubmit] = useState();
+    const[newsletterSubmitted, setNewsletterSubmitted] = useState();
+    const[newsletterEmail, setNewsletterEmail] = useState();
 
     useEffect(() => {
         const isLocalhost = Boolean(
@@ -267,7 +299,7 @@ function App() {
 
                     {/* Dropdown für Aufbereitung */}
                     <div className="dropdown">
-                        <span className="nav-link">{t.navAufbereitung} ▾</span>
+                        <span className="nav-link">{t.navAufbereitungTitle} ▾</span>
                         <div className="dropdown-content">
                             <Link to="/aufbereitung">{t.navAufbereitung}</Link>
                             <Link to="/autopflege">{t.navAutopflege}</Link>
@@ -392,6 +424,28 @@ function App() {
                             <h3>{t.hoursTitle}</h3>
                             <p>{t.hoursWeek}</p>
                             <p>{t.hoursFri}</p>
+                        </section>
+                        <section className="footer-col newsletter-section">
+                            <h3>{t.newsletterTitle}</h3>
+                            <p>{t.newsletterDesc}</p>
+                            {newsletterSubmitted ? (
+                                <p className="newsletter-success">{t.newsletterSuccess}</p>
+                            ) : (
+                                <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
+                                    <input
+                                        type="email"
+                                        placeholder={t.newsletterEmailPlaceholder}
+                                        value={newsletterEmail}
+                                        onChange={(e) => setNewsletterEmail(e.target.value)}
+                                        required
+
+                                        className="newsletter-input"
+                                    />
+                                    <button type="submit" className="newsletter-btn">
+                                        {t.newsletterSubmit}
+                                    </button>
+                                </form>
+                            )}
                         </section>
                     </div>
 

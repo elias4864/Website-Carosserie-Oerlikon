@@ -7,7 +7,7 @@ import autoaufbereitung from "../Autoaufberiten.jpg";
 function Fahrzeugaufbereitung({lang}){
     return (
         <div className="fahrzeug-container">
-            <img src={Fahrzeugaufbereitungbild} />
+            <img src={Fahrzeugaufbereitungbild} className="fahrzeug-img" />
 
 
 
