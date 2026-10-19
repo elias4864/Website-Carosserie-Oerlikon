@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Code auschecken
         uses: actions/checkout@v4
@@ -18,12 +17,11 @@ jobs:
         with:
           node-version: 22
           cache: 'npm'
-          cache-dependency-path: './mein-react-template/package-lock.json'
+          cache-dependency-path: 'package-lock.json'
 
       - name: Frontend Dependencies installieren & Build testen
         run: |
-          cd mein-react-template
-          npm ci
+          npm install --legacy-peer-deps
           npm run build
 
       - name: Set up Docker Buildx
