@@ -1,23 +1,27 @@
 /* Container für vertikale Anordnung */
 .galerie-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Ordnet die Bilder untereinander an */
     gap: 20px;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    /* Abstand zwischen den Bildern */
+    align-items: center;    /* Zentriert die Bilder waagerecht */
     padding: 20px;
 }
 
 /* Basis-Style für die Bilder mit Rahmen */
 .galerie-container img {
     max-width: 100%;
-    width: 600px;
-    height: auto;
+    width: 350px;            /* Kleinere feste Breite, damit mehrere Bilder nebeneinander passen */
+    height: 240px;           /* Feste Höhe für einheitliche Bildkacheln */
+    object-fit: cover;       /* Schneidet die Bilder sauber zu, damit sie nicht verzerrt werden */
     border-radius: 20px;
     background-color: white;
     padding: 6px;
     border: 4px solid white;
     box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -25,7 +29,7 @@
 .fade-in-element {
     opacity: 0;
     transform: translateY(30px); /* Startet 30px weiter unten */
-    animation: swipeIn 0.8s ease-out forwards;
+    animation: swipeIn 0.9s ease-out forwards;
 }
 
 /* Keyframes für den Wischeffekt */

@@ -10,6 +10,8 @@ import Hellblau from "../Hellblau.jpg";
 import Rotesauto  from "../Rotesauto.jpg";
 import Rot   from "../Rotes.jpg";
 import "../Styles/Galerie.css";
+import Kaputt2  from "../Kaputt2.jpg";
+import Kaputt from "../Kaputtesauto.jpg";
 function Galeriepage({ lang }) {
     const images = [
         { src: Rotvorne, alt: "Carosserie" },
@@ -23,7 +25,10 @@ function Galeriepage({ lang }) {
         { src: Blauhinten, alt:"Blauhinten" },
         {src:Rotesauto, alt:"Rotesauto" },
         { src: Blauhinten, alt:"Blau"},
-        { src: Rot, alt: "Rot"}
+        { src: Rot, alt: "Rot"},
+        { src: Blauhinten, alt:"Blauhinten" },
+        {src:Kaputt, alt: "Kaputt" },
+        {src:Kaputt2, alt: "Kaputt" },
     ];
 
     return (
