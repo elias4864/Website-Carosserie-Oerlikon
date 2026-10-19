@@ -4,8 +4,7 @@ import "../Styles/Autolackieren.css";
 
 function Autolackieren() {
     return (
-        <div className="Background-Intro">
-            <div className="galerie-container">
+            <main className="galerie-container">
                 <img src={Lackieren} alt="Autolackieren" className="lackieren"/>
 
                 <section className="border-welcome">
@@ -40,8 +39,8 @@ function Autolackieren() {
                         </span>.
                     </p>
                 </section>
-            </div>
-        </div>
+            </main>
+
     );
 }
 

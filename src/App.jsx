@@ -45,7 +45,7 @@ const translations = {
         navGalerie: "Galerie",
         navSpengler: "Spengler",
         navAutopflege:"Autopflege",
-        navFahrzeugaufbereitung:"Fahrzeugaufberitung",
+        navFahrzeugaufbereitung:"Fahrzeugaufbereitung",
         modalTitle: "Nehmen Sie jetzt Kontakt mit uns auf",
         phoneLabel: "Telefon:",
         callBtn: "Jetzt anrufen",

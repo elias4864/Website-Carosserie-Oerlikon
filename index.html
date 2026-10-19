@@ -36,8 +36,8 @@
       } else if (path.includes('/aufbereitung')) {
         title = "Fahrzeugaufbereitung – Carrosserie Örlike TL AG";
         description = "Professionelle Auto-Aufbereitung, Politur und Innenraumreinigung in Zürich. Ihr Fahrzeug im Neuwagen-Glanz.";
-      } else if (path.includes('/carosserie')) {
-        title = "Unfallreparatur – Carrosserie Örlike TL AG";
+      } else if (path.includes('/reparatur')) {
+        title = "Reparatur – Carrosserie Örlike TL AG";
         description = "Fachgerechte Instandsetzung nach Unfallschäden samt kompletter Abwicklung mit Ihrer Versicherung.";
       } else if (path.includes('/kontakt')) {
         title = "Kontakt & Anfahrt – Carrosserie Örlike TL AG";
@@ -58,6 +58,15 @@
         title = "Autolackieren- Carosserie Örlike TL AG";
         description="Autolackieren bei der Carosserie Örlike TL AG";
 
+      }
+
+      else if(path.includes('/autopflege')){
+        title= "Autopflege- Carosserie Örlike TL AG";
+        description= "Autopflege bei der Carosserie Örlike TL AG";
+      }
+
+      else if(path.includes('/fahrzeug')) {
+        title= "Fahrzeugaufbereitung- Carosserie Örlike TL AG";
       }
       // 1. Titel aktualisieren
       document.title = title;

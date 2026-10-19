@@ -6,7 +6,6 @@
     gap: 35px; /* Abstand zwischen den einzelnen <section>-Blöcken */
     max-width: 900px;
     margin: 0 auto;
-    background-image: url("../Fahzeugaufbereitung.jpg");
     padding: 20px;
     line-height: 1.6;
     color: black;
@@ -73,7 +72,7 @@
 @media (max-width: 768px) {
     /* Kleinere Hauptüberschriften für Mobilgeräte */
     .content-section h2, h2 {
-        font-size: 1.25rem; /* Reduziert von 1.6rem */
+        font-size: 1.2rem; /* Reduziert von 1.6rem */
         padding-bottom: 8px;
         margin-bottom: 12px;
     }
@@ -98,4 +97,10 @@ h2 {
     color: black;
     font-weight: 700;
     font-size: 1.9rem;
+}
+
+
+
+p{
+    font-size: 1.4em;
 }
