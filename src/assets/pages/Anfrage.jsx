@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import '../Styles/Anfrage.css';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Team from '../Team.jpg';
+
 export default function Anfrage() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        phone:'',
+        phone: '',
         message: '',
         newsletter: false,
-        privacybanner:''
+        privacyPolicy: false
     });
+
     const [status, setStatus] = useState('idle'); // idle, loading, success, error
+    const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -19,43 +23,89 @@ export default function Anfrage() {
             ...prev,
             [name]: type === 'checkbox' ? checked : value,
         }));
+
+        if (errors[name]) {
+            setErrors({ ...errors, [name]: '' });
+        }
     };
 
+    const validateForm = () => {
+        let newErrors = {};
 
-    const navigate = useNavigate();
+        if (!formData.name.trim() || formData.name.trim().length < 2) {
+            newErrors.name = 'Bitte geben Sie einen gültigen Namen ein.';
+        }
+
+        if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
+            newErrors.email = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+        }
+
+        if (!formData.phone.trim()) {
+            newErrors.phone = 'Bitte geben Sie zuerst Ihre Telefonnummer ein.';
+        }
+
+        if (!formData.message.trim()) {
+            newErrors.message = 'Bitte tragen Sie Ihre Nachricht ein.';
+        }
+
+        if (!formData.privacyPolicy) {
+            newErrors.privacyPolicy = 'Sie müssen den Datenschutzrichtlinien  zuerst zustimmen.';
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validateForm()) {
+            alert("Bitte füllen Sie alle notwendigen  Pflichtfelder korrekt aus.");
+            return;
+        }
+
         setStatus('loading');
-        navigate('/anfrage');
-
-
-
 
         try {
-            // Hier API-Aufruf einfügen (z.B. fetch('/api/contact', ...))
-            await new Promise((resolve) => setTimeout(resolve, 1500)); // Simulation
+            // Simulation oder echter API-Call (z.B. EmailJS)
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+
             setStatus('success');
-            alert("Nachricht erfolgreich abgeschickt");
-            setFormData({ name: '', email: '', message: '', newsletter: false ,phone: ''}); // Formular zurücksetzen
+            alert("Nachricht erfolgreich abgeschickt!");
+
+            // Formular zurücksetzen
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                message: '',
+                newsletter: false,
+                privacyPolicy: false
+            });
+            setErrors({});
+
+            // Nach Erfolg navigieren
+            navigate('/anfrage');
+
         } catch (error) {
             setStatus('error');
-            console.log(error);
-            alert("401 Error Nachricht wurde nicht abgeschickt bite erneut versuchen");
+            console.error(error);
+            alert("Fehler beim Senden. Bitte versuchen Sie es später erneut.");
         }
     };
 
     return (
         <div className="max-w-md mx-auto my-10 p-6 bg-white rounded-lg shadow-md border border-gray-200">
-            <h2 className="text-2xl font-bold mb-6 text-gray-800">Kontakt mit der Carosserie Örlike aufnehmen</h2>
+            <h2 className="text-2xl font-bold mb-2 text-gray-800">Kontakt mit der Carrosserie Örlike aufnehmen</h2>
 
-            <p className="text-sm text-gray-600 mb-6">
-                <span><b>Unser Team untestützt Sie gerne bei Fragen</b><img className="team-img" src={Team}/></span>
-            </p>
+            <div className="text-sm text-gray-600 mb-6 flex flex-col gap-2">
+                <span><b>Unser Team unterstützt Sie gerne bei Fragen:</b></span>
+                <img className="team-img rounded-md shadow-sm w-full h-auto object-cover" src={Team} alt="Team Carrosserie Örlike" />
+            </div>
 
             {status === 'success' && (
-                <div className="text-box" role="alert">
-                    Vielen Dank! Ihre Nachricht wurde erfolgreich an unser Team  gesendet.
+                <div className="mb-4 p-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
+                    Vielen Dank! Ihre Nachricht wurde erfolgreich an unser Team gesendet.
                 </div>
             )}
 
@@ -68,73 +118,67 @@ export default function Anfrage() {
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                        Name:
+                        Name: *
                     </label>
                     <input
                         type="text"
                         id="name"
                         name="name"
-                        required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Elias"
                     />
+                    {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                 </div>
 
                 <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                        E-Mail-Adresse:
+                        E-Mail-Adresse: *
                     </label>
                     <input
                         type="email"
                         id="email"
                         name="email"
-                        required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="name@beispiel.ch"
                     />
-                </div>
-
-
-                <div>
-                </div>
-
-                <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                        Nachricht
-                    </label>
-                    <textarea
-                        id="message"
-                        name="message"
-                        rows="4"
-                        required
-                        title="Thema"
-                        value={formData.message}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Wie können wir Ihnen heute  behilflich  sein ?"
-                    />
+                    {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                 </div>
 
                 <div>
                     <label htmlFor="tel" className="block text-sm font-medium text-gray-700 mb-1">
-                        Telefonnummer:
+                        Telefonnummer: *
                     </label>
                     <input
                         type="tel"
                         id="tel"
                         name="phone"
-                        required
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="+41 79 123 45 67"
                     />
+                    {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                 </div>
 
+                <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                        Nachricht: *
+                    </label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="4"
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Wie können wir Ihnen heute behilflich sein?"
+                    />
+                    {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
+                </div>
 
                 {/* Newsletter Checkbox */}
                 <div className="flex items-start">
@@ -150,31 +194,35 @@ export default function Anfrage() {
                     </div>
                     <div className="ml-3 text-sm">
                         <label htmlFor="newsletter" className="font-medium text-gray-700 cursor-pointer select-none">
-                                Ich möchte den Newsletter der Carrosserie Örlike abonnieren
+                            Ich möchte den Newsletter der Carrosserie Örlike abonnieren
                         </label>
                     </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Datenschutz Checkbox */}
+                <div className="flex items-start">
                     <div className="flex items-center h-5">
-
-
-                        <input type="checkbox" id="textbox"
-                               name="privacyPolicy"
-                               required
-                               value={formData.privacybanner}
-                               onChange={handleChange}
-                               className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 cursor-pointer text-center"/>
-                            Ich stimme den Datenschutzrichtlinien der Carosserie Örlike  zu
-
+                        <input
+                            type="checkbox"
+                            id="privacyPolicy"
+                            name="privacyPolicy"
+                            checked={formData.privacyPolicy}
+                            onChange={handleChange}
+                            className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 cursor-pointer"
+                        />
                     </div>
-                </form>
+                    <div className="ml-3 text-sm">
+                        <label htmlFor="privacyPolicy" className="font-medium text-gray-700 cursor-pointer select-none">
+                            Ich stimme den Datenschutzrichtlinien der Carrosserie Örlike zu *
+                        </label>
+                        {errors.privacyPolicy && <p className="text-red-500 text-xs mt-1">{errors.privacyPolicy}</p>}
+                    </div>
+                </div>
 
                 <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="submit-btn"
-                    onClick={handleSubmit}
+                    className="submit-btn w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition"
                 >
                     {status === 'loading' ? 'Wird gesendet...' : 'Anfrage absenden'}
                 </button>

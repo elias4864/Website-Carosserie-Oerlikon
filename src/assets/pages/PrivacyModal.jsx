@@ -84,8 +84,8 @@ export default function PrivacyModal({ lang }) {
 
             setTimeout(() => {
                 setIsOpen(false);
-                navigate('/anfrage');
-            }, 1500);
+                navigate('/home');
+            }, 2000);
         } catch (error) {
             setStatus('error');
             console.error(error);
@@ -170,7 +170,7 @@ export default function PrivacyModal({ lang }) {
 
                             {status === 'success' && (
                                 <p style={{ color: 'green', marginTop: '10px' }}>
-                                    ✓ Bestätigt! Weiterleitung...
+                                    ✓ Bestätigt! Weiterleitung zum Home Verzeichnis...
                                 </p>
                             )}
 
