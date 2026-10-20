@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 // 'motion/react' ab Version 12+
 
-export default function PrivacyModal() {
+export default function PrivacyModal({lang}) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -16,7 +16,7 @@ export default function PrivacyModal() {
                 onClick={() => setIsOpen(true)}
                 style={{ padding: '10px 20px', cursor: 'pointer' }}
             >
-                Datenschutzerklärung   sofort  öffnen
+                Datenschutzerklärung   jetzt  sofort  öffnen
             </button>
 
             <AnimatePresence>

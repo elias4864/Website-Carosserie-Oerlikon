@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import { Link, Routes, Route, useLocation } from "react-router-dom";
 
+
 import Home from "./assets/pages/Home.jsx";
 import Carosserie from "./assets/pages/Carosserie.jsx";
 import Aufbereitung from "./assets/pages/Aufbereitung.jsx";
@@ -212,6 +213,12 @@ function App() {
     const[newsletterEmail, setNewsletterEmail] = useState();
     const form =useRef();
 
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
 
 
 
@@ -545,7 +552,7 @@ function App() {
                             Copyright &copy; {new Date().getFullYear()} oerlike.ch |{" "}
                             <Link to="/impressum" className="hover">Impressum</Link> |{" "}
                             <Link to="/wiki" className="hover">{t.wikiText}</Link> |{""}
-                            <Link to="/datenschutzerklärung" className="hover">{t.navDatenschutzerklärung}Datenschutzerklärung</Link>|{""}
+                            <Link to="/datenschutzerklärung" className="hover">{t.navDatenschutzerklärung}</Link>|{""}
 
                         </p>
 
