@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../Styles/Anfrage.css';
 import {useNavigate} from "react-router-dom";
+import Team from '../Team.jpg';
 export default function Anfrage() {
     const [formData, setFormData] = useState({
         name: '',
@@ -19,13 +20,16 @@ export default function Anfrage() {
         }));
     };
 
+
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('loading');
         navigate('/anfrage');
 
 
-        const navigate = useNavigate();
+
 
         try {
             // Hier API-Aufruf einfügen (z.B. fetch('/api/contact', ...))
@@ -36,12 +40,17 @@ export default function Anfrage() {
         } catch (error) {
             setStatus('error');
             console.log(error);
+            alert("401 Error Nachricht wurde nicht abgeschickt bite erneut versuchen");
         }
     };
 
     return (
         <div className="max-w-md mx-auto my-10 p-6 bg-white rounded-lg shadow-md border border-gray-200">
             <h2 className="text-2xl font-bold mb-6 text-gray-800">Kontakt mit der Carosserie Örlike aufnehmen</h2>
+
+            <p className="text-sm text-gray-600 mb-6">
+                <span><b>Unser Team untestützt Sie gerne bei Fragen</b><img className="team-img" src={Team}/></span>
+            </p>
 
             {status === 'success' && (
                 <div className="text-box" role="alert">

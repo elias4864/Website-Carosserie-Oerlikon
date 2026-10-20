@@ -1,40 +1,77 @@
-.submit-btn{
-    color:orangered;
-    background-color: greenyellow;
-}
-
-.submit-btn:hover{
-    background-color: orangered;
-    color:blue;
-
-}
-
-
-.text-box{
-    background-color: orangered;
-    color:gold;
+/* Button Styling */
+.submit-btn {
+    color: #ffffff;
+    background-color: #e63946;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 
-/* Status Banner Styles */
+.team-img{
+    height:200px;
+    display: flex;
+    justify-content: center;
+    background-repeat: no-repeat;
+    width: 100vw;                 /* Nutzt die volle Bildschirmbreite */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-height: 400px;
+}
+.submit-btn:hover {
+    background-color: #d62828;
+    transform: translateY(-1px);
+}
+
+/* Keyframes für Fade-Up Animation */
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    animation: fade-up 0.4s ease-out forwards;
+}
+
+/* Status Banners / Text-Boxen */
 .status-banner {
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: fade-up 0.4s ease-out forwards;
 }
 
-.success-banner {
+.status-banner.success {
     background-color: #d1fae5;
     color: #065f46;
+    border: 1px solid #a7f3d0;
 }
 
-.error-banner {
+.status-banner.error {
     background-color: #fee2e2;
     color: #991b1b;
+    border: 1px solid #fca5a5;
 }
 
-/* Animierte Newsletter-Bestätigung */
+/* Animierte Newsletter / Success Box */
 .newsletter-success-box {
     display: flex;
     align-items: center;
@@ -66,7 +103,7 @@
     stroke: #ffffff;
 }
 
-/* Keyframes für Einblendung und Icon-Pop */
+/* Keyframes für Newsletter Pop & Slide */
 @keyframes slideDownFade {
     0% {
         opacity: 0;

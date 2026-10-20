@@ -553,6 +553,7 @@ function App() {
                             <Link to="/impressum" className="hover">Impressum</Link> |{" "}
                             <Link to="/wiki" className="hover">{t.wikiText}</Link> |{""}
                             <Link to="/datenschutzerklärung" className="hover">{t.navDatenschutzerklärung}</Link>|{""}
+                            <Link to="/privacymodal" className="hover">{t.navPrivacyPolicy}</Link>
 
                         </p>
 
