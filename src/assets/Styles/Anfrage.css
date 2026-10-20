@@ -30,6 +30,17 @@
     transform: translateY(-1px);
 }
 
+
+.anfrage-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+
+
+}
+
 /* Keyframes für Fade-Up Animation */
 @keyframes fade-up {
     from {

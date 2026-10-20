@@ -44,6 +44,7 @@ const translations = {
         navAufbereitungTitle:"Aufbereitung",
         navKontakt: "Kontakt",
         navLackierei: "Autolackiererei",
+        navAnfrage: "Anfrage",
 
         navLackierereititle:"Lackierei",
         navDatenschutzerklärung: "Datenschutzerklärung",
@@ -83,6 +84,7 @@ const translations = {
         navAufbereitung: "Car Detailing",
         navAufbereitungTitle:"Processing",
         navDatenschutzerklärung: "Privacy Policy",
+        navAnfrage: "Inquiry",
         wikiText:"Wiki",
 
         navKontakt2: "make contact",
@@ -125,6 +127,7 @@ const translations = {
         navDatenschutzerklärung:"Informativa sulla privacy",
         navPrivacyPolicy:"Informativa sulla privacy",
         wikiText:"Wiki",
+        navAnfrage: "Richiesta",
         navKontakt2:"make contact",
         navLackierei: "Carrozzeria (verniciatura auto)",
         navAutolackieren: "Verniciare l'auto",
@@ -163,6 +166,7 @@ const translations = {
         navKontakt: "Contact",
         navGalerie: "Galerie",
         wikiText: "Wiki",
+        navAnfrage: "Demande",
         navLackierei: "Atelier de peinture automobile",
         navDatenschutzerklärung:"Déclaration de protection des données",
         navPrivacyPolicy:"Déclaration de protection des données",
@@ -393,7 +397,7 @@ function App() {
                     </div>
 
 
-                    <Link to="/anfrage" className="nav-link">{t.navKontakt2}</Link>
+                    <Link to="/anfrage" className="nav-link">{t.navAnfrage}</Link>
 
                     {/* Sprachauswahl Dropdown */}
                     <div className="language-selector">

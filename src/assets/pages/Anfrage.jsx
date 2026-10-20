@@ -3,7 +3,7 @@ import '../Styles/Anfrage.css';
 import { useNavigate } from "react-router-dom";
 import Team from '../Team.jpg';
 
-export default function Anfrage() {
+export default function Anfrage({lang}) {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -115,7 +115,7 @@ export default function Anfrage() {
                 </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="anfrage-box">
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                         Name: *
@@ -219,12 +219,13 @@ export default function Anfrage() {
                     </div>
                 </div>
 
+
                 <button
                     type="submit"
                     disabled={status === 'loading'}
                     className="submit-btn w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition"
                 >
-                    {status === 'loading' ? 'Wird gesendet...' : 'Anfrage absenden'}
+                    {status === 'loading' ? 'Wird gesendet...' : 'Anfrage absenden ➡'}
                 </button>
             </form>
         </div>
