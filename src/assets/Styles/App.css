@@ -205,10 +205,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #ffffff;
+  background-color: #1ae4e4;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
   position: sticky;
+
   top: 0;
   z-index: 1000;
 }

@@ -1,0 +1,20 @@
+.chatbot-wrapper{
+    position: relative;
+    width: 100%;
+}
+
+.text{
+    text-shadow: 2px 2px green;
+    color:orangered;
+}
+.btn-send{
+    text-shadow: 2px 2px green;
+    color:gold;
+    background-color: brown;
+}
+
+.btn-send:hover{
+    text-shadow: 2px 2px green;
+    text-decoration: underline;
+
+}

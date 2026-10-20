@@ -4,9 +4,24 @@ import Teams from '../Teams.jpg';
 import '../Styles/Home.css';
 import '../Styles/App.css';
 import React, { useState, useEffect } from "react";
+import {useCookies} from 'react-cookie';
 
 function HomePage({ lang }) {
     const [showCookieBanner, setShowCookieBanner] = useState(false);
+
+    const [cookies, setCookie, removeCookie] = useCookies(['theme']);
+
+    const toggleTheme = () => {
+        const nextTheme = cookies.theme === 'dark' ? 'light' : 'dark';
+
+        // Optimierung: Setzen Sie immer ein konkretes Ablaufdatum (Max-Age oder Expires)
+        setCookie('theme', nextTheme, {
+            path: '/',
+            maxAge: 31536000, // 1 Jahr in Sekunden (verhindert unendliche Session-Leichen)
+            sameSite: 'lax',
+            secure: process.env.NODE_ENV === 'production' // Nur via HTTPS in Prod
+        });
+    };
 
     /**
      * Cookies für DSGVO & IntersectionObserver
@@ -49,6 +64,11 @@ function HomePage({ lang }) {
         alert("Cookie wurde abgelehnt!");
         console.log("Cookie wurde abgelehnt!");
     };
+
+
+
+
+
 
     return (
         <main className="Background-Intro">
@@ -209,6 +229,12 @@ function HomePage({ lang }) {
                             }}
                         >
                             Akzeptieren
+                        </button>
+
+
+
+                        <button onClick={toggleTheme}>
+                            Aktueller Modus: {cookies.theme|| 'light'}
                         </button>
                     </div>
                 </div>

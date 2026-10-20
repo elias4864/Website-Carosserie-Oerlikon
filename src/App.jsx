@@ -8,12 +8,14 @@ import Aufbereitung from "./assets/pages/Aufbereitung.jsx";
 import Spenglerarbeiten from "./assets/pages/Spenglerarbeiten.jsx";
 import './assets/Styles/Home.css';
 import './assets/Styles/App.css';
+import Chatbot from "./assets/pages/Chatbot.jsx";
 import Instagram from "./assets/Instagram.jpg";
 import Linkedin from "./assets/Linkedin-logo.png";
 import Facebook from "./assets/Facebook.png";
 import Impressum from "./assets/pages/Impressum.jsx";
 import Anfrage from "./assets/pages/Anfrage.jsx";
 import Wiki from "./assets/pages/Wiki.jsx";
+
 import emailjs from '@emailjs/browser';
 import Datenschutzerklärung from './assets/pages/Datenschutzerklärung.jsx';
 import PrivacyPolicy from "./assets/pages/PrivacyModal.jsx";
@@ -45,6 +47,7 @@ const translations = {
         navKontakt: "Kontakt",
         navLackierei: "Autolackiererei",
         navAnfrage: "Anfrage",
+        navChatbot: "Chatbot",
 
         navLackierereititle:"Lackierei",
         navDatenschutzerklärung: "Datenschutzerklärung",
@@ -86,6 +89,7 @@ const translations = {
         navDatenschutzerklärung: "Privacy Policy",
         navAnfrage: "Inquiry",
         wikiText:"Wiki",
+        navChatbot: "AI chatbot",
 
         navKontakt2: "make contact",
         navKontakt: "Contact",
@@ -127,6 +131,7 @@ const translations = {
         navDatenschutzerklärung:"Informativa sulla privacy",
         navPrivacyPolicy:"Informativa sulla privacy",
         wikiText:"Wiki",
+        navChatbot:"sull'IA",
         navAnfrage: "Richiesta",
         navKontakt2:"make contact",
         navLackierei: "Carrozzeria (verniciatura auto)",
@@ -167,6 +172,7 @@ const translations = {
         navGalerie: "Galerie",
         wikiText: "Wiki",
         navAnfrage: "Demande",
+        navChatbot: "Chatbot IA",
         navLackierei: "Atelier de peinture automobile",
         navDatenschutzerklärung:"Déclaration de protection des données",
         navPrivacyPolicy:"Déclaration de protection des données",
@@ -216,6 +222,9 @@ function App() {
     const[newsletterSubmitted, setNewsletterSubmitted] = useState();
     const[newsletterEmail, setNewsletterEmail] = useState();
     const form =useRef();
+    const messagesListRef = React.createRef();
+    const [messageInput, setMessageInput] = useState("");
+    const [messages, setMessages] = useState([]);
 
 
     const [isOpen, setIsOpen] = useState(false);
@@ -398,6 +407,7 @@ function App() {
 
 
                     <Link to="/anfrage" className="nav-link">{t.navAnfrage}</Link>
+                    <Link to="/chatbot" className="nav-link">{t.navChatbot}</Link>
 
                     {/* Sprachauswahl Dropdown */}
                     <div className="language-selector">
@@ -486,6 +496,7 @@ function App() {
                     <Route path="/fahrzeugaufbereitung" element={<Fahrzeugaufbereitung lang={language} />} />
                     <Route path="/datenschutzerklärung" element={<Datenschutzerklärung lang={language} />} />
                     <Route path="/privacymodal" element={<PrivacyModal lang={language} />} />
+                    <Route path="/chatbot" element={<Chatbot lang={language} />} />
                 </Routes>
             </div>
 
