@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { Link, Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "./assets/pages/Home.jsx";
@@ -13,6 +13,10 @@ import Facebook from "./assets/Facebook.png";
 import Impressum from "./assets/pages/Impressum.jsx";
 import Anfrage from "./assets/pages/Anfrage.jsx";
 import Wiki from "./assets/pages/Wiki.jsx";
+import emailjs from '@emailjs/browser';
+import Datenschutzerklärung from './assets/pages/Datenschutzerklärung.jsx';
+import PrivacyPolicy from "./assets/pages/PrivacyModal.jsx";
+
 import ReactGA from 'react-ga4';
 
 ReactGA.initialize('G-M16XMEHY78');
@@ -27,6 +31,7 @@ import Autolackieren from "./assets/pages/Autolackieren.jsx";
 import Autopflege from "./assets/pages/Autopflege.jsx";
 import Fahrzeugaufbereitung from "./assets/pages/Fahrzeugaufbereitung.jsx";
 import {useNavigate} from "react-router-dom";
+import PrivacyModal from "./assets/pages/PrivacyModal.jsx";
 
 
 
@@ -40,6 +45,10 @@ const translations = {
         navLackierei: "Autolackiererei",
 
         navLackierereititle:"Lackierei",
+        navDatenschutzerklärung: "Datenschutzerklärung",
+        navPrivacyPolicy: "Datenschutzerklärung öffnen",
+        wikiText:"Wiki",
+
         navAutolackieren: "Auto lackieren",
         newsletterTitle: " Unser Newsletter abonnieren",
         navKontakt2:"Kontakt aufnehmen",
@@ -72,6 +81,9 @@ const translations = {
         navCarrosserie: "Body Shop",
         navAufbereitung: "Car Detailing",
         navAufbereitungTitle:"Processing",
+        navDatenschutzerklärung: "Privacy Policy",
+        wikiText:"Wiki",
+
         navKontakt2: "make contact",
         navKontakt: "Contact",
         navSpenglerei: "Sheet Metal Work",
@@ -79,7 +91,7 @@ const translations = {
         navAutopflege: "Car Care",
         navSpengler: "Spengler",
         modalTitle: "Get in touch with us now",
-        navLackiererei: "Auto Body and Paint Shop",
+        navLackierei: "Auto Body and Paint Shop",
         navAutolackieren: "Car painting",
         navLackierereititle:"paint shop",
         newsletterTitle: "Subscribe to our Newsletter",
@@ -87,6 +99,7 @@ const translations = {
         newsletterEmailPlaceholder: "Your email address",
         newsletterSubmit: "Subscribe",
         newsletterSuccess: "Thank you for subscribing!",
+        navPrivacyPolicy:"Privacy Policy",
         navGalerie: "Gallery",
         phoneLabel: "Phone:",
         callBtn: "Call now",
@@ -108,8 +121,11 @@ const translations = {
         navAufbereitung: "Preparazione auto",
         navAufbereitungTitle:"Trattamento",
         navKontakt: "Contatti",
+        navDatenschutzerklärung:"Informativa sulla privacy",
+        navPrivacyPolicy:"Informativa sulla privacy",
+        wikiText:"Wiki",
         navKontakt2:"make contact",
-        navLackiererei: "Carrozzeria (verniciatura auto)",
+        navLackierei: "Carrozzeria (verniciatura auto)",
         navAutolackieren: "Verniciare l'auto",
         navLackierereititle:"Reparto verniciatura",
         newsletterTitle: "Iscriviti alla nostro Newsletter",
@@ -145,7 +161,10 @@ const translations = {
         navAufbereitungTitle:"Traitement",
         navKontakt: "Contact",
         navGalerie: "Galerie",
-        navLackiererei: "Atelier de peinture automobile",
+        wikiText: "Wiki",
+        navLackierei: "Atelier de peinture automobile",
+        navDatenschutzerklärung:"Déclaration de protection des données",
+        navPrivacyPolicy:"Déclaration de protection des données",
         navLackierereititle:"atelier de peinture",
         navAutolackieren: "Peindre une voiture",
         navKontakt2:"Prendre contact",
@@ -191,6 +210,34 @@ function App() {
     const [handleNewsletterSubmit,setHandleNewsletterSubmit] = useState();
     const[newsletterSubmitted, setNewsletterSubmitted] = useState();
     const[newsletterEmail, setNewsletterEmail] = useState();
+    const form =useRef();
+
+
+
+
+    const sendEmail = () => {
+        event.preventDefault();
+
+
+        const SERVICE_ID = 'service_yt8puti';
+        const TEMPLATE_ID = 'template_gkm0jlr';
+        const PUBLIC_KEY = 'WKjI65zfLNEREiVHf';
+
+        emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', form.current, 'PUBLIC_KEY')
+            .then((result) => {
+                alert('E-Mail erfolgreich gesendet!');
+                console.log("E-Mail sent with Request: " + result);
+                setFormData({name: '', email: '', phone: '', message: '', newsletter: false});
+
+                // Weiterleitung nach erfolgreichem Senden
+                navigate('/anfrage');
+            })
+            .catch((error) => {
+                console.error('EmailJS Error:', error.text);
+                setStatus('error');
+                alert('Fehler beim Senden: ' + error.text);
+            });
+    }
 
     const navigate=useNavigate();
 
@@ -314,7 +361,7 @@ function App() {
                     <div className="dropdown">
                         <span className="nav-link">{t.navLackierereititle} ▾</span>
                         <div className="dropdown-content">
-                            <Link to="/lackiererei">{t.navLackiererei}</Link>
+                            <Link to="/lackiererei">{t.navLackierei}</Link>
                             <Link to="/lackieren">{t.navAutolackieren}</Link>
                         </div>
                     </div>
@@ -426,6 +473,8 @@ function App() {
                     <Route path="/lackieren" element={<Autolackieren lang={language} />} />
                     <Route path="/autopflege" element={<Autopflege lang={language} />} />
                     <Route path="/fahrzeugaufbereitung" element={<Fahrzeugaufbereitung lang={language} />} />
+                    <Route path="/datenschutzerklärung" element={<Datenschutzerklärung lang={language} />} />
+                    <Route path="/privacymodal" element={<PrivacyModal lang={language} />} />
                 </Routes>
             </div>
 
@@ -495,7 +544,9 @@ function App() {
                         <p className="copyright-text">
                             Copyright &copy; {new Date().getFullYear()} oerlike.ch |{" "}
                             <Link to="/impressum" className="hover">Impressum</Link> |{" "}
-                            <Link to="/wiki" className="hover">Wiki</Link>
+                            <Link to="/wiki" className="hover">{t.wikiText}</Link> |{""}
+                            <Link to="/datenschutzerklärung" className="hover">{t.navDatenschutzerklärung}Datenschutzerklärung</Link>|{""}
+
                         </p>
 
                         <section className="social-media">

@@ -149,6 +149,7 @@ export default function Anfrage() {
                     type="submit"
                     disabled={status === 'loading'}
                     className="submit-btn"
+                    onClick={handleSubmit}
                 >
                     {status === 'loading' ? 'Wird gesendet...' : 'Anfrage absenden'}
                 </button>
