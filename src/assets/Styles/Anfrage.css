@@ -1,10 +1,11 @@
 .submit-btn{
-
+    color:orangered;
+    background-color: greenyellow;
 }
 
 .submit-btn:hover{
     background-color: orangered;
-    color:gold;
+    color:blue;
 
 }
 
@@ -12,4 +13,76 @@
 .text-box{
     background-color: orangered;
     color:gold;
+}
+
+
+/* Status Banner Styles */
+.status-banner {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.success-banner {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.error-banner {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* Animierte Newsletter-Bestätigung */
+.newsletter-success-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+    animation: slideDownFade 0.5s ease-out forwards;
+}
+
+.newsletter-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #0284c7;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s backwards;
+}
+
+.checkmark-icon {
+    width: 20px;
+    height: 20px;
+    stroke: #ffffff;
+}
+
+/* Keyframes für Einblendung und Icon-Pop */
+@keyframes slideDownFade {
+    0% {
+        opacity: 0;
+        transform: translateY(-12px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

@@ -443,7 +443,7 @@ function App() {
                             <h3>{t.contactTitle}</h3>
                             <p>Tel: 044 311 94 12</p>
                             <p>Fax: 044 311 94 22</p>
-                            <p>E-Mail: info@oerlike.ch</p>
+                            <p className="highlight"><a href="mailto:info@oerlike.ch">E-Mail: info@oerlike.ch</a></p>
                         </section>
 
                         <section className="footer-col opening-hours">
@@ -464,6 +464,7 @@ function App() {
                                         value={newsletterEmail}
                                         onChange={(e) => setNewsletterEmail(e.target.value)}
                                         required
+                                        tabIndex="3"
 
                                         className="newsletter-input"
                                     />

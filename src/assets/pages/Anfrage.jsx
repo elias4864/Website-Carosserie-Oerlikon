@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../Styles/Anfrage.css';
+import {useNavigate} from "react-router-dom";
 export default function Anfrage() {
     const [formData, setFormData] = useState({
         name: '',
@@ -21,6 +22,10 @@ export default function Anfrage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('loading');
+        navigate('/anfrage');
+
+
+        const navigate = useNavigate();
 
         try {
             // Hier API-Aufruf einfügen (z.B. fetch('/api/contact', ...))
@@ -30,12 +35,13 @@ export default function Anfrage() {
             setFormData({ name: '', email: '', message: '', newsletter: false ,phone: ''}); // Formular zurücksetzen
         } catch (error) {
             setStatus('error');
+            console.log(error);
         }
     };
 
     return (
         <div className="max-w-md mx-auto my-10 p-6 bg-white rounded-lg shadow-md border border-gray-200">
-            <h2 className="text-2xl font-bold mb-6 text-gray-800">Kontakt aufnehmen</h2>
+            <h2 className="text-2xl font-bold mb-6 text-gray-800">Kontakt mit der Carosserie Örlike aufnehmen</h2>
 
             {status === 'success' && (
                 <div className="text-box" role="alert">
@@ -52,7 +58,7 @@ export default function Anfrage() {
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                        Name
+                        Name:
                     </label>
                     <input
                         type="text"
@@ -68,7 +74,7 @@ export default function Anfrage() {
 
                 <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                        E-Mail-Adresse
+                        E-Mail-Adresse:
                     </label>
                     <input
                         type="email"
@@ -82,6 +88,10 @@ export default function Anfrage() {
                     />
                 </div>
 
+
+                <div>
+                </div>
+
                 <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                         Nachricht
@@ -91,10 +101,11 @@ export default function Anfrage() {
                         name="message"
                         rows="4"
                         required
+                        title="Thema"
                         value={formData.message}
                         onChange={handleChange}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Wie können wir Ihnen helfen?"
+                        placeholder="Wie können wir Ihnen heute  behilflich  sein ?"
                     />
                 </div>
 
@@ -129,7 +140,7 @@ export default function Anfrage() {
                     </div>
                     <div className="ml-3 text-sm">
                         <label htmlFor="newsletter" className="font-medium text-gray-700 cursor-pointer select-none">
-                            Ich möchte den Newsletter der Carrosserie Örlike abonnieren
+                                Ich möchte den Newsletter der Carrosserie Örlike abonnieren
                         </label>
                     </div>
                 </div>
