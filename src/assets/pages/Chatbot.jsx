@@ -12,7 +12,8 @@ const botKnowledge = {
             { label: "🕒 Öffnungszeiten", reply: "Unsere Öffnungszeiten:\nMo–Do: 07:30–12:00 & 13:00–17:30\nFr: 07:30–12:00 & 13:00–16:30" },
             { label: "🚗 Leistungen", reply: "Wir bieten Carrosseriearbeiten, Autolackierung, Spenglerei und Fahrzeugaufbereitung an." },
             { label: "📝 Unverbindliche Anfrage", reply: "Nutzen Sie unser Anfrage-Formular auf der Website oder schreiben Sie uns direkt per WhatsApp / E-Mail (info@oerlike.ch)." },
-            { label: "👥 Team", reply: "Unser Carosserieteam besteht aus Duje Antonina, Peter Ledergerber und Michael Nufer." }
+            { label: "👥 Team", reply: "Unser Carosserieteam besteht aus Duje Antonina, Peter Ledergerber und Michael Nufer." },
+            {label:" 🌐 Social Media", reply: "Unsere Social Media Kanäle beshtend aus Whatsapp, Twitter,LinkedIn und Facebook "}
         ],
         fallback: "Vielen Dank für Ihre Nachricht! Für eine genaue Auskunft erreichen Sie uns direkt per Telefon (044 311 94 12) oder E-Mail (info@oerlike.ch).",
         placeholder: "Ihre Nachricht...",
@@ -26,7 +27,8 @@ const botKnowledge = {
             { label: "🕒 Opening Hours", reply: "Opening Hours:\nMon–Thu: 07:30–12:00 & 13:00–17:30\nFri: 07:30–12:00 & 13:00–16:30" },
             { label: "🚗 Our Services", reply: "We offer body repair, car painting, sheet metal work, and vehicle detailing." },
             { label: "📝 Inquiry", reply: "Use our online inquiry form or reach out via WhatsApp / Email (info@oerlike.ch)." },
-            { label: "👥 Team", reply: "Our bodywork team consists of Duje Antonina, Peter Ledergerber, and Michael Nufer." }
+            { label: "👥 Team", reply: "Our bodywork team consists of Duje Antonina, Peter Ledergerber, and Michael Nufer." },
+            { label: "🌐 Social Media", reply: "Our social media channels consist of WhatsApp, Twitter, LinkedIn, and Facebook." }
         ],
         fallback: "Thank you for your message! For direct assistance, please call us at +41 44 311 94 12 or email info@oerlike.ch.",
         placeholder: "Type a message...",
@@ -40,7 +42,8 @@ const botKnowledge = {
             { label: "🕒 Orari di apertura", reply: "Orari:\nLun–Gio: 07:30–12:00 & 13:00–17:30\nVen: 07:30–12:00 & 13:00–16:30" },
             { label: "🚗 Servizi", reply: "Offriamo riparazioni di carrozzeria, verniciatura, lattoneria e preparazione auto." },
             { label: "📝 Richiesta", reply: "Compilate il nostro modulo di richiesta online o scriveteci su WhatsApp / E-Mail (info@oerlike.ch)." },
-            { label: "👥 Team", reply: "Il nostro team di carrozzeria è composto da Duje Antonina, Peter Ledergerber e Michael Nufer." }
+            { label: "👥 Team", reply: "Il nostro team di carrozzeria è composto da Duje Antonina, Peter Ledergerber e Michael Nufer." },
+            { label: "🌐 Social Media", reply: "I nostri canali social media sono WhatsApp, Twitter, LinkedIn e Facebook." }
         ],
         fallback: "Grazie per il messaggio! Per informazioni rapide, chiamateci al 044 311 94 12 o scriveteci a info@oerlike.ch.",
         placeholder: "Scrivi un messaggio...",
@@ -54,7 +57,8 @@ const botKnowledge = {
             { label: "🕒 Heures d'ouverture", reply: "Heures d'ouverture:\nLun–Jeu: 07h30–12h00 & 13h00–17h30\nVen: 07h30–12h00 & 13h00–16h30" },
             { label: "🚗 Nos Services", reply: "Nous proposons la réparation de carrosserie, la peinture automobile, la zinguerie et la préparation de véhicules." },
             { label: "📝 Demande", reply: "Utilisez notre formulaire de demande en ligne ou contactez-nous via WhatsApp / E-mail (info@oerlike.ch)." },
-            { label: "👥 Team", reply: "Notre équipe se compose de Duje Antonina, Peter Ledergerber et Michael Nufer." }
+            { label: "👥 Team", reply: "Notre équipe se compose de Duje Antonina, Peter Ledergerber et Michael Nufer." },
+            { label: "🌐 Réseaux sociaux", reply: "Nos canaux de réseaux sociaux comprennent WhatsApp, Twitter, LinkedIn et Facebook." }
         ],
         fallback: "Merci pour votre message! Pour une assistance rapide, appelez-nous au 044 311 94 12 ou par E-mail à info@oerlike.ch.",
         placeholder: "Votre message...",
@@ -105,7 +109,7 @@ export default function Chatbot({ lang = "de" }) {
         const systemContext = `Du bist der freundliche KI-Assistent der Carrosserie Örlike TL AG in Oberengstringen (Fabrikstrasse 17, Tel: 044 311 94 12, E-Mail: info@oerlike.ch).
 Das Carrosserie-Team besteht aus Duje Antonina, Peter Ledergerber und Michael Nufer.
 Dienstleistungen: Carrosseriearbeiten, Autolackierung, Spenglerei und Fahrzeugaufbereitung.
-Antworte kurz (1-3 Sätze) auf Deutsch.`;
+Antworte  bitte kurz (1-3 Sätze) auf Deutsch.`;
 
         try {
             const response = await fetch('http://localhost:11434/api/generate', {
@@ -157,7 +161,7 @@ Antworte kurz (1-3 Sätze) auf Deutsch.`;
                                 className="chatbot-header-logo"
                                 style={{ width: '28px', height: '28px', borderRadius: '50%', objectFit: 'cover' }}
                             />
-                            <h2>Carrosserie Örlike KI Assistant</h2>
+                            <h2 className="chatbot-wrapper">Carrosserie Örlike KI Assistant</h2>
                         </div>
                         <button onClick={() => setIsOpen(false)}>✕</button>
                     </div>

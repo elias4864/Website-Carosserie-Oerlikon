@@ -15,6 +15,7 @@ import Facebook from "./assets/Facebook.png";
 import Impressum from "./assets/pages/Impressum.jsx";
 import Anfrage from "./assets/pages/Anfrage.jsx";
 import Wiki from "./assets/pages/Wiki.jsx";
+import Termin from "./assets/pages/Termin.jsx";
 
 import emailjs from '@emailjs/browser';
 import Datenschutzerklärung from './assets/pages/Datenschutzerklärung.jsx';
@@ -35,6 +36,7 @@ import Autopflege from "./assets/pages/Autopflege.jsx";
 import Fahrzeugaufbereitung from "./assets/pages/Fahrzeugaufbereitung.jsx";
 import {useNavigate} from "react-router-dom";
 import PrivacyModal from "./assets/pages/PrivacyModal.jsx";
+import Terminpage  from "./assets/pages/Termin.jsx";
 
 
 
@@ -48,6 +50,7 @@ const translations = {
         navLackierei: "Autolackiererei",
         navAnfrage: "Anfrage",
         navChatbot: "Chatbot",
+        navTermin: "Termin",
 
         navLackierereititle:"Lackierei",
         navDatenschutzerklärung: "Datenschutzerklärung",
@@ -108,6 +111,7 @@ const translations = {
         newsletterSuccess: "Thank you for subscribing!",
         navPrivacyPolicy:"Privacy Policy",
         navGalerie: "Gallery",
+        navTermin:"Appointment",
         phoneLabel: "Phone:",
         callBtn: "Call now",
         closeBtn: "Close",
@@ -131,6 +135,7 @@ const translations = {
         navDatenschutzerklärung:"Informativa sulla privacy",
         navPrivacyPolicy:"Informativa sulla privacy",
         wikiText:"Wiki",
+        navTermin:"Appuntamento",
         navChatbot:"sull'IA",
         navAnfrage: "Richiesta",
         navKontakt2:"make contact",
@@ -190,6 +195,7 @@ const translations = {
         navSpengler: "Spengler",
         modalTitle: "Contactez-nous dès maintenant",
         phoneLabel: "Téléphone:",
+        navTermin: "Rendez-vous",
         callBtn: "Appeler maintenant",
         closeBtn: "Fermer",
         contactTitle: "Contact",
@@ -405,11 +411,18 @@ function App() {
                         </div>
                     </div>
 
-
+                    <div className="dropdown">
+                        <span className="nav-link">{t.navAnfrage} ▾</span>
+                        <div className="dropdown-content">
                     <Link to="/anfrage" className="nav-link">{t.navAnfrage}</Link>
                     <Link to="/chatbot" className="nav-link">{t.navChatbot}</Link>
+                    <Link to="/termin" className="nav-link">{t.navTermin}</Link>
+                    </div>
 
-                    {/* Sprachauswahl Dropdown */}
+                    </div>
+
+
+                        {/* Sprachauswahl Dropdown */}
                     <div className="language-selector">
                         <select
                             value={language}
@@ -497,6 +510,7 @@ function App() {
                     <Route path="/datenschutzerklärung" element={<Datenschutzerklärung lang={language} />} />
                     <Route path="/privacymodal" element={<PrivacyModal lang={language} />} />
                     <Route path="/chatbot" element={<Chatbot lang={language} />} />
+                    <Route path="/termin" element={<Terminpage lang={language} />} />
                 </Routes>
             </div>
 
@@ -570,6 +584,7 @@ function App() {
                             <Link to="/datenschutzerklärung" className="hover">{t.navDatenschutzerklärung}</Link>|{""}
                             <Link to="/privacymodal" className="hover">{t.navPrivacyPolicy}</Link>
 
+
                         </p>
 
                         <section className="social-media">
@@ -602,6 +617,7 @@ function App() {
                         <p className="seo-text">SEO & Webdesign by <a href="https://marketingmaster.ch" className="marketingmaster">marketingmaster.ch</a> with love</p>
                     </div>
                 </div>
+
             </footer>
         </>
     );

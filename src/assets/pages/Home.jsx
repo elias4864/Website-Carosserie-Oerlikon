@@ -9,6 +9,11 @@ import {useCookies} from 'react-cookie';
 function HomePage({ lang }) {
     const [showCookieBanner, setShowCookieBanner] = useState(false);
 
+
+
+    const handleDateChange= (dates) =>{
+        console.log("Gewählte Daten:",dates);
+    }
     const [cookies, setCookie, removeCookie] = useCookies(['theme']);
 
     const toggleTheme = () => {
