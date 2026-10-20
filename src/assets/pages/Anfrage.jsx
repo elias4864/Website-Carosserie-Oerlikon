@@ -9,6 +9,7 @@ export default function Anfrage() {
         phone:'',
         message: '',
         newsletter: false,
+        privacybanner:''
     });
     const [status, setStatus] = useState('idle'); // idle, loading, success, error
 
@@ -54,7 +55,7 @@ export default function Anfrage() {
 
             {status === 'success' && (
                 <div className="text-box" role="alert">
-                    Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.
+                    Vielen Dank! Ihre Nachricht wurde erfolgreich an unser Team  gesendet.
                 </div>
             )}
 
@@ -153,6 +154,21 @@ export default function Anfrage() {
                         </label>
                     </div>
                 </div>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="flex items-center h-5">
+
+
+                        <input type="checkbox" id="textbox"
+                               name="privacyPolicy"
+                               required
+                               value={formData.privacybanner}
+                               onChange={handleChange}
+                               className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 cursor-pointer text-center"/>
+                            Ich stimme den Datenschutzrichtlinien der Carosserie Örlike  zu
+
+                    </div>
+                </form>
 
                 <button
                     type="submit"

@@ -1,29 +1,110 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 import '../Styles/Datenschutzerklärung.css';
-// 'motion/react' ab Version 12+
 
-export default function PrivacyModal({lang}) {
+export default function PrivacyModal({ lang }) {
     const [isOpen, setIsOpen] = useState(false);
+    const [status, setStatus] = useState('idle'); // idle, loading, success, error
+    const [captchaError, setCaptchaError] = useState(false);
+    const recaptchaRef = useRef(null);
+    const navigate = useNavigate();
+
+    const [formData, setFormData] = useState({
+        privacyPolicy: false
+    });
+
+    /**
+     * Recaptcha Skript auswählen
+     */
+    useEffect(() => {
+        const scriptId = 'recaptcha-script';
+        if (!document.getElementById(scriptId)) {
+            const script = document.createElement('script');
+            script.id = scriptId;
+            script.src = 'https://www.google.com/recaptcha/api.js?render=explicit';
+            script.async = true;
+            script.defer = true;
+            document.body.appendChild(script);
+        }
+    }, []);
+
+    // 2. reCAPTCHA neu rendern, sobald das Modal geöffnet wird
+    useEffect(() => {
+        if (isOpen) {
+            // Ein kleiner Timeout stellt sicher, dass das DOM-Element gerendert ist
+            const timer = setTimeout(() => {
+                if (window.grecaptcha && recaptchaRef.current) {
+                    try {
+                        window.grecaptcha.render(recaptchaRef.current, {
+                            sitekey: '6LfvGfgtAAAAAP45gxuDs7HhFz64bzk15bpYfisH'
+                        });
+                    } catch (e) {
+                        // Falls es bereits gerendert wurde
+                        console.log('reCAPTCHA bereits initialisiert', e);
+                        alert("Das Recaptcha Zeichen funktioniert erfolgreich");
+                    }
+                }
+            }, 300);
+            return () => clearTimeout(timer);
+        }
+    }, [isOpen]);
+
+    const handleChange = (e) => {
+        const { name, type, checked, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setCaptchaError(false);
+
+        // reCAPTCHA Token-Prüfung
+        const recaptchaResponse = window.grecaptcha ? window.grecaptcha.getResponse() : '';
+
+        if (!recaptchaResponse) {
+            setCaptchaError(true);
+            alert("Das Recaptcha Zeichen ist fehlerhaft!");
+            return;
+        }
+
+        setStatus('loading');
+
+        try {
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+
+            setStatus('success');
+
+            if (window.grecaptcha) {
+                window.grecaptcha.reset();
+            }
+
+            setTimeout(() => {
+                setIsOpen(false);
+                navigate('/anfrage');
+            }, 1500);
+        } catch (error) {
+            setStatus('error');
+            console.error(error);
+        }
+    };
 
     return (
-
-        /**
-         * Datenschutzerklärung Div mit Box
-         */
-        <div style={{ padding: '20px', fontFamily: 'sans-serif', color:'red' }}>
-            {/* Trigger-Button */}
+        <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
             <button
                 onClick={() => setIsOpen(true)}
                 style={{ padding: '10px 20px', cursor: 'pointer' }}
             >
-                Datenschutzerklärung   jetzt  sofort  öffnen
+                Datenschutzerklärung jetzt öffnen
             </button>
 
             <AnimatePresence>
                 {isOpen && (
                     <>
-                        {/* Abgedunkelter Hintergrund (Backdrop) */}
+                        {/* Backdrop */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 0.5 }}
@@ -31,16 +112,13 @@ export default function PrivacyModal({lang}) {
                             onClick={() => setIsOpen(false)}
                             style={{
                                 position: 'fixed',
-                                top: 0,
-                                left: 0,
-                                right: 0,
-                                bottom: 0,
+                                top: 0, left: 0, right: 0, bottom: 0,
                                 backgroundColor: '#000',
                                 zIndex: 999
                             }}
                         />
 
-                        {/* Inhalts-Box (Modal) */}
+                        {/* Modal Box */}
                         <motion.div
                             initial={{ opacity: 0, y: 50, scale: 0.95 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -48,12 +126,12 @@ export default function PrivacyModal({lang}) {
                             transition={{ type: 'spring', duration: 0.4 }}
                             style={{
                                 position: 'fixed',
-                                top: '15%',
+                                top: '10%',
                                 left: '50%',
-                                transform: 'translateX(-50%)', // Wird von Motion automatisch optimiert
+                                transform: 'translateX(-50%)',
                                 width: '90%',
                                 maxWidth: '600px',
-                                maxHeight: '70vh',
+                                maxHeight: '80vh',
                                 overflowY: 'auto',
                                 backgroundColor: '#fff',
                                 padding: '30px',
@@ -79,40 +157,76 @@ export default function PrivacyModal({lang}) {
 
                                 <h2>2. Erfassung und Verarbeitung personenbezogener Daten</h2>
                                 <p>
-                                    Wir erheben und verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen (z. B. Reparatur- und Carrosserieanfragen) erforderlich ist.
-                                </p>
-
-                                <h2>3. Kontaktaufnahme (Kontaktformular & E-Mail)</h2>
-                                <p>
-                                    Wenn Sie uns per Kontaktformular oder E-Mail Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.
-                                </p>
-
-                                <h2>4. Eingebundene Dienste (Google Maps / Street View)</h2>
-                                <p>
-                                    Zur visuellen Darstellung unseres Standorts und zur Orientierung nutzen wir eingebundene Kartendienste von Google Maps / Street View. Dabei kann Ihre IP-Adresse an Server von Google übermittelt werden.
-                                </p>
-
-                                <h2>5. Ihre Rechte</h2>
-                                <p>
-                                    Sie haben jederzeit das Recht auf Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.
+                                    Wir erheben und verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist.
                                 </p>
                             </div>
 
-                            <button
-                                onClick={() => setIsOpen(false)}
-                                style={{
-                                    marginTop: '20px',
-                                    padding: '10px 15px',
-                                    backgroundColor: '#0070f3',
-                                    color: '#fff',
-                                    border: 'none',
-                                    borderRadius: '5px',
-                                    cursor: 'pointer'
+                            {/* Status Meldungen */}
+                            {captchaError && (
+                                <p style={{ color: 'red', marginTop: '10px' }}>
+                                    ⚠️ Bitte bestätigen Sie das reCAPTCHA ("Ich bin kein Roboter").
+                                </p>
+                            )}
 
-                                }}
-                            >
-                                Schließen
-                            </button>
+                            {status === 'success' && (
+                                <p style={{ color: 'green', marginTop: '10px' }}>
+                                    ✓ Bestätigt! Weiterleitung...
+                                </p>
+                            )}
+
+                            <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px' }}>
+                                    <input
+                                        type="checkbox"
+                                        id="privacyPolicy"
+                                        name="privacyPolicy"
+                                        required
+                                        checked={formData.privacyPolicy}
+                                        onChange={handleChange}
+                                        style={{ cursor: 'pointer' }}
+                                    />
+                                    <label htmlFor="privacyPolicy" style={{ cursor: 'pointer' }}>
+                                        Ich stimme den Datenschutzrichtlinien zu
+                                    </label>
+                                </div>
+
+                                {/* reCAPTCHA Container via ref */}
+                                <div style={{ display: 'flex', justifyContent: 'center', margin: '15px 0' }}>
+                                    <div ref={recaptchaRef}></div>
+                                </div>
+
+                                <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
+                                    <button
+                                        type="submit"
+                                        disabled={status === 'loading'}
+                                        style={{
+                                            padding: '10px 15px',
+                                            backgroundColor: '#22c55e',
+                                            color: '#fff',
+                                            border: 'none',
+                                            borderRadius: '5px',
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        {status === 'loading' ? 'Wird geprüft...' : 'Bestätigen'}
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsOpen(false)}
+                                        style={{
+                                            padding: '10px 15px',
+                                            backgroundColor: '#6b7280',
+                                            color: '#fff',
+                                            border: 'none',
+                                            borderRadius: '5px',
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        Schließen
+                                    </button>
+                                </div>
+                            </form>
                         </motion.div>
                     </>
                 )}
