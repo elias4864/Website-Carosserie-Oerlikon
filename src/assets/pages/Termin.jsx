@@ -9,6 +9,7 @@ import 'react-calendar/dist/Calendar.css'; // Wichtig: Das CSS gehört zu react-
 function Termin({ lang }) {
     const handleDateChange = (date) => {
         console.log("Ausgewähltes Datum:", date);
+
         alert(`Sie haben folgendes Datum ausgewählt: ${date.toLocaleDateString()}`);
     };
 

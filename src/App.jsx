@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { Link, Routes, Route, useLocation } from "react-router-dom";
 
 
@@ -13,6 +13,8 @@ import Instagram from "./assets/Instagram.jpg";
 import Linkedin from "./assets/Linkedin-logo.png";
 import Facebook from "./assets/Facebook.png";
 import Impressum from "./assets/pages/Impressum.jsx";
+import emailjs from "@emailjs/browser";
+
 import Anfrage from "./assets/pages/Anfrage.jsx";
 import Wiki from "./assets/pages/Wiki.jsx";
 import Termin from "./assets/pages/Termin.jsx";
@@ -231,7 +233,37 @@ function App() {
     const [messageInput, setMessageInput] = useState("");
     const [messages, setMessages] = useState([]);
 
+    const newsletterFormRef = useRef();
 
+
+
+    const sendEmail = (e) => {
+        if (e && typeof e.preventDefault === 'function') {
+            e.preventDefault();
+        }
+
+        // Werte aus der .env oder direkt als Fallback verwenden
+        const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_05kut4r';
+        const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_uvpgvhs';
+        const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'C7aRFYCHpA8Vde996';
+
+        if (!newsletterFormRef.current) {
+            console.error("Formular-Referenz nicht gefunden!");
+            return;
+        }
+
+        // WICHTIG: EmailJS sendForm benötigt 4 Parameter
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, newsletterFormRef.current, PUBLIC_KEY)
+            .then((result) => {
+                console.log('E-Mail erfolgreich gesendet:', result.text);
+                alert('Vielen Dank für deine Anmeldung!');
+                setNewsletterSubmitted(true);
+            })
+            .catch((error) => {
+                console.error('EmailJS Error:', error);
+                alert('Fehler beim Senden: ' + (error.text || JSON.stringify(error)));
+            });
+    };
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -246,7 +278,7 @@ function App() {
     function handleSubmit(e) {
         e.preventDefault();
         console.log('You clicked submit.');
-        alert("Du hat erfolgreich die Anfrage gesendet!");
+        alert("Du hast erfolgreich die Anfrage gesendet!");
         navigate('/anfrage');
     }
 
@@ -520,7 +552,7 @@ function App() {
                             {newsletterSubmitted ? (
                                 <p className="newsletter-success">{t.newsletterSuccess}</p>
                             ) : (
-                                <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
+                                <form ref={newsletterFormRef} onSubmit={sendEmail} className="newsletter-form">
                                     <input
                                         type="email"
                                         placeholder={t.newsletterEmailPlaceholder}
@@ -531,7 +563,7 @@ function App() {
 
                                         className="newsletter-input"
                                     />
-                                    <button  onClick={handleSubmit} type="submit" className="newsletter-btn">
+                                    <button  ref={newsletterFormRef} onClick={sendEmail} type="submit" className="newsletter-btn">
                                         {t.newsletterSubmit}
                                     </button>
 
