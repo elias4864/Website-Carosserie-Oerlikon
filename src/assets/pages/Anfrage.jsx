@@ -4,6 +4,9 @@ import { useNavigate, } from "react-router-dom";
 import Team from '../Team.jpg';
 import emailjs from "@emailjs/browser";
 
+import ReCAPTCHA from 'react-google-recaptcha'
+
+
 
 
 
@@ -15,7 +18,10 @@ import emailjs from "@emailjs/browser";
 export default function Anfrage({lang}) {
 
 
+    const recaptcha = useRef()
+
     const form = useRef();
+
 
 
 
@@ -257,6 +263,8 @@ export default function Anfrage({lang}) {
                     </div>
                 </div>
 
+                <ReCAPTCHA ref={recaptcha} sitekey={import.meta.env.VITE_SITE_KEY} />
+
 
                 <button
                     type="submit"
@@ -265,6 +273,9 @@ export default function Anfrage({lang}) {
                 >
                     {status === 'loading' ? 'Wird gesendet...' : 'Anfrage absenden ➡'}
                 </button>
+
+
+
             </form>
         </div>
     );

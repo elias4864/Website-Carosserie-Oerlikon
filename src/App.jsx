@@ -227,7 +227,6 @@ function App() {
     const [handleNewsletterSubmit,setHandleNewsletterSubmit] = useState();
     const[newsletterSubmitted, setNewsletterSubmitted] = useState();
     const[newsletterEmail, setNewsletterEmail] = useState();
-    const form =useRef();
     const messagesListRef = React.createRef();
     const [messageInput, setMessageInput] = useState("");
     const [messages, setMessages] = useState([]);
