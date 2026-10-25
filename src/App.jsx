@@ -233,7 +233,7 @@ function App() {
     const [messageInput, setMessageInput] = useState("");
     const [messages, setMessages] = useState([]);
 
-    const newsletterFormRef = useRef();
+    const newsletterFormRef = useRef("");
 
 
 
@@ -256,8 +256,9 @@ function App() {
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, newsletterFormRef.current, PUBLIC_KEY)
             .then((result) => {
                 console.log('E-Mail erfolgreich gesendet:', result.text);
-                alert('Vielen Dank für deine Anmeldung!');
+                alert('Vielen Dank für die Abonnierung unseres Newsletters!');
                 setNewsletterSubmitted(true);
+                window.location.href = 'https://www.carrosseriesuisse.ch/de/ueber-uns/medien/newsletter#c691'   ;
             })
             .catch((error) => {
                 console.error('EmailJS Error:', error);
@@ -270,6 +271,12 @@ function App() {
         setIsOpen(!isOpen);
     };
 
+
+
+    const handleFocus = () => {
+        // Optional Chaining (?.) schützt vor null-Fehlern
+        newsletterFormRef.current?.focus();
+    };
 
 
 
@@ -555,15 +562,19 @@ function App() {
                                 <form ref={newsletterFormRef} onSubmit={sendEmail} className="newsletter-form">
                                     <input
                                         type="email"
+
                                         placeholder={t.newsletterEmailPlaceholder}
                                         value={newsletterEmail}
                                         onChange={(e) => setNewsletterEmail(e.target.value)}
+                                        onFocus={handleFocus}
+                                        onClick={handleFocus}
                                         required
+                                        name="user_email" /* Namens-Attribut für EmailJS */
                                         tabIndex="3"
 
                                         className="newsletter-input"
                                     />
-                                    <button  ref={newsletterFormRef} onClick={sendEmail} type="submit" className="newsletter-btn">
+                                    <button  onClick={sendEmail} type="submit" className="newsletter-btn">
                                         {t.newsletterSubmit}
                                     </button>
 
