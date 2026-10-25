@@ -2,33 +2,9 @@ html, body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-}
-
-
-
-.streetview {
-    position: relative;
-    width: 100vw;
-    left: 50%;
-    margin-left: -50vw;
-
-    height: 60vh; /* Oder z. B. 500px je nach gewünschter Höhe */
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-
-.marketingmaster {
-    color: inherit;
-    text-decoration: underline;
-    text-size-adjust: 100%;
-}
-
-.streetview iframe {
     width: 100%;
-    height: 100%;
-
 }
+
 .Background-Intro {
     width: 100%;
     min-height: 100vh;
@@ -36,49 +12,29 @@ html, body {
     color: #212529;
     font-family: Arial, Helvetica, sans-serif;
     padding-bottom: 4rem;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-.carosserie{
 
+/* Fullwidth Hero Header */
+.carosserie {
     position: relative;
     width: 100vw;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-
     min-height: 60vh;
-
-
-    background-image: url('../Eingang.webp');
-
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../Eingang.webp');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 60px 20px;
-    box-sizing: border-box;
-    background-position: center;
-
-
-
-    }
-
-
-
-.border-welcome.fullwidth-section {
-    width: 90%;
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 2.5rem;
-    background-color: #ffffff;
-    border-radius: 4px;
-    border-left: 5px solid #dc2626;
-    border-right: 5px solid #dc2626;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    text-align: center;
     box-sizing: border-box;
 }
 
@@ -100,7 +56,28 @@ html, body {
     max-width: 950px;
 }
 
-/* 2. Welcome-Box */
+/* StreetView Fullwidth */
+.streetview {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    height: 60vh;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.streetview iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.marketingmaster {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* Welcome Box */
 .border-welcome {
     max-width: 900px;
     margin: 3rem auto;
@@ -111,6 +88,7 @@ html, body {
     border-right: 5px solid #dc2626;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     text-align: center;
+    box-sizing: border-box;
 }
 
 .border-welcome h2 {
@@ -137,7 +115,7 @@ html, body {
     margin-top: 20px;
 }
 
-/* 3. Feature-Cards Layout & Tür-Wisch-Effekt */
+/* Services & Cards Layout */
 .services-section {
     position: relative;
     width: 100%;
@@ -153,22 +131,22 @@ html, body {
 .feature-card {
     position: relative;
     display: flex;
-    align-items: center; /* Zentriert Bild und Text-Box exakt auf gleicher Höhe */
+    align-items: center;
     width: 100%;
-    height: 420px;       /* Feste Höhe verhindert vertikales Verrutschen */
+    height: 420px;
     opacity: 0;
     perspective: 1000px;
     transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease-out;
 }
-/* Wisch-Animationen (Tür-Effekt) */
+
 .feature-card.text-left {
     transform: translateX(-120px) rotateY(-8deg);
-    justify-content: flex-end; /* Bild steht ganz RECHTS */
+    justify-content: flex-end;
 }
 
 .feature-card.text-right {
     transform: translateX(120px) rotateY(8deg);
-    justify-content: flex-start; /* Bild steht ganz LINKS */
+    justify-content: flex-start;
 }
 
 .feature-card.in-view {
@@ -176,7 +154,6 @@ html, body {
     transform: translateX(0) rotateY(0deg);
 }
 
-/* Breiter Bild-Container für das dominante Layout */
 .image-wrapper {
     width: 82%;
     height: 100%;
@@ -192,11 +169,10 @@ html, body {
     display: block;
 }
 
-/* Schwimmende weiße Text-Box */
 .text-box {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); /* Garantiert perfekte vertikale Zentrierung zum Bild */
+    transform: translateY(-50%);
     z-index: 2;
     background: #ffffff;
     padding: 40px 30px;
@@ -206,14 +182,14 @@ html, body {
     text-align: center;
     border-radius: 4px;
 }
-/* Positionierung der Text-Box über dem Bild */
+
 .feature-card.text-left .text-box {
-    left: 0;       /* Schiebt die Textbox nach ganz links */
+    left: 0;
     right: auto;
 }
 
 .feature-card.text-right .text-box {
-    right: 0;      /* Schiebt die Textbox nach ganz rechts */
+    right: 0;
     left: auto;
 }
 
@@ -232,8 +208,40 @@ html, body {
     font-size: 0.98rem;
 }
 
-/* Mobile Anpassung */
+/* DARK MODE STYLES */
+.dark-theme.Background-Intro {
+    background-color: #121212 !important;
+    color: #f1f1f1 !important;
+}
+
+.dark-theme .border-welcome,
+.dark-theme .text-box {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #333333 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+}
+
+.dark-theme .border-welcome h2,
+.dark-theme .text-box h3 {
+    color: #ffffff !important;
+}
+
+.dark-theme .border-welcome p,
+.dark-theme .text-box p {
+    color: #cccccc !important;
+}
+
+/* Mobile Responsive */
 @media (max-width: 850px) {
+    .carosserie h1 {
+        font-size: 2.2rem;
+    }
+
+    .carosserie p {
+        font-size: 1.1rem;
+    }
+
     .feature-card {
         flex-direction: column !important;
         height: auto;

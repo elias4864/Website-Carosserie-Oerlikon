@@ -29,6 +29,7 @@ describe('HomePage Komponente', () => {
         expect(screen.getByRole('heading', { name: 'Carrosserie Spenglerei' })).toBeInTheDocument();
         expect(screen.getByRole('heading', { name: 'Lackiererei' })).toBeInTheDocument();
         expect(screen.getByRole('heading', { name: 'Team' })).toBeInTheDocument();
+        expect(screen.getByRole('heading',{name:'Termin'})).toBeInTheDocument();
     });
 
     test('rendert die Bilder mit den passenden Alt-Texten', () => {

@@ -2,6 +2,8 @@ import React from "react";
 import Team from "../Team.jpg";
 import { motion } from "motion/react";
 import Calendar from "react-calendar";
+import emailjs from '@emailjs/browser';
+
 import 'react-calendar/dist/Calendar.css'; // Wichtig: Das CSS gehört zu react-calendar
 
 function Termin({ lang }) {
@@ -69,6 +71,9 @@ function Termin({ lang }) {
                         <a href="mailto:info@oerlike.ch" className="highlight">
                             info@oerlike.ch
                         </a>
+
+
+                        <a href="https://oerlike.ch/" className="highlight">info@oerlike.ch</a>
 
 
                     </p>

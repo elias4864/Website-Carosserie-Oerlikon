@@ -205,7 +205,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #1ae4e4;
+  background-color: greenyellow;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
   position: sticky;
@@ -564,7 +564,7 @@ footer {
 
 .lang-dropdown:hover {
   border-color: #aa3b09;
-  
+
 }
 
 .lang-dropdown:focus {
@@ -694,4 +694,9 @@ footer {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.newsletter-btn{
+  display: flex;
+
 }

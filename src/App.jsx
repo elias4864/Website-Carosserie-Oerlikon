@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Link, Routes, Route, useLocation } from "react-router-dom";
 
 
@@ -17,7 +17,6 @@ import Anfrage from "./assets/pages/Anfrage.jsx";
 import Wiki from "./assets/pages/Wiki.jsx";
 import Termin from "./assets/pages/Termin.jsx";
 
-import emailjs from '@emailjs/browser';
 import Datenschutzerklärung from './assets/pages/Datenschutzerklärung.jsx';
 import PrivacyPolicy from "./assets/pages/PrivacyModal.jsx";
 
@@ -37,6 +36,7 @@ import Fahrzeugaufbereitung from "./assets/pages/Fahrzeugaufbereitung.jsx";
 import {useNavigate} from "react-router-dom";
 import PrivacyModal from "./assets/pages/PrivacyModal.jsx";
 import Terminpage  from "./assets/pages/Termin.jsx";
+
 
 
 
@@ -241,29 +241,6 @@ function App() {
 
 
 
-    const sendEmail = () => {
-        event.preventDefault();
-
-
-        const SERVICE_ID = 'service_yt8puti';
-        const TEMPLATE_ID = 'template_gkm0jlr';
-        const PUBLIC_KEY = 'WKjI65zfLNEREiVHf';
-
-        emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', form.current, 'PUBLIC_KEY')
-            .then((result) => {
-                alert('E-Mail erfolgreich gesendet!');
-                console.log("E-Mail sent with Request: " + result);
-                setFormData({name: '', email: '', phone: '', message: '', newsletter: false});
-
-                // Weiterleitung nach erfolgreichem Senden
-                navigate('/anfrage');
-            })
-            .catch((error) => {
-                console.error('EmailJS Error:', error.text);
-                setStatus('error');
-                alert('Fehler beim Senden: ' + error.text);
-            });
-    }
 
     const navigate=useNavigate();
 
@@ -273,6 +250,8 @@ function App() {
         alert("Du hat erfolgreich die Anfrage gesendet!");
         navigate('/anfrage');
     }
+
+
 
 
 
@@ -577,15 +556,7 @@ function App() {
                     <hr className="footer-divider my-8 border-neutral-700" />
 
                     <div className="footer-bottom">
-                        <p className="copyright-text">
-                            Copyright &copy; {new Date().getFullYear()} oerlike.ch |{" "}
-                            <Link to="/impressum" className="hover">Impressum</Link> |{" "}
-                            <Link to="/wiki" className="hover">{t.wikiText}</Link> |{""}
-                            <Link to="/datenschutzerklärung" className="hover">{t.navDatenschutzerklärung}</Link>|{""}
-                            <Link to="/privacymodal" className="hover">{t.navPrivacyPolicy}</Link>
 
-
-                        </p>
 
                         <section className="social-media">
                             <p className="social-heading">

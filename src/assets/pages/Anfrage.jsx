@@ -1,9 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState , useRef} from 'react';
 import '../Styles/Anfrage.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, } from "react-router-dom";
 import Team from '../Team.jpg';
+import emailjs from "@emailjs/browser";
+
+
+
+
+
+
+
+
 
 export default function Anfrage({lang}) {
+
+
+    const form = useRef();
+
+
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+
+        const SERVICE_ID = 'service_05kut4r';
+        const TEMPLATE_ID = 'template_uvpgvhs';
+        const PUBLIC_KEY = 'C7aRFYCHpA8Vde996';
+
+        emailjs.sendForm(SERVICE_ID,TEMPLATE_ID, form.current, PUBLIC_KEY)
+            .then((result) => {
+                alert('E-Mail erfolgreich gesendet!');
+                console.log("E-Mail sent with Request: " + result);
+                setFormData({name: '', email: '', phone: '', message: '', newsletter: false});
+
+                // Weiterleitung nach erfolgreichem Senden
+                navigate('/anfrage');
+            })
+            .catch((error) => {
+                console.error('EmailJS Error:', error.text);
+                setStatus('error');
+                alert('Fehler beim Senden: ' + error.text);
+            });
+    }
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -32,7 +70,7 @@ export default function Anfrage({lang}) {
     const validateForm = () => {
         let newErrors = {};
 
-        if (!formData.name.trim() || formData.name.trim().length < 2) {
+        if (!formData.name.trim() || formData.name.trim().length < 5) {
             newErrors.name = 'Bitte geben Sie einen gültigen Namen ein.';
         }
 
@@ -115,7 +153,7 @@ export default function Anfrage({lang}) {
                 </div>
             )}
 
-            <form onSubmit={handleSubmit} className="anfrage-box">
+            <form  ref={form}  onSubmit={sendEmail} className="anfrage-box">
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                         Name: *

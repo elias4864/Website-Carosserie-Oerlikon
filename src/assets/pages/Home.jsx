@@ -1,30 +1,31 @@
+import React, { useState, useEffect } from "react";
+import { useCookies } from 'react-cookie';
 import Schrauben from '../Schrauben.jpg';
 import Lackierei from '../Lackierei.jpg';
 import Teams from '../Teams.jpg';
 import '../Styles/Home.css';
 import '../Styles/App.css';
-import React, { useState, useEffect } from "react";
-import {useCookies} from 'react-cookie';
 
 function HomePage({ lang }) {
     const [showCookieBanner, setShowCookieBanner] = useState(false);
+    const [cookies, setCookie] = useCookies(['theme']);
 
+    const currentTheme = cookies.theme || 'light';
 
-
-    const handleDateChange= (dates) =>{
-        console.log("Gewählte Daten:",dates);
-    }
-    const [cookies, setCookie, removeCookie] = useCookies(['theme']);
+    // Body-Klasse bei jedem Theme-Wechsel aktualisieren
+    useEffect(() => {
+        document.body.classList.remove('light-theme', 'dark-theme');
+        document.body.classList.add(`${currentTheme}-theme`);
+    }, [currentTheme]);
 
     const toggleTheme = () => {
-        const nextTheme = cookies.theme === 'dark' ? 'light' : 'dark';
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-        // Optimierung: Setzen Sie immer ein konkretes Ablaufdatum (Max-Age oder Expires)
         setCookie('theme', nextTheme, {
             path: '/',
-            maxAge: 31536000, // 1 Jahr in Sekunden (verhindert unendliche Session-Leichen)
+            maxAge: 31536000, // 1 Jahr in Sekunden
             sameSite: 'lax',
-            secure: process.env.NODE_ENV === 'production' // Nur via HTTPS in Prod
+            secure: window.location.protocol === 'https:'
         });
     };
 
@@ -32,13 +33,11 @@ function HomePage({ lang }) {
      * Cookies für DSGVO & IntersectionObserver
      */
     useEffect(() => {
-        // Prüfen, ob bereits eine Cookie-Entscheidung im LocalStorage gespeichert ist
         const cookieConsent = localStorage.getItem('cookieConsent');
         if (!cookieConsent) {
             setShowCookieBanner(true);
         }
 
-        // IntersectionObserver für Feature Cards
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -58,7 +57,6 @@ function HomePage({ lang }) {
 
     const handleAcceptCookie = () => {
         localStorage.setItem('cookieConsent', 'accepted');
-        alert("Cookie wurde akzeptiert!");
         setShowCookieBanner(false);
         console.log("Cookie wurde akzeptiert!");
     };
@@ -66,17 +64,11 @@ function HomePage({ lang }) {
     const handleRejectCookie = () => {
         localStorage.setItem('cookieConsent', 'declined');
         setShowCookieBanner(false);
-        alert("Cookie wurde abgelehnt!");
         console.log("Cookie wurde abgelehnt!");
     };
 
-
-
-
-
-
     return (
-        <main className="Background-Intro">
+        <main className={`Background-Intro ${currentTheme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
             <div className="carosserie">
                 <h1>Carrosserie Örlike TL AG</h1>
                 <p>Ihr Spezialist für sämtliche Carrosserie und Lackierarbeiten rund ums Fahrzeug</p>
@@ -148,7 +140,6 @@ function HomePage({ lang }) {
                         referrerPolicy="strict-origin-when-cross-origin"
                     ></iframe>
 
-                    {/* Overlay unten zentriert über dem iframe */}
                     <p
                         style={{
                             position: 'absolute',
@@ -188,8 +179,8 @@ function HomePage({ lang }) {
                     left: '50%',
                     transform: 'translateX(-50%)',
                     width: '90%',
-                    maxWidth: '600px',
-                    backgroundColor: '#1e1e1e',
+                    maxWidth: '650px',
+                    backgroundColor: currentTheme === 'dark' ? '#2a2a2a' : '#1e1e1e',
                     color: '#ffffff',
                     padding: '18px 24px',
                     borderRadius: '8px',
@@ -205,7 +196,7 @@ function HomePage({ lang }) {
                     <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.5' }}>
                         Wir nutzen explizit Cookies, um die Funktionsfähigkeit unserer Webseite zu gewährleisten und die Nutzung unserer Dienste zu analysieren. Weitere Informationen finden Sie in unserer Datenschutzerklärung (DSG).
                     </p>
-                    <div style={{ display: 'flex', gap: '12px' }}>
+                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
                         <button
                             onClick={handleRejectCookie}
                             style={{
@@ -236,10 +227,20 @@ function HomePage({ lang }) {
                             Akzeptieren
                         </button>
 
-
-
-                        <button onClick={toggleTheme}>
-                            Aktueller Modus: {cookies.theme|| 'light'}
+                        <button
+                            onClick={toggleTheme}
+                            style={{
+                                padding: '8px 16px',
+                                backgroundColor: currentTheme === 'dark' ? '#f4f4f4' : '#333333',
+                                color: currentTheme === 'dark' ? '#121212' : '#ffffff',
+                                border: 'none',
+                                borderRadius: '4px',
+                                cursor: 'pointer',
+                                fontSize: '14px',
+                                fontWeight: 'bold'
+                            }}
+                        >
+                            Modus: {currentTheme === 'dark' ? '🌙 Dunkel' : '☀️ Hell'}
                         </button>
                     </div>
                 </div>
